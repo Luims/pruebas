@@ -353,11 +353,37 @@ elif selection == "Estadística de Activos":
         st.write("### Datos del Activo Seleccionado")
         st.text(estadisticas(df['AGUA.MX_rend']))
 
-      simbolo = 'AMZN.MX'
+      simbolo = 'AGUA.MX'
       start_date = '2010-01-01'
       end_date = datetime.now()
       drawdown(simbolo, start_date,end_date)
 
+  if activo_seleccionado == "Activo 2":
+      with col1:
+        st.write("### Gráfica de Métricas")
+        fig = px.line(
+        df,
+        x='Date',
+        y='AMZN.MX_rend',
+        title="Rendimientos de la Acción",
+        labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
+        template="plotly_white")
+# Personalizar el gráfico
+        fig.update_layout(
+        title_font=dict(size=20, family='Arial', color='white'),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified")
+        st.plotly_chart(fig)
+    # Columna derecha: Estadísticas en tabla
+      with col2:
+        st.write("### Datos del Activo Seleccionado")
+        st.text(estadisticas(df['AMZN.MX_rend']))
+
+      simbolo = 'AMZN.MX'
+      start_date = '2010-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
 # Portafolio 1
 elif selection == "Portafolio 1":
     st.title("Portafolio 1")
