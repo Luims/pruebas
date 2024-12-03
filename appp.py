@@ -143,7 +143,7 @@ elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
     activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
-    if activo_seleccionado = "Activo 1":
+    if activo_seleccionado == "Activo 1":
       st.write(f"Mostrando estadísticas para: {activo_seleccionado}")
       st.write("Aquí se mostrarán las estadísticas relevantes del activo seleccionado.")
 
