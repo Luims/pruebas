@@ -327,7 +327,7 @@ elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
     activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([2,1])
     if activo_seleccionado == "Activo 1":
       with col1:
         st.write("### Gráfica de Métricas")
@@ -340,7 +340,7 @@ elif selection == "Estadística de Activos":
         template="plotly_white")
 # Personalizar el gráfico
         fig.update_layout(
-        title_font=dict(size=20, family='Arial', color='darkblue'),
+        title_font=dict(size=20, family='Arial', color='white'),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified")
