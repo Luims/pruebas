@@ -53,10 +53,11 @@ def sharpe_ratio(returns, risk_free_rate=0.02):
     excess_returns = returns - risk_free_rate / 252  # Asumiendo retornos diarios
     return np.sqrt(252) * excess_returns.mean() / excess_returns.std()
 
+
 #estadisticas
-def estadisticas(emsiora):
+def estadisticas(emisora):
     # Cuerpo de la función
-    resultado = np.array([np.mean(emisora), np.std(emisora),sharpe_ratio(emisora), sortino(emisora) ])  # Una operación simple
+    resultado = np.array([np.mean(emisora), np.std(emisora),sharpe_ratio(emisora), sortino(emisora),skew(emisora), kurtosis(emisora) ])  # Una operación simple
     return resultado
 
 #black cock
@@ -116,6 +117,182 @@ def minima_varianza(cov):
     A=  uno @ incov @ unot
     w = ((incov @ unot)/A)
     return w
+
+#DRAWDOWN
+def obtener_datos_acciones(simbolos, start_date, end_date):
+    """Descarga datos históricos de precios"""
+    data = yf.download(simbolos, start=start_date, end=end_date)['Close']
+    return data.ffill().dropna()
+
+def calcular_drawdown(precios):
+    """
+    Calcula el drawdown y high water mark
+    Retorna los valores en decimales (no en porcentaje)
+    """
+    high_water_mark = precios.expanding().max()
+    drawdown = (precios - high_water_mark) / high_water_mark
+    return drawdown, high_water_mark
+
+def graficar_drawdown_financiero(precios, titulo="Análisis de Drawdown"):
+    """Crea gráfico de precios y drawdown en subplots"""
+    drawdown, hwm = calcular_drawdown(precios)
+
+    # Crear figura con subplots
+    fig = make_subplots(rows=2, cols=1,
+                       shared_xaxes=True,
+                       vertical_spacing=0.05,
+                       row_heights=[0.7, 0.3])
+
+    # Subplot 1: Precios y HWM
+    fig.add_trace(
+        go.Scatter(
+            x=precios.index,
+            y=precios.values,
+            name='Precio',
+            line=dict(color='blue'),
+        ),
+        row=1, col=1
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=hwm.index,
+            y=hwm.values,
+            name='High Water Mark',
+            line=dict(color='green', dash='dash'),
+        ),
+        row=1, col=1
+    )
+
+    # Subplot 2: Drawdown
+    fig.add_trace(
+        go.Scatter(
+            x=drawdown.index,
+            y=drawdown.values,
+            name='Drawdown',
+            line=dict(color='red'),
+            fill='tozeroy',
+            fillcolor='rgba(255,0,0,0.1)'
+        ),
+        row=2, col=1
+    )
+
+    # Línea horizontal en 0 para el drawdown
+    fig.add_hline(
+        y=0,
+        line_dash="dash",
+        line_color="gray",
+        opacity=0.5,
+        row=2
+    )
+
+    # Actualizar layout
+    fig.update_layout(
+        title=titulo,
+        height=800,  # Altura total de la figura
+        showlegend=True,
+        legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ),
+        hovermode='x unified'
+    )
+
+    # Actualizar ejes Y
+    fig.update_yaxes(title="Precio", row=1, col=1)
+    fig.update_yaxes(
+        title="Drawdown %",
+        tickformat=".1%",
+        range=[-1, 0.1],  # Límites del drawdown entre -100% y 10%
+        row=2,
+        col=1
+    )
+
+    # Actualizar eje X
+    fig.update_xaxes(title="Fecha", row=2, col=1)
+
+    return fig
+
+def obtener_max_drawdown_info(precios):
+    """Obtiene información detallada del máximo drawdown"""
+    drawdown, _ = calcular_drawdown(precios)
+
+    max_drawdown = drawdown.min()
+    fecha_max_drawdown = drawdown.idxmin()
+    pico_anterior = precios[:fecha_max_drawdown].idxmax()
+
+    datos_posteriores = drawdown[fecha_max_drawdown:]
+    fechas_recuperacion = datos_posteriores[datos_posteriores >= 0]
+    fecha_recuperacion = fechas_recuperacion.index[0] if len(fechas_recuperacion) > 0 else None
+
+    duracion_caida = (fecha_max_drawdown - pico_anterior).days
+    duracion_recuperacion = (fecha_recuperacion - fecha_max_drawdown).days if fecha_recuperacion else None
+    duracion_total = (fecha_recuperacion - pico_anterior).days if fecha_recuperacion else None
+
+    return {
+        'max_drawdown': max_drawdown * 100,
+        'fecha_pico': pico_anterior,
+        'fecha_valle': fecha_max_drawdown,
+        'fecha_recuperacion': fecha_recuperacion,
+        'duracion_caida': duracion_caida,
+        'duracion_recuperacion': duracion_recuperacion,
+        'duracion_total': duracion_total
+    }
+#Funcion a usar 
+def drawdown(simbolo, start_date,end_date):
+# Obtener datos
+    datos = obtener_datos_acciones(simbolo, start_date, end_date)
+
+# Si los datos son para múltiples símbolos, seleccionar uno
+    if isinstance(datos, pd.DataFrame):
+        precios = datos[simbolo]
+    else:
+        precios = datos
+
+# Graficar
+    fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
+    fig.show()
+
+# Obtener información detallada
+    info_dd = obtener_max_drawdown_info(precios)
+
+# Imprimir resultados
+    print(f"\nAnálisis de Drawdown para {simbolo}:")
+    print(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+    print(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+    print(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+    print(f"Duración de la caída: {info_dd['duracion_caida']} días")
+
+    if info_dd['fecha_recuperacion'] is not None:
+        print(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
+        print(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
+        print(f"Duración total: {info_dd['duracion_total']} días")
+    else:
+        print("El activo aún no se ha recuperado del máximo drawdown")
+
+#Graficar rendimientos
+def grafica_ren(df,emisora):
+    fig = px.line(
+        df,
+        x='Date',
+        y=emisora,
+        title="Rendimientos de la Acción",
+        labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
+        template="plotly_white"
+    )
+
+# Personalizar el gráfico
+    fig.update_layout(
+        title_font=dict(size=20, family='Arial', color='darkblue'),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified"
+    )
+
+# Mostrar el gráfico
+    fig.show()
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -145,16 +322,19 @@ elif selection == "Estadística de Activos":
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     col1, col2 = st.columns(2)
     if activo_seleccionado == "Activo 1":
-      st.write(f"Mostrando estadísticas para: {activo_seleccionado}")
-      st.write("Aquí se mostrarán las estadísticas relevantes del activo seleccionado.")
       with col1:
         st.write("### Gráfica de Métricas")
-       
-
+        
+        grafica_ren(df, 'AMZN.MX')
     # Columna derecha: Estadísticas en tabla
       with col2:
         st.write("### Datos del Activo Seleccionado")
-       
+        print(estadisticas(df['AGUA.MX_rend']))
+
+      simbolo = 'AMZN.MX'
+      start_date = '2010-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
 
 # Portafolio 1
 elif selection == "Portafolio 1":
