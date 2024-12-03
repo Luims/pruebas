@@ -299,7 +299,7 @@ def grafica_ren(df,emisora):
     )
 
 # Mostrar el gráfico
-    fig.show()
+    return fig
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
