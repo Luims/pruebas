@@ -260,7 +260,7 @@ def drawdown(simbolo, start_date,end_date):
 
 # Graficar
     fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
-    fig.show()
+    st.plotly_chart(fig)
 
 # Obtener información detallada
     info_dd = obtener_max_drawdown_info(precios)
