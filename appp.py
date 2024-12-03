@@ -266,7 +266,7 @@ def obtener_max_drawdown_info(precios):
 def drawdown(simbolo, start_date,end_date):
 # Obtener datos
     datos = obtener_datos_acciones(simbolo, start_date, end_date)
-
+    st.write(datos)
 
 # Si los datos son para múltiples símbolos, seleccionar uno
     if isinstance(datos, pd.DataFrame):
