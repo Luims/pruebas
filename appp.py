@@ -430,9 +430,7 @@ elif selection == "Portafolio 1":
     elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
       l=lagrange(mu, matriz_Cov,0.10)
       st.write(l)
-    portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
-    st.write(f"Mostrando información para: {portafolio_seleccionado}")
-    st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
+    
 
 # Portafolio 2
 elif selection == "Portafolio 2":
