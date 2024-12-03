@@ -300,11 +300,8 @@ def drawdown2(simbolo, start_date,end_date):
 # Obtener datos
     datos = simbolo
 
-# Si los datos son para múltiples símbolos, seleccionar uno
-    if isinstance(datos, pd.DataFrame):
-        precios = datos[simbolo]
-    else:
-        precios = datos
+
+    precios = datos
 
 # Graficar
     fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
