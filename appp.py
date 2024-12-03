@@ -377,8 +377,18 @@ elif selection == "Estadística de Activos":
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
         with col2:
-          st.write("### Datos del Activo Seleccionado")
-          st.text(estadisticas(df['AMZN.MX_rend']))
+          subcol1, subcol2 = st.columns(2)
+            with subcol1: 
+              st.write("### Datos del Activo Seleccionado")
+              e=estadisticas(df['AMZN.MX_rend'])
+              st.text(e[0])
+              st.text(e[1])
+              st.text(e[2])
+            with subcol2:
+              st.text(e[3])
+              st.text(e[4])
+              st.text(e[5])
+            
 
         simbolo = 'AMZN.MX'
         start_date = '2010-01-01'
