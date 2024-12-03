@@ -265,7 +265,8 @@ def obtener_max_drawdown_info(precios):
 #Funcion a usar 
 def drawdown(simbolo, start_date,end_date):
 # Obtener datos
-    datos = df
+    datos = obtener_datos_acciones(simbolo, start_date, end_date)
+
 
 # Si los datos son para múltiples símbolos, seleccionar uno
     if isinstance(datos, pd.DataFrame):
@@ -296,7 +297,8 @@ def drawdown(simbolo, start_date,end_date):
 
 #SOLUCIONAR PROBLEMA CON OTRO 
 
-def drawdown2(simbolo, start_date,end_date):
+def drawdown2(simbolo, start_date,end_date,data):
+    datos=data
 # Obtener datos
     if isinstance(datos, pd.DataFrame):
         precios = datos[simbolo]
@@ -666,7 +668,7 @@ elif selection == "Backtesting":
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown2(simbolo, start_date,end_date)
+      drawdown2(simbolo, start_date,end_date,df)
 
 # Black-Litterman
 elif selection == "Black-Litterman":
