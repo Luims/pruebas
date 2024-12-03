@@ -315,6 +315,31 @@ def grafica_ren(df,emisora):
 
 # Mostrar el gráfico
     fig.show()
+def grafica_portafolio(df,w,columnas_rendimientos):
+    df['Rend_Portafolio'] = df[columnas_rendimientos].dot(w)
+
+# Crear una gráfica interactiva con Plotly
+    fig = px.line(
+    df,
+    x='Date',
+    y='Rend_Portafolio',
+    title="Rendimientos del Portafolio",
+    labels={'Date': 'Fecha', 'Rend_Portafolio': 'Rendimiento del Portafolio'},
+    template="plotly_white"
+    )
+
+# Personalizar el diseño
+    fig.update_layout(
+    title_font=dict(size=22, family='Arial', color='darkblue'),
+    xaxis_title="Fecha",
+    yaxis_title="Rendimiento del Portafolio",
+    xaxis=dict(showgrid=True, gridcolor='lightgray'),
+    yaxis=dict(showgrid=True, gridcolor='lightgray'),
+    hovermode="x unified"
+    )
+
+# Mostrar la gráfica en Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -477,6 +502,7 @@ elif selection == "Portafolio 1":
               st.subheader('MELIN.MX')
               st.text(f'{round(pesos_optimos[4],3)}')     
               #st.write(pesos_optimos)
+            
         else:
             st.write("Error en la optimización")
         
@@ -500,6 +526,7 @@ elif selection == "Portafolio 1":
           st.text(f'{round(l[4],3)}')     
         #st.write(l)
 
+        grafica_portafolio(df_hasta_2020,l,['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'])
     
 
 # Portafolio 2
