@@ -407,7 +407,7 @@ elif selection == "Portafolio 1":
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
     if portafolios == "Portafolio con mínima volatilidad":
       mv=mimina_varianza(matriz_Cov)
-      st.text(mv)
+      st.write(mv)
     elif portafolios == "Portafolio máximo sharpe ratio":
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       def portfolio_stats(weights):
@@ -426,10 +426,10 @@ elif selection == "Portafolio 1":
       opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
       opt_sharpe
 # Portfolio weights
-      st.text(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
+      st.write(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
     elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
       l=lagrange(mu, matriz_Cov,0.10)
-      st.text(l)
+      st.write(l)
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
