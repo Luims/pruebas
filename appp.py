@@ -408,32 +408,43 @@ elif selection == "Portafolio 1":
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
-    if portafolios == "Portafolio con mínima volatilidad":
-      mv=mimina_varianza(matriz_Cov)
-      st.text(f'{mv}')
-    elif portafolios == "Portafolio máximo sharpe ratio":
-      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
-      def portfolio_stats(weights):
+    if selection == "Portafolio 1":
+    st.title("Portafolio 1")
+    portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
+    portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
+    st.write(f"Mostrando información para: {portafolio_seleccionado}")
+    
+    if portafolio_seleccionado == "Portafolio con mínima volatilidad":
+        mv = mimina_varianza(matriz_Cov)
+        st.text(f'{mv}')
+    
+    elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
+        columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+        
+        def portfolio_stats(weights):
+            weights = np.array(weights)[:, np.newaxis]
+            port_rets = weights.T @ np.array(df[columnas_rendimientos].mean() * 252)[:, np.newaxis]
+            port_vols = np.sqrt(np.multi_dot([weights.T, df[columnas_rendimientos].cov() * 252, weights]))
+            return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
 
-        weights = array(weights)[:,newaxis]
-        port_rets = weights.T @ array(df[columnas_rendimientos].mean() * 252)[:,newaxis]
-        port_vols = sqrt(multi_dot([weights.T, df[columnas_rendimientos].cov() * 252, weights]))
+        def min_sharpe_ratio(weights):
+            return -portfolio_stats(weights)[2]
 
-        return array([port_rets, port_vols, port_rets/port_vols]).flatten()
-      def min_sharpe_ratio(weights):
-        return -portfolio_stats(weights)[2]
-      tuple((0, 1) for x in range(5))
-      cons = ({'type': 'eq', 'fun': lambda x: sum(x) - 1})
-      bnds = tuple((0, 1) for x in range(5))
-      initial_wts = 5*[1./5]
-      opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
-      opt_sharpe
-# Portfolio weights
-      st.write(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
-    elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
-      st.text('ses')
-      l=lagrange(mu, matriz_Cov,0.10)
-      st.write(l)
+        bnds = tuple((0, 1) for x in range(5))
+        cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
+        initial_wts = 5 * [1. / 5]
+        opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
+        
+        if opt_sharpe.success:
+            st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
+        else:
+            st.write("Error en la optimización")
+
+    elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+        st.text('ses')
+        l = lagrange(mu, matriz_Cov, 0.10)
+        st.write(l)
+
     
 
 # Portafolio 2
