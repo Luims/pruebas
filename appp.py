@@ -412,7 +412,7 @@ elif selection == "Portafolio 1":
     
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
-        mv = mimina_varianza(matriz_Cov)
+        mv = minina_varianza(matriz_Cov)
         st.text(f'{mv}')
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
