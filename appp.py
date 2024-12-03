@@ -464,7 +464,7 @@ elif selection == "Portafolio 1":
           st.text(f'{round(mv[3],3)}')
           st.subheader('MELIN.MX')
           st.text(f'{round(mv[4],3)}')
-        
+        grafica_portafolio(df_hasta_2020,mv,['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'])
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
@@ -502,7 +502,7 @@ elif selection == "Portafolio 1":
               st.subheader('MELIN.MX')
               st.text(f'{round(pesos_optimos[4],3)}')     
               #st.write(pesos_optimos)
-            
+            grafica_portafolio(df_hasta_2020,pesos_optimos,['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'])
         else:
             st.write("Error en la optimización")
         
