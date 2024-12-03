@@ -298,10 +298,10 @@ def drawdown(simbolo, start_date,end_date):
 
 def drawdown2(simbolo, start_date,end_date):
 # Obtener datos
-    datos = simbolo
-
-
-    precios = datos
+    if isinstance(datos, pd.DataFrame):
+        precios = datos[simbolo]
+    else:
+        precios = datos
 
 # Graficar
     fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
@@ -663,7 +663,7 @@ elif selection == "Backtesting":
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
      # st.write(df['Rend_Portafolio'])
-      simbolo = df['Rend_Portafolio'] 
+      simbolo = df['Date','Rend_Portafolio'] 
       start_date = '2020-01-01'
       end_date = datetime.now()
       drawdown2(simbolo, start_date,end_date)
