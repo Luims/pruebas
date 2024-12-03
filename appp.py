@@ -345,10 +345,7 @@ elif selection == "Estadística de Activos":
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified")
 
-        fig1 = fig  # Ejemplo básico; reemplaza con `grafica_ren`
-        plt.plot([1, 2, 3], [4, 5, 6])
-        plt.title("Gráfica de Rendimientos")
-        st.pyplot(fig1)
+        st.plotly_chart(fig)
 
         
     # Columna derecha: Estadísticas en tabla
