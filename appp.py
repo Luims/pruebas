@@ -266,18 +266,18 @@ def drawdown(simbolo, start_date,end_date):
     info_dd = obtener_max_drawdown_info(precios)
 
 # Imprimir resultados
-    print(f"\nAnálisis de Drawdown para {simbolo}:")
-    print(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
-    print(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
-    print(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
-    print(f"Duración de la caída: {info_dd['duracion_caida']} días")
+    st.text(f"\nAnálisis de Drawdown para {simbolo}:")
+    st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+    st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+    st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+    st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
 
     if info_dd['fecha_recuperacion'] is not None:
-        print(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
-        print(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
-        print(f"Duración total: {info_dd['duracion_total']} días")
+        st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
+        st.text(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
+        st.text(f"Duración total: {info_dd['duracion_total']} días")
     else:
-        print("El activo aún no se ha recuperado del máximo drawdown")
+        st.text("El activo aún no se ha recuperado del máximo drawdown")
 
 #Graficar rendimientos
 def grafica_ren(df,emisora):
