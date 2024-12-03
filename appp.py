@@ -299,7 +299,7 @@ def grafica_ren(df,emisora):
     )
 
 # Mostrar el gráfico
-    return fig
+    fig.show()
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -331,7 +331,7 @@ elif selection == "Estadística de Activos":
     if activo_seleccionado == "Activo 1":
       with col1:
         st.write("### Gráfica de Métricas")
-        fig = grafica_ren(df, 'AMZN.MX')  # Ejemplo básico; reemplaza con `grafica_ren`
+        fig = grafica_ren(df, 'AMZN.MX')  
         plt.plot([1, 2, 3], [4, 5, 6])
         plt.title("Gráfica de Rendimientos")
         st.pyplot(fig)
@@ -340,7 +340,7 @@ elif selection == "Estadística de Activos":
     # Columna derecha: Estadísticas en tabla
       with col2:
         st.write("### Datos del Activo Seleccionado")
-        print(estadisticas(df['AGUA.MX_rend']))
+        st.text(estadisticas(df['AGUA.MX_rend']))
 
       simbolo = 'AMZN.MX'
       start_date = '2010-01-01'
