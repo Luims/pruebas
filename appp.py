@@ -549,10 +549,12 @@ elif selection == "Backtesting":
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
+      st.text('f')
         
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+      st.text('f')
         
 
 # Black-Litterman
