@@ -461,10 +461,25 @@ elif selection == "Portafolio 1":
         opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
         pesos_optimos = opt_sharpe['x']
         if opt_sharpe.success:
-            st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
-            st.write(pesos_optimos)
+            #st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
+            coll,colll = st.columns(2)
+            with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+              st.subheader('AGUA.MX')
+              st.text(f'{round(pesos_optimos[0],3)}')
+              st.subheader('AMZN.MX')
+              st.text(f'{round(pesos_optimos[1],3)}')
+              st.subheader('CHDRAUIB.MX')
+              st.text(f'{round(pesos_optimos[2],3)}')
+            with colll:
+              st.subheader('HD.MX')
+              st.text(f'{round(pesos_optimos[3],3)}')
+              st.subheader('MELIN.MX')
+              st.text(f'{round(pesos_optimos[4],3)}')     
+              #st.write(pesos_optimos)
         else:
             st.write("Error en la optimización")
+        
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
         st.text('ses')
