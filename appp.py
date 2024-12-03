@@ -432,9 +432,10 @@ elif selection == "Portafolio 1":
         cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
         initial_wts = 5 * [1. / 5]
         opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
-        
+        pesos_optimos = opt_sharpe['x']
         if opt_sharpe.success:
             st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
+            st.write(pesos_optimos)
         else:
             st.write("Error en la optimización")
 
