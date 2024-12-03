@@ -408,11 +408,7 @@ elif selection == "Portafolio 1":
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
-    if selection == "Portafolio 1":
-    st.title("Portafolio 1")
-    portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
-    portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
-    st.write(f"Mostrando información para: {portafolio_seleccionado}")
+    
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
         mv = mimina_varianza(matriz_Cov)
