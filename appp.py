@@ -668,7 +668,7 @@ elif selection == "Backtesting":
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown2(simbolo,df['Date','Rend_Portafolio')
+      drawdown2(simbolo,df[['Date','Rend_Portafolio']])
 
 # Black-Litterman
 elif selection == "Black-Litterman":
