@@ -417,16 +417,16 @@ elif selection == "Portafolio 1":
         with coll:
           #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
           st.subheader('AGUA.MX')
-          st.text(f'{mv[0]}')
+          st.text(f'{round(mv[0],3)}')
           st.subheader('AMZN.MX')
-          st.text(f'{mv[1]}')
+          st.text(f'{round(mv[1],3)}')
           st.subheader('CHDRAUIB.MX')
-          st.text(f'{mv[2]}')
+          st.text(f'{round(mv[2],3)}')
         with colll:
           st.subheader('HD.MX')
-          st.text(f'{mv[3]}')
+          st.text(f'{round(mv[3],3)}')
           st.subheader('MELIN.MX')
-          st.text(f'{mv[4]}')
+          st.text(f'{round(mv[4],3)}')
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
