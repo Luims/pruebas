@@ -341,12 +341,12 @@ elif selection == "Estadística de Activos":
     
 
 # Personalizar el gráfico
-    fig.update_layout(
+        fig.update_layout(
         title_font=dict(size=20, family='Arial', color='darkblue'),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
-        hovermode="x unified"
-    )
+        hovermode="x unified")
+    
 
         
     # Columna derecha: Estadísticas en tabla
