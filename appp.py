@@ -378,8 +378,8 @@ elif selection == "Estadística de Activos":
     # Columna derecha: Estadísticas en tabla
         with col2:
           subcol1, subcol2 = st.columns(2)
+          st.write("### Datos del Activo Seleccionado")
           with subcol1: 
-            st.write("### Datos del Activo Seleccionado")
             e=estadisticas(df['AMZN.MX_rend'])
             st.text(e[0])
             st.text(e[1])
