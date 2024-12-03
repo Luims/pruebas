@@ -406,7 +406,8 @@ elif selection == "Portafolio 1":
     st.title("Portafolio 1")
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
     if portafolios == "Portafolio con mínima volatilidad":
-      st.text(mimina_varianza(matriz_Cov))
+      mv=mimina_varianza(matriz_Cov)
+      st.text(mv)
     elif portafolios == "Portafolio máximo sharpe ratio":
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       def portfolio_stats(weights):
@@ -427,7 +428,8 @@ elif selection == "Portafolio 1":
 # Portfolio weights
       st.text(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
     elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
-      st.text(lagrange(mu, matriz_Cov,0.10))
+      l=lagrange(mu, matriz_Cov,0.10)
+      st.text(l)
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
