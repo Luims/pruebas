@@ -297,7 +297,7 @@ def drawdown(simbolo, start_date,end_date):
 
 #SOLUCIONAR PROBLEMA CON OTRO 
 
-def drawdown2(simbolo, start_date,end_date,data):
+def drawdown2(simbolo,data):
     datos=data
 # Obtener datos
     if isinstance(datos, pd.DataFrame):
