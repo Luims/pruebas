@@ -384,16 +384,16 @@ elif selection == "Estadística de Activos":
             st.text('     Rendimiento')
             st.subheader(f'     {round(e[0]*100,4)} %')
             st.text('     Sharp ratio')
-            st.subheader(f'     {round(e[2],4)})
+            st.subheader(f'     {round(e[2],4)}')
             st.text('     Sesgo')
-            st.subheader(f'     {round(e[4],4)})
+            st.subheader(f'     {round(e[4],4)}')
           with subcol2:
             st.text('     Volatilidad')
             st.subheader(f'     {round(e[1]*100,4)}%')
             st.text('     Sortino')
-            st.subheader(f'     {round(e[3],4)})
+            st.subheader(f'     {round(e[3],4)}')
             st.text('     Curtosis')
-            st.subheader(f'     {round(e[5],4)})
+            st.subheader(f'     {round(e[5],4)}')
             
         simbolo = 'AMZN.MX'
         start_date = '2010-01-01'
