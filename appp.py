@@ -150,7 +150,7 @@ elif selection == "Estadística de Activos":
 elif selection == "Portafolio 1":
     st.title("Portafolio 1")
     portafolios = ["Portafolio A", "Portafolio B", "Portafolio C"]
-    lagrange(mu, matriz_Cov,0.10)
+    print(lagrange(mu, matriz_Cov,0.10))
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
