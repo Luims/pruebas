@@ -6,7 +6,6 @@ import plotly.express as px
 import numpy as np
 from datetime import datetime, timedelta
 
-
 # Configuración inicial de la app
 st.set_page_config(page_title="Aplicación de Portafolios", layout="wide")
 
