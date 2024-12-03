@@ -410,7 +410,7 @@ elif selection == "Portafolio 1":
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
     if portafolios == "Portafolio con mínima volatilidad":
       mv=mimina_varianza(matriz_Cov)
-      st.write(mv)
+      st.text(f'{mv}')
     elif portafolios == "Portafolio máximo sharpe ratio":
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       def portfolio_stats(weights):
