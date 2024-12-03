@@ -149,17 +149,12 @@ elif selection == "Estadística de Activos":
       st.write("Aquí se mostrarán las estadísticas relevantes del activo seleccionado.")
       with col1:
         st.write("### Gráfica de Métricas")
-        fig, ax = plt.subplots()
-        ax.bar(categorias, valores, color='skyblue')
-        ax.set_title(f"Estadísticas de {activo_seleccionado}")
-        ax.set_ylabel("Valores")
-        plt.xticks(rotation=45)
-        st.pyplot(fig)
+       
 
     # Columna derecha: Estadísticas en tabla
       with col2:
         st.write("### Datos del Activo Seleccionado")
-        st.table(pd.DataFrame(datos, index=[activo_seleccionado]))
+       
 
 # Portafolio 1
 elif selection == "Portafolio 1":
