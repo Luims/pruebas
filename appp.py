@@ -13,6 +13,8 @@ from scipy.stats import norm
 from scipy.stats import kurtosis
 from scipy.stats import skew
 from scipy.stats import chi2
+from numpy import *
+from numpy.linalg import multi_dot
 #Emisoras y fechas
 emisoras = ['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
 fi = '2010-01-01'
@@ -402,8 +404,30 @@ elif selection == "Estadística de Activos":
 # Portafolio 1
 elif selection == "Portafolio 1":
     st.title("Portafolio 1")
-    portafolios = ["Portafolio A", "Portafolio B", "Portafolio C"]
-    print(lagrange(mu, matriz_Cov,0.10))
+    portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
+    if portafolios == "Portafolio con mínima volatilidad":
+      st.text(mimina_varianza(matriz_Cov))
+    elif portafolios == "Portafolio máximo sharpe ratio":
+      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      def portfolio_stats(weights):
+
+      weights = array(weights)[:,newaxis]
+      port_rets = weights.T @ array(df[columnas_rendimientos].mean() * 252)[:,newaxis]
+      port_vols = sqrt(multi_dot([weights.T, df[columnas_rendimientos].cov() * 252, weights]))
+
+      return array([port_rets, port_vols, port_rets/port_vols]).flatten()
+      def min_sharpe_ratio(weights):
+        return -portfolio_stats(weights)[2]
+      tuple((0, 1) for x in range(5))
+      cons = ({'type': 'eq', 'fun': lambda x: sum(x) - 1})
+      bnds = tuple((0, 1) for x in range(5))
+      initial_wts = 5*[1./5]
+      opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
+      opt_sharpe
+# Portfolio weights
+      st.text(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
+    elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+      st.text(lagrange(mu, matriz_Cov,0.10))
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
