@@ -331,10 +331,22 @@ elif selection == "Estadística de Activos":
     if activo_seleccionado == "Activo 1":
       with col1:
         st.write("### Gráfica de Métricas")
-        fig = grafica_ren(df, 'AMZN.MX')  
-        plt.plot([1, 2, 3], [4, 5, 6])
-        plt.title("Gráfica de Rendimientos")
-        st.pyplot(fig)
+        fig = px.line(
+        df,
+        x='Date',
+        y='AGUA.MX_rend',
+        title="Rendimientos de la Acción",
+        labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
+        template="plotly_white"
+    )
+
+# Personalizar el gráfico
+    fig.update_layout(
+        title_font=dict(size=20, family='Arial', color='darkblue'),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified"
+    )
 
         
     # Columna derecha: Estadísticas en tabla
