@@ -632,6 +632,7 @@ elif selection == "Backtesting":
       st.text('f')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
+      st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
