@@ -413,7 +413,21 @@ elif selection == "Portafolio 1":
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
         mv = minima_varianza(matriz_Cov)
-        st.text(f'{mv}')
+        coll,colll = st.columns(2)
+        with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+          st.subheader('AGUA.MX')
+          st.text(f'{mv[0]}')
+          st.subheader('AMZN.MX')
+          st.text(f'{mv[1]}')
+          st.subheader('CHDRAUIB.MX')
+          st.text(f'{mv[2]}')
+        with colll:
+          st.subheader('HD.MX')
+          st.text(f'{mv[3]}')
+          st.subheader('MELIN.MX')
+          st.text(f'{mv[4]}')
+        
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
         columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
