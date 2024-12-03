@@ -46,7 +46,7 @@ sesgo  = np.array([skew(df['AGUA.MX_rend']),skew(df['AMZN.MX_rend']), skew(df['C
 curtosis = np.array([kurtosis(df['AGUA.MX_rend']),kurtosis(df['AMZN.MX_rend']), kurtosis(df['CHDRAUIB.MX_rend']), kurtosis(df['HD.MX_rend']),kurtosis(df['MELIN.MX_rend'])])
 matriz_Cov = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
 matriz_Corr = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
-mu,sigma,sesgo,curtosis, matriz_Cov,matriz_Corr
+#mu,sigma,sesgo,curtosis, matriz_Cov,matriz_Corr
 
 # Función para calcular el Sharpe Ratio
 def sharpe_ratio(returns, risk_free_rate=0.02):
@@ -150,6 +150,7 @@ elif selection == "Estadística de Activos":
 elif selection == "Portafolio 1":
     st.title("Portafolio 1")
     portafolios = ["Portafolio A", "Portafolio B", "Portafolio C"]
+    lagrange(mu, matriz_Cov,0.10)
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
@@ -165,4 +166,5 @@ elif selection == "Portafolio 2":
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
+    
     st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
