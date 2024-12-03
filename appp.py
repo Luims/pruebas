@@ -337,8 +337,8 @@ elif selection == "Estadística de Activos":
         y='AGUA.MX_rend',
         title="Rendimientos de la Acción",
         labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
-        template="plotly_white"
-    )
+        template="plotly_white")
+    
 
 # Personalizar el gráfico
     fig.update_layout(
