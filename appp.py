@@ -376,7 +376,7 @@ elif selection == "Estadística de Activos":
           hovermode="x unified")
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
-          with col2:
+        with col2:
           st.write("### Datos del Activo Seleccionado")
           st.text(estadisticas(df['AMZN.MX_rend']))
 
