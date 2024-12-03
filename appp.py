@@ -345,6 +345,16 @@ def portafolio_estadistica(df,w,columnas_rendimientos):
     df['Rend_Portafolio'] = df[columnas_rendimientos].dot(w)
     s = estadisticas(df['Rend_Portafolio'])
     return s
+def portfolio_stats(weights):
+        columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+        weights = np.array(weights)[:, np.newaxis]
+        port_rets = weights.T @ np.array(df_hasta_2020[columnas_rendimientos].mean() * 252)[:, np.newaxis]
+        port_vols = np.sqrt(np.dot(np.dot(weights.T, df_hasta_2020[columnas_rendimientos].cov() * 252), weights))
+        return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
+
+def min_sharpe_ratio(weights):
+    return -portfolio_stats(weights)[2]
+
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -473,17 +483,9 @@ elif selection == "Portafolios óptimos":
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
-        columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
         
-        def portfolio_stats(weights):
-          weights = np.array(weights)[:, np.newaxis]
-          port_rets = weights.T @ np.array(df_hasta_2020[columnas_rendimientos].mean() * 252)[:, np.newaxis]
-          port_vols = np.sqrt(np.dot(np.dot(weights.T, df_hasta_2020[columnas_rendimientos].cov() * 252), weights))
-          return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
-
-
-        def min_sharpe_ratio(weights):
-            return -portfolio_stats(weights)[2]
+        
+        
 
         bnds = tuple((0, 1) for x in range(5))
         cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
@@ -544,16 +546,29 @@ elif selection == "Backtesting":
     
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
+      mv = minima_varianza(matriz_Cov1)
       f= portafolio_estadistica(df_desde_2020,mv,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
       st.write(f'{f}')
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
+      #columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+        
+      bnds = tuple((0, 1) for x in range(5))
+      cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
+      initial_wts = 5 * [1. / 5]
+      opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
+      pesos_optimos = opt_sharpe['x']
+      
+      f= portafolio_estadistica(df_desde_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      st.write(f'{f}')
       st.text('f')
         
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+      l = lagrange(mu1, matriz_Cov1, 0.10)
+      st.write(f'{l}')
       st.text('f')
         
 
