@@ -381,13 +381,19 @@ elif selection == "Estadística de Activos":
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
             e=estadisticas(df['AMZN.MX_rend'])
-            st.text(e[0])
-            st.text(e[1])
-            st.text(e[2])
+            st.text('Rendimiento')
+            st.subheader(round(e[0],4))
+            st.text('Volatilidad')
+            st.subheader(round(e[1],4))
+            st.text('Sharp ratio')
+            st.subheader(round(e[2],4))
           with subcol2:
-            st.text(e[3])
-            st.text(e[4])
-            st.text(e[5])
+            st.text('Sortino')
+            st.subheader(round(e[3],4))
+            st.text('Sesgo')
+            st.subheader(round(e[4],4))
+            st.text('Curtosis')
+            st.subheader(round(e[5],4))
             
         simbolo = 'AMZN.MX'
         start_date = '2010-01-01'
