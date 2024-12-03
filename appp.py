@@ -343,7 +343,7 @@ def grafica_portafolio(df,w,columnas_rendimientos):
 #------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
-pages = ["Portada", "Selección de Activos", "Estadística de Activos", "Portafolio 1", "Portafolio 2", "Black-Litterman"]
+pages = ["Portada", "Selección de Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
 selection = st.sidebar.radio("Selecciona una página:", pages)
 
 # Portada
@@ -440,8 +440,8 @@ elif selection == "Estadística de Activos":
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
 # Portafolio 1
-elif selection == "Portafolio 1":
-    st.title("Portafolio 1")
+elif selection == "Portafolios óptimos":
+    st.title("Portafolios óptimos")
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
@@ -530,12 +530,93 @@ elif selection == "Portafolio 1":
     
 
 # Portafolio 2
-elif selection == "Portafolio 2":
-    st.title("Portafolio 2")
-    portafolios = ["Portafolio X", "Portafolio Y", "Portafolio Z"]
+elif selection == "Backtesting":
+    st.title("Backtesting")
+    portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
     portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
     st.write(f"Mostrando información para: {portafolio_seleccionado}")
     st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
+    
+    
+    if portafolio_seleccionado == "Portafolio con mínima volatilidad":
+        mv = minima_varianza(matriz_Cov2)
+        coll,colll = st.columns(2)
+        with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+          st.subheader('AGUA.MX')
+          st.text(f'{round(mv[0],3)}')
+          st.subheader('AMZN.MX')
+          st.text(f'{round(mv[1],3)}')
+          st.subheader('CHDRAUIB.MX')
+          st.text(f'{round(mv[2],3)}')
+        with colll:
+          st.subheader('HD.MX')
+          st.text(f'{round(mv[3],3)}')
+          st.subheader('MELIN.MX')
+          st.text(f'{round(mv[4],3)}')
+        grafica_portafolio(df_hasta_2020,mv,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+        
+    
+    elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
+        columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+        
+        def portfolio_stats(weights):
+          weights = np.array(weights)[:, np.newaxis]
+          port_rets = weights.T @ np.array(df_desde_2020[columnas_rendimientos].mean() * 252)[:, np.newaxis]
+          port_vols = np.sqrt(np.dot(np.dot(weights.T, df_desde_2020[columnas_rendimientos].cov() * 252), weights))
+          return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
+
+
+        def min_sharpe_ratio(weights):
+            return -portfolio_stats(weights)[2]
+
+        bnds = tuple((0, 1) for x in range(5))
+        cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
+        initial_wts = 5 * [1. / 5]
+        opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
+        pesos_optimos = opt_sharpe['x']
+        if opt_sharpe.success:
+            #st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
+            coll,colll = st.columns(2)
+            with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+              st.subheader('AGUA.MX')
+              st.text(f'{round(pesos_optimos[0],3)}')
+              st.subheader('AMZN.MX')
+              st.text(f'{round(pesos_optimos[1],3)}')
+              st.subheader('CHDRAUIB.MX')
+              st.text(f'{round(pesos_optimos[2],3)}')
+            with colll:
+              st.subheader('HD.MX')
+              st.text(f'{round(pesos_optimos[3],3)}')
+              st.subheader('MELIN.MX')
+              st.text(f'{round(pesos_optimos[4],3)}')     
+              #st.write(pesos_optimos)
+            grafica_portafolio(df_desde_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+        else:
+            st.write("Error en la optimización")
+        
+
+    elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+        st.text('ses')
+        l = lagrange(mu2, matriz_Cov2, 0.10)
+        coll,colll = st.columns(2)
+        with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+          st.subheader('AGUA.MX')
+          st.text(f'{round(l[0],3)}')
+          st.subheader('AMZN.MX')
+          st.text(f'{round(l[1],3)}')
+          st.subheader('CHDRAUIB.MX')
+          st.text(f'{round(l[2],3)}')
+        with colll:
+          st.subheader('HD.MX')
+          st.text(f'{round(l[3],3)}')
+          st.subheader('MELIN.MX')
+          st.text(f'{round(l[4],3)}')     
+        #st.write(l)
+
+        grafica_portafolio(df_desde_2020,l,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
 
 # Black-Litterman
 elif selection == "Black-Litterman":
