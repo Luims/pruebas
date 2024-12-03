@@ -265,7 +265,7 @@ def obtener_max_drawdown_info(precios):
 #Funcion a usar 
 def drawdown(simbolo, start_date,end_date):
 # Obtener datos
-    datos = obtener_datos_acciones(simbolo, start_date, end_date)
+    datos = df
 
 # Si los datos son para múltiples símbolos, seleccionar uno
     if isinstance(datos, pd.DataFrame):
@@ -663,7 +663,7 @@ elif selection == "Backtesting":
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
      # st.write(df['Rend_Portafolio'])
-      simbolo = df['Date','Rend_Portafolio'] 
+      simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
       drawdown2(simbolo, start_date,end_date)
