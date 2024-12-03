@@ -143,9 +143,23 @@ elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
     activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
+    col1, col2 = st.columns(2)
     if activo_seleccionado == "Activo 1":
       st.write(f"Mostrando estadísticas para: {activo_seleccionado}")
       st.write("Aquí se mostrarán las estadísticas relevantes del activo seleccionado.")
+      with col1:
+        st.write("### Gráfica de Métricas")
+        fig, ax = plt.subplots()
+        ax.bar(categorias, valores, color='skyblue')
+        ax.set_title(f"Estadísticas de {activo_seleccionado}")
+        ax.set_ylabel("Valores")
+        plt.xticks(rotation=45)
+        st.pyplot(fig)
+
+    # Columna derecha: Estadísticas en tabla
+      with col2:
+        st.write("### Datos del Activo Seleccionado")
+        st.table(pd.DataFrame(datos, index=[activo_seleccionado]))
 
 # Portafolio 1
 elif selection == "Portafolio 1":
