@@ -431,6 +431,7 @@ elif selection == "Portafolio 1":
 # Portfolio weights
       st.write(list(zip(['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX'], round(opt_sharpe['x']*100,2))))
     elif portafolios == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
+      st.text('ses')
       l=lagrange(mu, matriz_Cov,0.10)
       st.write(l)
     
