@@ -15,6 +15,7 @@ from scipy.stats import skew
 from scipy.stats import chi2
 from numpy import *
 from numpy.linalg import multi_dot
+import scipy.optimize as sco
 #Emisoras y fechas
 emisoras = ['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
 fi = '2010-01-01'
