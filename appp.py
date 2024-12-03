@@ -382,7 +382,7 @@ elif selection == "Estadística de Activos":
           with subcol1: 
             e=estadisticas(df['AMZN.MX_rend'])
             st.text('Rendimiento')
-            st.subheader(round(e[0],4))
+            st.subheader(round(e[0],4)*100 + '%')
             st.text('Volatilidad')
             st.subheader(round(e[1],4))
             st.text('Sharp ratio')
