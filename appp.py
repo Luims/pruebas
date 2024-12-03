@@ -53,7 +53,13 @@ def sharpe_ratio(returns, risk_free_rate=0.02):
     excess_returns = returns - risk_free_rate / 252  # Asumiendo retornos diarios
     return np.sqrt(252) * excess_returns.mean() / excess_returns.std()
 
-
+# Función para calcular el Sortino Ratio
+def sortino(returns, risk_free_rate=0.02, target_return=0):
+    excess_returns = returns - risk_free_rate / 252  # Asumiendo retornos diarios
+    downside_returns = excess_returns[excess_returns < target_return]
+    downside_deviation = np.sqrt(np.mean(downside_returns**2))
+    return np.sqrt(252) * excess_returns.mean() / downside_deviation
+  
 #estadisticas
 def estadisticas(emisora):
     # Cuerpo de la función
