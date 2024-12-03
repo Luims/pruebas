@@ -566,7 +566,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
-      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(f)
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
@@ -602,7 +602,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(r[5],4)}')
       st.text('f')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
-      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(r)
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
@@ -631,7 +631,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(ll[5],4)}')
       st.text('f')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
-      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(ll)
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
