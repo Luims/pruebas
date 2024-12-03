@@ -484,6 +484,20 @@ elif selection == "Portafolio 1":
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
         st.text('ses')
         l = lagrange(mu1, matriz_Cov1, 0.10)
+        coll,colll = st.columns(2)
+            with coll:
+          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+              st.subheader('AGUA.MX')
+              st.text(f'{round(l[0],3)}')
+              st.subheader('AMZN.MX')
+              st.text(f'{round(l[1],3)}')
+              st.subheader('CHDRAUIB.MX')
+              st.text(f'{round(l[2],3)}')
+            with colll:
+              st.subheader('HD.MX')
+              st.text(f'{round(l[3],3)}')
+              st.subheader('MELIN.MX')
+              st.text(f'{round(l[4],3)}')     
         st.write(l)
 
     
