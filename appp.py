@@ -565,6 +565,11 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(f)
+      simbolo = 'Rend_Portafolio'
+      start_date = '2020-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
@@ -595,7 +600,11 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(r[5],4)}')
       st.text('f')
-        
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(r)
+      simbolo = 'Rend_Portafolio'
+      start_date = '2020-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
@@ -619,7 +628,12 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(ll[5],4)}')
       st.text('f')
-        
+      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(ll)
+      simbolo = 'Rend_Portafolio'
+      start_date = '2020-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
 
 # Black-Litterman
 elif selection == "Black-Litterman":
