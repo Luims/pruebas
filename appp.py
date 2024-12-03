@@ -295,8 +295,32 @@ def drawdown(simbolo, start_date,end_date):
     else:
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
-#SOLUCIONAR PROBLEMA CON OTRO 
+#SOLUCIONAR PROBLEMA CON OTRO -----------------------------------------------------------------------------------------------------------------------------------
+def obtener_max_drawdown_info2(precios):
+    """Obtiene información detallada del máximo drawdown"""
+    drawdown, _ = calcular_drawdown(precios)
 
+    max_drawdown = drawdown.min()
+    fecha_max_drawdown = drawdown.idxmin()
+    pico_anterior = precios[:fecha_max_drawdown].idxmax()
+
+    datos_posteriores = drawdown[fecha_max_drawdown:]
+    fechas_recuperacion = datos_posteriores[datos_posteriores >= 0]
+    fecha_recuperacion = fechas_recuperacion.index[0] if len(fechas_recuperacion) > 0 else None
+
+    duracion_caida = (fecha_max_drawdown - pico_anterior)
+    duracion_recuperacion = (fecha_recuperacion - fecha_max_drawdown) if fecha_recuperacion else None
+    duracion_total = (fecha_recuperacion - pico_anterior) if fecha_recuperacion else None
+
+    return {
+        'max_drawdown': max_drawdown * 100,
+        'fecha_pico': pico_anterior,
+        'fecha_valle': fecha_max_drawdown,
+        'fecha_recuperacion': fecha_recuperacion,
+        'duracion_caida': duracion_caida,
+        'duracion_recuperacion': duracion_recuperacion,
+        'duracion_total': duracion_total
+    }
 def drawdown2(simbolo,data):
     datos=data
 # Obtener datos
@@ -310,7 +334,7 @@ def drawdown2(simbolo,data):
     st.plotly_chart(fig)
 
 # Obtener información detallada
-    info_dd = obtener_max_drawdown_info(precios)
+    info_dd = obtener_max_drawdown_info2(precios)
 
 # Imprimir resultados
     st.text(f"\nAnálisis de Drawdown para {simbolo}:")
