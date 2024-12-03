@@ -565,6 +565,7 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
+      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(f)
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
@@ -600,6 +601,7 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(r[5],4)}')
       st.text('f')
+      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(r)
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
