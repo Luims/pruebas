@@ -600,10 +600,10 @@ elif selection == "Backtesting":
       st.write(f'{f}')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
-      simbolo = 'Rend_Portafolio'
+      simbolo = df['Rend_Portafolio'] 
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown(simbolo, start_date,end_date)
+      drawdown2(simbolo, start_date,end_date)
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
@@ -636,10 +636,10 @@ elif selection == "Backtesting":
       st.text('f')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
-      simbolo = 'Rend_Portafolio'
+      simbolo = df['Rend_Portafolio'] 
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown(simbolo, start_date,end_date)
+      drawdown2(simbolo, start_date,end_date)
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
