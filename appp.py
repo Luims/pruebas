@@ -6,3 +6,4 @@ import plotly.express as px
 import numpy as np
 from datetime import datetime, timedelta
 st.title('sexo')
+st.subheader('nombres')
