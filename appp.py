@@ -51,7 +51,19 @@ curtosis = np.array([kurtosis(df['AGUA.MX_rend']),kurtosis(df['AMZN.MX_rend']), 
 matriz_Cov = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
 matriz_Corr = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
 #mu,sigma,sesgo,curtosis, matriz_Cov,matriz_Corr
-
+mu1 = np.array([np.mean(df_hasta_2020['AGUA.MX_rend']),np.mean(df_hasta_2020['AMZN.MX_rend']), np.mean(df_hasta_2020['CHDRAUIB.MX_rend']), np.mean(df_hasta_2020['HD.MX_rend']),np.mean(df_hasta_2020['MELIN.MX_rend'])])
+sigma1 = np.array([np.std(df_hasta_2020['AGUA.MX_rend']),np.std(df_hasta_2020['AMZN.MX_rend']), np.std(df_hasta_2020['CHDRAUIB.MX_rend']), np.std(df_hasta_2020['HD.MX_rend']),np.std(df_hasta_2020['MELIN.MX_rend'])])
+sesgo1  = np.array([skew(df_hasta_2020['AGUA.MX_rend']),skew(df_hasta_2020['AMZN.MX_rend']), skew(df_hasta_2020['CHDRAUIB.MX_rend']), skew(df_hasta_2020['HD.MX_rend']),skew(df_hasta_2020['MELIN.MX_rend'])])
+curtosis1 = np.array([kurtosis(df_hasta_2020['AGUA.MX_rend']),kurtosis(df_hasta_2020['AMZN.MX_rend']), kurtosis(df_hasta_2020['CHDRAUIB.MX_rend']), kurtosis(df_hasta_2020['HD.MX_rend']),kurtosis(df_hasta_2020['MELIN.MX_rend'])])
+matriz_Cov1 = df_hasta_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
+matriz_Corr1 = df_hasta_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
+#----------
+mu2 = np.array([np.mean(df_desde_2020['AGUA.MX_rend']),np.mean(df_desde_2020['AMZN.MX_rend']), np.mean(df_desde_2020['CHDRAUIB.MX_rend']), np.mean(df_desde_2020['HD.MX_rend']),np.mean(df_desde_2020['MELIN.MX_rend'])])
+sigma2 = np.array([np.std(df_desde_2020['AGUA.MX_rend']),np.std(df_desde_2020['AMZN.MX_rend']), np.std(df_desde_2020['CHDRAUIB.MX_rend']), np.std(df_desde_2020['HD.MX_rend']),np.std(df_desde_2020['MELIN.MX_rend'])])
+sesgo2  = np.array([skew(df_desde_2020['AGUA.MX_rend']),skew(df_desde_2020['AMZN.MX_rend']), skew(df_desde_2020['CHDRAUIB.MX_rend']), skew(df_desde_2020['HD.MX_rend']),skew(df_desde_2020['MELIN.MX_rend'])])
+curtosis2 = np.array([kurtosis(df_desde_2020['AGUA.MX_rend']),kurtosis(df_desde_2020['AMZN.MX_rend']), kurtosis(df_desde_2020['CHDRAUIB.MX_rend']), kurtosis(df_desde_2020['HD.MX_rend']),kurtosis(df_desde_2020['MELIN.MX_rend'])])
+matriz_Cov2 = df_desde_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
+matriz_Corr2 = df_desde_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
 # Función para calcular el Sharpe Ratio
 def sharpe_ratio(returns, risk_free_rate=0.02):
     excess_returns = returns - risk_free_rate / 252  # Asumiendo retornos diarios
@@ -412,7 +424,7 @@ elif selection == "Portafolio 1":
     
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
-        mv = minima_varianza(matriz_Cov)
+        mv = minima_varianza(matriz_Cov1)
         coll,colll = st.columns(2)
         with coll:
           #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
@@ -428,14 +440,15 @@ elif selection == "Portafolio 1":
           st.subheader('MELIN.MX')
           st.text(f'{round(mv[4],3)}')
         
+        
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
         columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
         
         def portfolio_stats(weights):
           weights = np.array(weights)[:, np.newaxis]
-          port_rets = weights.T @ np.array(df[columnas_rendimientos].mean() * 252)[:, np.newaxis]
-          port_vols = np.sqrt(np.dot(np.dot(weights.T, df[columnas_rendimientos].cov() * 252), weights))
+          port_rets = weights.T @ np.array(df_hasta_2020[columnas_rendimientos].mean() * 252)[:, np.newaxis]
+          port_vols = np.sqrt(np.dot(np.dot(weights.T, df_hasta_2020[columnas_rendimientos].cov() * 252), weights))
           return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
 
 
@@ -455,7 +468,7 @@ elif selection == "Portafolio 1":
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
         st.text('ses')
-        l = lagrange(mu, matriz_Cov, 0.10)
+        l = lagrange(mu1, matriz_Cov1, 0.10)
         st.write(l)
 
     
