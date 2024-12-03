@@ -419,10 +419,11 @@ elif selection == "Portafolio 1":
         columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
         
         def portfolio_stats(weights):
-            weights = np.array(weights)[:, np.newaxis]
-            port_rets = weights.T @ np.array(df[columnas_rendimientos].mean() * 252)[:, np.newaxis]
-            port_vols = np.sqrt(np.multi_dot([weights.T, df[columnas_rendimientos].cov() * 252, weights]))
-            return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
+          weights = np.array(weights)[:, np.newaxis]
+          port_rets = weights.T @ np.array(df[columnas_rendimientos].mean() * 252)[:, np.newaxis]
+          port_vols = np.sqrt(np.dot(np.dot(weights.T, df[columnas_rendimientos].cov() * 252), weights))
+          return np.array([port_rets, port_vols, port_rets / port_vols]).flatten()
+
 
         def min_sharpe_ratio(weights):
             return -portfolio_stats(weights)[2]
