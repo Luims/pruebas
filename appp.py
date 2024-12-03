@@ -331,8 +331,12 @@ elif selection == "Estadística de Activos":
     if activo_seleccionado == "Activo 1":
       with col1:
         st.write("### Gráfica de Métricas")
+        fig = grafica_ren(df, 'AMZN.MX')  # Ejemplo básico; reemplaza con `grafica_ren`
+        plt.plot([1, 2, 3], [4, 5, 6])
+        plt.title("Gráfica de Rendimientos")
+        st.pyplot(fig)
+
         
-        grafica_ren(df, 'AMZN.MX')
     # Columna derecha: Estadísticas en tabla
       with col2:
         st.write("### Datos del Activo Seleccionado")
