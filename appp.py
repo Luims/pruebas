@@ -548,6 +548,22 @@ elif selection == "Backtesting":
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
       mv = minima_varianza(matriz_Cov1)
       f= portafolio_estadistica(df_desde_2020,mv,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['AMZN.MX_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(f[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(f[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(f[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(f[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(f[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
         
     
@@ -560,15 +576,48 @@ elif selection == "Backtesting":
       opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
       pesos_optimos = opt_sharpe['x']
       
-      f= portafolio_estadistica(df_desde_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
-      st.write(f'{f}')
+      r= portafolio_estadistica(df_desde_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      #st.write(f'{f}')
+      subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['AMZN.MX_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(r[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(r[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(r[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(r[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(r[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(r[5],4)}')
       st.text('f')
         
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
       l = lagrange(mu1, matriz_Cov1, 0.10)
-      st.write(f'{l}')
+      ll= portafolio_estadistica(df_desde_2020,l,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      #st.write(f'{f}')
+      subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['AMZN.MX_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(ll[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(ll[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(ll[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(ll[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(ll[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(ll[5],4)}')
       st.text('f')
         
 
