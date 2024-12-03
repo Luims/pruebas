@@ -294,6 +294,39 @@ def drawdown(simbolo, start_date,end_date):
     else:
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
+#SOLUCIONAR PROBLEMA CON OTRO 
+
+def drawdown2(simbolo, start_date,end_date):
+# Obtener datos
+    datos = simbolo
+
+# Si los datos son para múltiples símbolos, seleccionar uno
+    if isinstance(datos, pd.DataFrame):
+        precios = datos[simbolo]
+    else:
+        precios = datos
+
+# Graficar
+    fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
+    st.plotly_chart(fig)
+
+# Obtener información detallada
+    info_dd = obtener_max_drawdown_info(precios)
+
+# Imprimir resultados
+    st.text(f"\nAnálisis de Drawdown para {simbolo}:")
+    st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+    st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+    st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+    st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+
+    if info_dd['fecha_recuperacion'] is not None:
+        st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
+        st.text(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
+        st.text(f"Duración total: {info_dd['duracion_total']} días")
+    else:
+        st.text("El activo aún no se ha recuperado del máximo drawdown")
+
 #Graficar rendimientos
 def grafica_ren(df,emisora):
     fig = px.line(
@@ -632,7 +665,7 @@ elif selection == "Backtesting":
       st.text('f')
       columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
-      st.write(df['Rend_Portafolio'])
+     # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
