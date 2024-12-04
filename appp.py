@@ -387,7 +387,43 @@ def portfolio_stats(weights):
 def min_sharpe_ratio(weights):
     return -portfolio_stats(weights)[2]
 
-#------------------------------------------------------------------------------------
+
+def grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, emisora):
+    
+    # Calcular los rendimientos del portafolio
+    df['Rend_Portafolio'] = df[columnas_rendimientos].dot(w)
+    fig = px.line(
+        df,
+        x='Date',
+        title="Comparación de Rendimientos: Portafolio vs. Emisora",
+        labels={'Date': 'Fecha', 'value': 'Rendimiento'},
+        template="plotly_white"
+    )
+    fig.add_scatter(
+        x=df['Date'],
+        y=df['Rend_Portafolio'],
+        mode='lines',
+        name='Rendimiento del Portafolio',
+        line=dict(color='blue')
+    )
+    fig.add_scatter(
+        x=df['Date'],
+        y=df[emisora],
+        mode='lines',
+        name=f'Rendimiento de {emisora}',
+        line=dict(color='orange')
+    )
+    fig.update_layout(
+        title_font=dict(size=22, family='Arial', color='darkblue'),
+        xaxis_title="Fecha",
+        yaxis_title="Rendimientos",
+        xaxis=dict(showgrid=True, gridcolor='lightgray'),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
 pages = ["Portada", "Selección de Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
@@ -799,9 +835,11 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(ll[5],4)}')
       st.text('f')
+      
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
-      df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
+      df['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
       st.write(df)
+      grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, '^GSPC_rend')
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
