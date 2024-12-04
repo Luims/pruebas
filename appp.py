@@ -189,7 +189,7 @@ def graficar_drawdown_financiero(precios, titulo="Análisis de Drawdown"):
     # Subplot 2: Drawdown
     fig.add_trace(
         go.Scatter(
-            x=drawdown.index,
+            x=precios.index,
             y=drawdown.values,
             name='Drawdown',
             line=dict(color='red'),
