@@ -839,7 +839,7 @@ elif selection == "Backtesting":
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
       st.write(df)
-      grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, '^GSPC_rend')
+      grafica_portafolio_vs_emisora(df, l, columnas_rendimientos, '^GSPC_rend')
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
