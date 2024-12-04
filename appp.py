@@ -896,7 +896,7 @@ elif selection == "Backtesting":
       with col3:
         comparar_stats(ll[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
-                       ,['p','s&p','ew'],'Portafolio 10%',['Sharp ratio'])
+                       ,['p','s&p','ew'],'Portafolio 10%','Sharp ratio',['Sharp ratio'])
         comparar_stats(ll[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
                        ,['p','s&p','ew'],'Portafolio 10%','Curtosis',['Curtosis'])
