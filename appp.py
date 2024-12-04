@@ -423,35 +423,41 @@ def grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, emisora):
     )
     st.plotly_chart(fig, use_container_width=True)
   
-def comparar_stats(v1, v2, v3, x,etiquetas=None):
+def comparar_stats(v1, v2, v3,x, etiquetas=None):
     
+    # Crear un DataFrame para organizar los datos
     indices = range(len(v1)) if etiquetas is None else etiquetas
+    data = pd.DataFrame({
+        "Índice": indices,
+        "Vector 1": v1,
+        "Vector 2": v2,
+        "Vector 3": v3
+    })
 
-   
-    for i, indice in enumerate(indices):
-        # Datos para la gráfica de este índice
-        data = pd.DataFrame({"Vector": x,"Valor": [v1[i], v2[i], v3[i]]})
+    # Convertir a formato largo para facilitar la visualización con Plotly
+    data_long = data.melt(id_vars="Índice", var_name="Vector", value_name="Valor")
 
-     
-        fig = px.bar(
-            data,
-            x="Vector",
-            y="Valor",
-            title=f"Comparación para {indice}" if etiquetas else f"Comparación para Elemento {i+1}",
-            labels={"Valor": "Valor", "Vector": "Vector"},
-            template="plotly_white"
-        )
+    # Crear el gráfico de barras
+    fig = px.bar(
+        data_long,
+        x="Índice",
+        y="Valor",
+        color="Vector",
+        barmode="group",
+        title="Comparación de Elementos entre Vectores",
+        labels={"Índice": "Elemento", "Valor": "Valor"}
+    )
 
-     
-        fig.update_layout(
-            title_font=dict(size=18, family='Arial', color='darkblue'),
-            xaxis=dict(showgrid=False),
-            yaxis=dict(showgrid=True, gridcolor='lightgray'),
-            hovermode="x unified"
-        )
+    # Personalizar el diseño
+    fig.update_layout(
+        title_font=dict(size=22, family='Arial', color='darkblue'),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified"
+    )
 
-        
-        st.plotly_chart(fig, use_container_width=True)
+    # Mostrar la gráfica
+    st.plotly_chart(fig, use_container_width=True)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -869,7 +875,11 @@ elif selection == "Backtesting":
       df_desde_2020['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
       st.write(df)
       #grafica_portafolio_vs_emisora(df_desde_2020, l, columnas_rendimientos, '^GSPC_rend')
-      comparar_stats(ll,estadisticas(df_desde_2020['^GSPC_rend']),portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']),['p','s&p','ew'],['Rendimiento','Volatilidad','Sharp ratio', 'Sortino', 'Sesgo', 'Curtosis'])
+      col1,col2,col3 = st.columns(3)
+      with col1
+        comparar_stats(ll[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
+                       ,['p','s&p','ew'],['Rendimiento','Volatilidad','Sharp ratio', 'Sortino', 'Sesgo', 'Curtosis'])
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
