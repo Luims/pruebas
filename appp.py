@@ -443,7 +443,7 @@ def comparar_stats(v1, v2, v3, x, portafolio, ttl, etiquetas=None):
         y="Valor",
         color="Instrumentos",
         barmode="group",
-        title= '         ' + ttl ,
+        title= '             ' + ttl ,
         labels={"Índice": "_", "Valor": "Valor"}
     )
 
