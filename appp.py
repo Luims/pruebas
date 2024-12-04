@@ -876,7 +876,7 @@ elif selection == "Backtesting":
       st.write(df)
       #grafica_portafolio_vs_emisora(df_desde_2020, l, columnas_rendimientos, '^GSPC_rend')
       col1,col2,col3 = st.columns(3)
-      with col1
+      with col1:
         comparar_stats(ll[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
                        ,['p','s&p','ew'],['Rendimiento','Volatilidad','Sharp ratio', 'Sortino', 'Sesgo', 'Curtosis'])
