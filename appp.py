@@ -443,8 +443,8 @@ def comparar_stats(v1, v2, v3, x, portafolio, etiquetas=None):
         y="Valor",
         color="Instrumentos",
         barmode="group",
-        title="Comparación de Elementos entre Vectores",
-        labels={"Índice": "Elemento", "Valor": "Valor"}
+        title=etiquetas,
+        labels={"Índice": "_", "Valor": "Valor"}
     )
 
     # Personalizar el diseño
