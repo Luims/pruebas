@@ -837,14 +837,14 @@ elif selection == "Backtesting":
       st.text('f')
       
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
-      df['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
+      df_desde_2020['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
       st.write(df)
       grafica_portafolio_vs_emisora(df, l, columnas_rendimientos, '^GSPC_rend')
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown2(simbolo,df[['Date','Rend_Portafolio']])
+      drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
 
 # Black-Litterman
 elif selection == "Black-Litterman":
