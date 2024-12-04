@@ -162,7 +162,7 @@ def graficar_drawdown_financiero(precios, titulo="Análisis de Drawdown"):
     # Crear figura con subplots
     fig = make_subplots(rows=2, cols=1,
                        shared_xaxes=True,
-                       vertical_spacing=2,
+                       vertical_spacing=0.5,
                        row_heights=[0.7, 0.3])
 
     # Subplot 1: Precios y HWM
