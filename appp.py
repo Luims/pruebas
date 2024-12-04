@@ -435,22 +435,22 @@ elif selection == "Estadística de Activos":
       with col2:
         st.write("### Datos del Activo Seleccionado")
         subcol1, subcol2 = st.columns(2)
-          with subcol1: 
-            e=estadisticas(df['IEF_rend'])
-            st.text('     Rendimiento')
-            st.subheader(f'     {round(e[0]*100,4)} %')
-            st.text('     Sharp ratio')
-            st.subheader(f'     {round(e[2],4)}')
-            st.text('     Sesgo')
-            st.subheader(f'     {round(e[4],4)}')
-          with subcol2:
-            st.text('     Volatilidad')
-            st.subheader(f'     {round(e[1]*100,4)}%')
-            st.text('     Sortino')
-            st.subheader(f'     {round(e[3],4)}')
-            st.text('     Curtosis')
-            st.subheader(f'     {round(e[5],4)}')
-        st.text(estadisticas(df['IEF_rend']))
+        with subcol1: 
+          e=estadisticas(df['IEF_rend'])
+          st.text('     Rendimiento')
+          st.subheader(f'     {round(e[0]*100,4)} %')
+          st.text('     Sharp ratio')
+          st.subheader(f'     {round(e[2],4)}')
+          st.text('     Sesgo')
+          st.subheader(f'     {round(e[4],4)}')
+        with subcol2:
+          st.text('     Volatilidad')
+          st.subheader(f'     {round(e[1]*100,4)}%')
+          st.text('     Sortino')
+          st.subheader(f'     {round(e[3],4)}')
+          st.text('     Curtosis')
+          st.subheader(f'     {round(e[5],4)}')
+        #st.text(estadisticas(df['IEF_rend']))
 
       simbolo = 'IEF'
       start_date = '2010-01-01'
