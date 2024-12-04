@@ -697,7 +697,7 @@ elif selection == "Estadística de Activos":
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)  
-# Portafolio 1
+# Portafolios^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 elif selection == "Portafolios óptimos":
     st.title("Portafolios óptimos")
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
@@ -712,18 +712,18 @@ elif selection == "Portafolios óptimos":
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
-          st.text(f'{round(mv[0],3)}')
+          st.header(f'{round(mv[0],3)*100}%')
           st.subheader('CETETRC.MX')
-          st.text(f'{round(mv[1],3)}')
+          st.header(f'{round(mv[1],3)*100}%')
           
         with colll:
           st.subheader('EZA')
-          st.text(f'{round(mv[3],3)}')
+          st.header(f'{round(mv[3],3)*100}%')
           st.subheader('IAU')
-          st.text(f'{round(mv[4],3)}')
+          st.header(f'{round(mv[4],3)*100}%')
         with collll:
           st.subheader('SPY')
-          st.text(f'{round(mv[2],3)}')
+          st.header(f'{round(mv[2],3)*100}%')
           
         grafica_portafolio(df_hasta_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         
@@ -744,20 +744,20 @@ elif selection == "Portafolios óptimos":
             with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
               st.subheader('IEF')
-              st.text(f'{round(pesos_optimos[0],3)}')
+              st.header(f'{round(pesos_optimos[0],3)*100}%')
               st.subheader('CETETRC.MX')
-              st.text(f'{round(pesos_optimos[1],3)}')
+              st.header(f'{round(pesos_optimos[1],3)*100}%')
               
             with colll:
               st.subheader('EZA')
-              st.text(f'{round(pesos_optimos[3],3)}')
+              st.header(f'{round(pesos_optimos[3],3)*100}%')
               st.subheader('IAU')
-              st.text(f'{round(pesos_optimos[4],3)}')     
+              st.header(f'{round(pesos_optimos[4],3)*100}%')     
               #st.write(pesos_optimos)
             
             with collll:
               st.subheader('SPY')
-              st.text(f'{round(pesos_optimos[2],3)}')
+              st.header(f'{round(pesos_optimos[2],3)*100}%')
 
             grafica_portafolio(df_hasta_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         else:
@@ -765,25 +765,25 @@ elif selection == "Portafolios óptimos":
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
-        st.text('ses')
+        #st.text('ses')
         l = lagrange(mu1, matriz_Cov1, 0.10)
         coll,colll,collll = st.columns(3)
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
-          st.text(f'{round(l[0],3)}')
+          st.header(f'{round(l[0],3)*100}%')
           st.subheader('CETETRC.MX')
-          st.text(f'{round(l[1],3)}')
+          st.header(f'{round(l[1],3)*100}%')
           
         with colll:
           st.subheader('EZA')
-          st.text(f'{round(l[3],3)}')
+          st.header(f'{round(l[3],3)*100}%')
           st.subheader('IAU')
-          st.text(f'{round(l[4],3)}')     
+          st.header(f'{round(l[4],3)*100}%')     
         #st.write(l)
         with collll:
           st.subheader('SPY')
-          st.text(f'{round(l[2],3)}')
+          st.header(f'{round(l[2],3)*100}%')
 
         grafica_portafolio(df_hasta_2020,l,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
   
