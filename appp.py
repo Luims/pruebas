@@ -423,26 +423,26 @@ def grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, emisora):
     )
     st.plotly_chart(fig, use_container_width=True)
   
-def comparar_stats(v1, v2, v3,x, etiquetas=None):
+def comparar_stats(v1, v2, v3,x, etiquetas=None,portafolio):
     
     # Crear un DataFrame para organizar los datos
     indices = range(len(v1)) if etiquetas is None else etiquetas
     data = pd.DataFrame({
         "Índice": indices,
-        "sexo": v1,
-        "Vector 2": v2,
-        "Vector 3": v3
+        portafolio : v1,
+        "S&P": v2,
+        "Portafolio 1/5": v3
     })
 
     # Convertir a formato largo para facilitar la visualización con Plotly
-    data_long = data.melt(id_vars="Índice", var_name="Vector", value_name="Valor")
+    data_long = data.melt(id_vars="Índice", var_name="Instrumentos")
 
     # Crear el gráfico de barras
     fig = px.bar(
         data_long,
         x="Índice",
         y="Valor",
-        color="Vector",
+        #color="Vector",
         barmode="group",
         title="Comparación de Elementos entre Vectores",
         labels={"Índice": "Elemento", "Valor": "Valor"}
@@ -454,9 +454,9 @@ def comparar_stats(v1, v2, v3,x, etiquetas=None):
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified",
-        bargap=0.2
+        bargap=0.5
     )
-    fig.update_traces(marker_color=["#1E90FF", "#32CD32", "#FF6347"])
+    #fig.update_traces(marker_color=["#1E90FF", "#32CD32", "#FF6347"])
     # Mostrar la gráfica
     st.plotly_chart(fig, use_container_width=True)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
