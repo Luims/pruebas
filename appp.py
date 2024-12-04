@@ -17,7 +17,7 @@ from numpy import *
 from numpy.linalg import multi_dot
 import scipy.optimize as sco
 #Emisoras y fechas
-emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU','^GSPC']
 fi = '2010-01-01'
 ff = '2023-12-31'
 df = yf.download(emisoras, start = fi, end = ff)['Close'].reset_index()
