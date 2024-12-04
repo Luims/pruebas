@@ -422,7 +422,36 @@ def grafica_portafolio_vs_emisora(df, w, columnas_rendimientos, emisora):
         hovermode="x unified"
     )
     st.plotly_chart(fig, use_container_width=True)
+  
+def comparar_stats(v1, v2, v3, ):
+   
+    indices = range(len(v1)) 
+    data = pd.DataFrame({
+        "Índice": indices,
+        "Vector 1": v1,
+        "Vector 2": v2,
+        "Vector 3": v3
+    })
 
+    data_long = data.melt(id_vars="Índice", var_name="Vector", value_name="Valor")
+
+    fig = px.bar(
+        data_long,
+        x="Índice",
+        y="Valor",
+        color="Vector",
+        barmode="group",
+        title="Comparación de Elementos entre Vectores",
+        labels={"Índice": "Elemento", "Valor": "Valor"}
+    )
+
+    fig.update_layout(
+        title_font=dict(size=22, family='Arial', color='darkblue'),
+        xaxis=dict(showgrid=False),
+        yaxis=dict(showgrid=True, gridcolor='lightgray'),
+        hovermode="x unified"
+    )
+    st.plotly_chart(fig, use_container_width=True)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -839,13 +868,14 @@ elif selection == "Backtesting":
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df_desde_2020['Rend_Portafolio'] = df_desde_2020[columnas_rendimientos].dot(l)
       st.write(df)
-      grafica_portafolio_vs_emisora(df_desde_2020, l, columnas_rendimientos, '^GSPC_rend')
+      #grafica_portafolio_vs_emisora(df_desde_2020, l, columnas_rendimientos, '^GSPC_rend')
+      comparar_stats(ll,estadisticas('^GSPC_rend'),portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']))
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
       drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
-
+      
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
