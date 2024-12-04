@@ -453,7 +453,7 @@ def comparar_stats(v1, v2, v3,x, etiquetas=None):
         title_font=dict(size=22, family='Arial', color='darkblue'),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
-        hovermode="x unified"
+        hovermode="x unified",
         bargap=0.2
     )
 
