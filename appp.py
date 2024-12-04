@@ -31,7 +31,7 @@ for emisora in emisoras:
 df.dropna(inplace =True)
 df.reset_index(inplace = True, drop = True)
 
-for i in df.columns[1:6]:
+for i in df.columns[1:7]:
     df[i+'_Anual_rend']=np.log(df[i]/df[i].shift(1))*252
 df.dropna(inplace=True)
 df.reset_index(drop=True,inplace=True)
