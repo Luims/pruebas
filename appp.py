@@ -17,7 +17,7 @@ from numpy import *
 from numpy.linalg import multi_dot
 import scipy.optimize as sco
 #Emisoras y fechas
-emisoras = ['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
+emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
 fi = '2010-01-01'
 ff = '2023-12-31'
 df = yf.download(emisoras, start = fi, end = ff)['Close'].reset_index()
@@ -44,26 +44,27 @@ df_hasta_2020 = df.loc[:'2020-12-31']  # Hasta el final de 2020
 df_desde_2020 = df.loc['2020-01-01':]  # Desde el inicio de 2020
 
 rf= 0.1
-mu = np.array([np.mean(df['AGUA.MX_rend']),np.mean(df['AMZN.MX_rend']), np.mean(df['CHDRAUIB.MX_rend']), np.mean(df['HD.MX_rend']),np.mean(df['MELIN.MX_rend'])])
-sigma = np.array([np.std(df['AGUA.MX_rend']),np.std(df['AMZN.MX_rend']), np.std(df['CHDRAUIB.MX_rend']), np.std(df['HD.MX_rend']),np.std(df['MELIN.MX_rend'])])
-sesgo  = np.array([skew(df['AGUA.MX_rend']),skew(df['AMZN.MX_rend']), skew(df['CHDRAUIB.MX_rend']), skew(df['HD.MX_rend']),skew(df['MELIN.MX_rend'])])
-curtosis = np.array([kurtosis(df['AGUA.MX_rend']),kurtosis(df['AMZN.MX_rend']), kurtosis(df['CHDRAUIB.MX_rend']), kurtosis(df['HD.MX_rend']),kurtosis(df['MELIN.MX_rend'])])
-matriz_Cov = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
-matriz_Corr = df[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
+mu = np.array([np.mean(df['IEF_rend']),np.mean(df['CETETRC.MX_rend']), np.mean(df['SPY_rend']), np.mean(df['EZA_rend']),np.mean(df['IAU_rend'])])
+sigma = np.array([np.std(df['IEF_rend']),np.std(df['CETETRC.MX_rend']), np.std(df['SPY_rend']), np.std(df['EZA_rend']),np.std(df['IAU_rend'])])
+sesgo  = np.array([skew(df['IEF_rend']),skew(df['CETETRC.MX_rend']), skew(df['SPY_rend']), skew(df['EZA_rend']),skew(df['IAU_rend'])])
+curtosis = np.array([kurtosis(df['IEF_rend']),kurtosis(df['CETETRC.MX_rend']), kurtosis(df['SPY_rend']), kurtosis(df['EZA_rend']),kurtosis(df['IAU_rend'])])
+matriz_Cov = df[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].cov().values
+matriz_Corr = df[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].corr().values
 #mu,sigma,sesgo,curtosis, matriz_Cov,matriz_Corr
-mu1 = np.array([np.mean(df_hasta_2020['AGUA.MX_rend']),np.mean(df_hasta_2020['AMZN.MX_rend']), np.mean(df_hasta_2020['CHDRAUIB.MX_rend']), np.mean(df_hasta_2020['HD.MX_rend']),np.mean(df_hasta_2020['MELIN.MX_rend'])])
-sigma1 = np.array([np.std(df_hasta_2020['AGUA.MX_rend']),np.std(df_hasta_2020['AMZN.MX_rend']), np.std(df_hasta_2020['CHDRAUIB.MX_rend']), np.std(df_hasta_2020['HD.MX_rend']),np.std(df_hasta_2020['MELIN.MX_rend'])])
-sesgo1  = np.array([skew(df_hasta_2020['AGUA.MX_rend']),skew(df_hasta_2020['AMZN.MX_rend']), skew(df_hasta_2020['CHDRAUIB.MX_rend']), skew(df_hasta_2020['HD.MX_rend']),skew(df_hasta_2020['MELIN.MX_rend'])])
-curtosis1 = np.array([kurtosis(df_hasta_2020['AGUA.MX_rend']),kurtosis(df_hasta_2020['AMZN.MX_rend']), kurtosis(df_hasta_2020['CHDRAUIB.MX_rend']), kurtosis(df_hasta_2020['HD.MX_rend']),kurtosis(df_hasta_2020['MELIN.MX_rend'])])
-matriz_Cov1 = df_hasta_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
-matriz_Corr1 = df_hasta_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
+mu1 = np.array([np.mean(df_hasta_2020['IEF_rend']),np.mean(df_hasta_2020['CETETRC.MX_rend']), np.mean(df_hasta_2020['SPY_rend']), np.mean(df_hasta_2020['EZA_rend']),np.mean(df_hasta_2020['IAU_rend'])])
+sigma1 = np.array([np.std(df_hasta_2020['IEF_rend']),np.std(df_hasta_2020['CETETRC.MX_rend']), np.std(df_hasta_2020['SPY_rend']), np.std(df_hasta_2020['EZA_rend']),np.std(df_hasta_2020['IAU_rend'])])
+sesgo1  = np.array([skew(df_hasta_2020['IEF_rend']),skew(df_hasta_2020['CETETRC.MX_rend']), skew(df_hasta_2020['SPY_rend']), skew(df_hasta_2020['EZA_rend']),skew(df_hasta_2020['IAU_rend'])])
+curtosis1 = np.array([kurtosis(df_hasta_2020['IEF_rend']),kurtosis(df_hasta_2020['CETETRC.MX_rend']), kurtosis(df_hasta_2020['SPY_rend']), kurtosis(df_hasta_2020['EZA_rend']),kurtosis(df_hasta_2020['IAU_rend'])])
+matriz_Cov1 = df_hasta_2020[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].cov().values
+matriz_Corr1 = df_hasta_2020[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].corr().values
 #----------
-mu2 = np.array([np.mean(df_desde_2020['AGUA.MX_rend']),np.mean(df_desde_2020['AMZN.MX_rend']), np.mean(df_desde_2020['CHDRAUIB.MX_rend']), np.mean(df_desde_2020['HD.MX_rend']),np.mean(df_desde_2020['MELIN.MX_rend'])])
-sigma2 = np.array([np.std(df_desde_2020['AGUA.MX_rend']),np.std(df_desde_2020['AMZN.MX_rend']), np.std(df_desde_2020['CHDRAUIB.MX_rend']), np.std(df_desde_2020['HD.MX_rend']),np.std(df_desde_2020['MELIN.MX_rend'])])
-sesgo2  = np.array([skew(df_desde_2020['AGUA.MX_rend']),skew(df_desde_2020['AMZN.MX_rend']), skew(df_desde_2020['CHDRAUIB.MX_rend']), skew(df_desde_2020['HD.MX_rend']),skew(df_desde_2020['MELIN.MX_rend'])])
-curtosis2 = np.array([kurtosis(df_desde_2020['AGUA.MX_rend']),kurtosis(df_desde_2020['AMZN.MX_rend']), kurtosis(df_desde_2020['CHDRAUIB.MX_rend']), kurtosis(df_desde_2020['HD.MX_rend']),kurtosis(df_desde_2020['MELIN.MX_rend'])])
-matriz_Cov2 = df_desde_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].cov().values
-matriz_Corr2 = df_desde_2020[['AGUA.MX_rend','AMZN.MX_rend','CHDRAUIB.MX_rend','HD.MX_rend','MELIN.MX_rend']].corr().values
+mu2 = np.array([np.mean(df_desde_2020['IEF_rend']),np.mean(df_desde_2020['CETETRC.MX_rend']), np.mean(df_desde_2020['SPY_rend']), np.mean(df_desde_2020['EZA_rend']),np.mean(df_desde_2020['IAU_rend'])])
+sigma2 = np.array([np.std(df_desde_2020['IEF_rend']),np.std(df_desde_2020['CETETRC.MX_rend']), np.std(df_desde_2020['SPY_rend']), np.std(df_desde_2020['EZA_rend']),np.std(df_desde_2020['IAU_rend'])])
+sesgo2  = np.array([skew(df_desde_2020['IEF_rend']),skew(df_desde_2020['CETETRC.MX_rend']), skew(df_desde_2020['SPY_rend']), skew(df_desde_2020['EZA_rend']),skew(df_desde_2020['IAU_rend'])])
+curtosis2 = np.array([kurtosis(df_desde_2020['IEF_rend']),kurtosis(df_desde_2020['CETETRC.MX_rend']), kurtosis(df_desde_2020['SPY_rend']), kurtosis(df_desde_2020['EZA_rend']),kurtosis(df_desde_2020['IAU_rend'])])
+matriz_Cov2 = df_desde_2020[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].cov().values
+matriz_Corr2 = df_desde_2020[['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']].corr().values
+# Función para calcular el Sharpe Ratio
 # Función para calcular el Sharpe Ratio
 def sharpe_ratio(returns, risk_free_rate=0.02):
     excess_returns = returns - risk_free_rate / 252  # Asumiendo retornos diarios
@@ -377,7 +378,7 @@ def portafolio_estadistica(df,w,columnas_rendimientos):
     s = estadisticas(df['Rend_Portafolio'])
     return s
 def portfolio_stats(weights):
-        columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+        columnas_rendimientos = ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
         weights = np.array(weights)[:, np.newaxis]
         port_rets = weights.T @ np.array(df_hasta_2020[columnas_rendimientos].mean() * 252)[:, np.newaxis]
         port_vols = np.sqrt(np.dot(np.dot(weights.T, df_hasta_2020[columnas_rendimientos].cov() * 252), weights))
@@ -420,7 +421,7 @@ elif selection == "Estadística de Activos":
         fig = px.line(
         df,
         x='Date',
-        y='AGUA.MX_rend',
+        y='IEF_rend',
         title="Rendimientos de la Acción",
         labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
         template="plotly_white")
@@ -437,9 +438,9 @@ elif selection == "Estadística de Activos":
     # Columna derecha: Estadísticas en tabla
       with col2:
         st.write("### Datos del Activo Seleccionado")
-        st.text(estadisticas(df['AGUA.MX_rend']))
+        st.text(estadisticas(df['IEF_rend']))
 
-      simbolo = 'AGUA.MX'
+      simbolo = 'IEF'
       start_date = '2010-01-01'
       end_date = datetime.now()
       drawdown(simbolo, start_date,end_date)
@@ -450,7 +451,7 @@ elif selection == "Estadística de Activos":
           fig = px.line(
           df,
           x='Date',
-          y='AMZN.MX_rend',
+          y='CETETRC.MX_rend',
           title="Rendimientos de la Acción",
           labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
           template="plotly_white")
@@ -466,7 +467,7 @@ elif selection == "Estadística de Activos":
           st.write("### Datos del Activo Seleccionado")
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
-            e=estadisticas(df['AMZN.MX_rend'])
+            e=estadisticas(df['CETETRC.MX_rend'])
             st.text('     Rendimiento')
             st.subheader(f'     {round(e[0]*100,4)} %')
             st.text('     Sharp ratio')
@@ -481,7 +482,7 @@ elif selection == "Estadística de Activos":
             st.text('     Curtosis')
             st.subheader(f'     {round(e[5],4)}')
             
-        simbolo = 'AMZN.MX'
+        simbolo = 'CETETRC.MX'
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
@@ -498,19 +499,19 @@ elif selection == "Portafolios óptimos":
         mv = minima_varianza(matriz_Cov1)
         coll,colll = st.columns(2)
         with coll:
-          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
-          st.subheader('AGUA.MX')
+          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+          st.subheader('IEF')
           st.text(f'{round(mv[0],3)}')
-          st.subheader('AMZN.MX')
+          st.subheader('CETETRC.MX')
           st.text(f'{round(mv[1],3)}')
-          st.subheader('CHDRAUIB.MX')
+          st.subheader('SPY')
           st.text(f'{round(mv[2],3)}')
         with colll:
-          st.subheader('HD.MX')
+          st.subheader('EZA')
           st.text(f'{round(mv[3],3)}')
-          st.subheader('MELIN.MX')
+          st.subheader('IAU')
           st.text(f'{round(mv[4],3)}')
-        grafica_portafolio(df_hasta_2020,mv,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+        grafica_portafolio(df_hasta_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
@@ -524,23 +525,23 @@ elif selection == "Portafolios óptimos":
         opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
         pesos_optimos = opt_sharpe['x']
         if opt_sharpe.success:
-            #st.write(list(zip(['AGUA.MX', 'AMZN.MX', 'CHDRAUIB.MX', 'HD.MX', 'MELIN.MX'], round(opt_sharpe['x']*100, 2))))
+            #st.write(list(zip(['IEF', 'CETETRC.MX', 'SPY', 'EZA', 'IAU'], round(opt_sharpe['x']*100, 2))))
             coll,colll = st.columns(2)
             with coll:
-          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
-              st.subheader('AGUA.MX')
+          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+              st.subheader('IEF')
               st.text(f'{round(pesos_optimos[0],3)}')
-              st.subheader('AMZN.MX')
+              st.subheader('CETETRC.MX')
               st.text(f'{round(pesos_optimos[1],3)}')
-              st.subheader('CHDRAUIB.MX')
+              st.subheader('SPY')
               st.text(f'{round(pesos_optimos[2],3)}')
             with colll:
-              st.subheader('HD.MX')
+              st.subheader('EZA')
               st.text(f'{round(pesos_optimos[3],3)}')
-              st.subheader('MELIN.MX')
+              st.subheader('IAU')
               st.text(f'{round(pesos_optimos[4],3)}')     
               #st.write(pesos_optimos)
-            grafica_portafolio(df_hasta_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+            grafica_portafolio(df_hasta_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         else:
             st.write("Error en la optimización")
         
@@ -550,21 +551,21 @@ elif selection == "Portafolios óptimos":
         l = lagrange(mu1, matriz_Cov1, 0.10)
         coll,colll = st.columns(2)
         with coll:
-          #['AGUA.MX','AMZN.MX', 'CHDRAUIB.MX', 'HD.MX','MELIN.MX']
-          st.subheader('AGUA.MX')
+          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+          st.subheader('IEF')
           st.text(f'{round(l[0],3)}')
-          st.subheader('AMZN.MX')
+          st.subheader('CETETRC.MX')
           st.text(f'{round(l[1],3)}')
-          st.subheader('CHDRAUIB.MX')
+          st.subheader('SPY')
           st.text(f'{round(l[2],3)}')
         with colll:
-          st.subheader('HD.MX')
+          st.subheader('EZA')
           st.text(f'{round(l[3],3)}')
-          st.subheader('MELIN.MX')
+          st.subheader('IAU')
           st.text(f'{round(l[4],3)}')     
         #st.write(l)
 
-        grafica_portafolio(df_hasta_2020,l,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+        grafica_portafolio(df_hasta_2020,l,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
   
 
 # Portafolio 2
@@ -578,10 +579,10 @@ elif selection == "Backtesting":
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
       mv = minima_varianza(matriz_Cov1)
-      f= portafolio_estadistica(df_desde_2020,mv,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      f= portafolio_estadistica(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
       subcol1, subcol2 = st.columns(2)
       with subcol1: 
-        e=estadisticas(df['AMZN.MX_rend'])
+        e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(f[0]*100,4)} %')
         st.text('     Sharp ratio')
@@ -596,7 +597,7 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
-      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
       simbolo = df['Rend_Portafolio'] 
       start_date = '2020-01-01'
@@ -605,7 +606,7 @@ elif selection == "Backtesting":
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
-      #columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      #columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
         
       bnds = tuple((0, 1) for x in range(5))
       cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
@@ -613,11 +614,11 @@ elif selection == "Backtesting":
       opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
       pesos_optimos = opt_sharpe['x']
       
-      r= portafolio_estadistica(df_desde_2020,pesos_optimos,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      r= portafolio_estadistica(df_desde_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
       #st.write(f'{f}')
       subcol1, subcol2 = st.columns(2)
       with subcol1: 
-        e=estadisticas(df['AMZN.MX_rend'])
+        e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(r[0]*100,4)} %')
         st.text('     Sharp ratio')
@@ -632,7 +633,7 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(r[5],4)}')
       st.text('f')
-      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
       simbolo = df['Rend_Portafolio'] 
       start_date = '2020-01-01'
@@ -642,11 +643,11 @@ elif selection == "Backtesting":
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
       l = lagrange(mu1, matriz_Cov1, 0.10)
-      ll= portafolio_estadistica(df_desde_2020,l,['AGUA.MX_rend','AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend','MELIN.MX_rend'])
+      ll= portafolio_estadistica(df_desde_2020,l,['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])
       #st.write(f'{f}')
       subcol1, subcol2 = st.columns(2)
       with subcol1: 
-        e=estadisticas(df['AMZN.MX_rend'])
+        e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(ll[0]*100,4)} %')
         st.text('     Sharp ratio')
@@ -661,7 +662,7 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(ll[5],4)}')
       st.text('f')
-      columnas_rendimientos = ['AGUA.MX_rend', 'AMZN.MX_rend', 'CHDRAUIB.MX_rend', 'HD.MX_rend', 'MELIN.MX_rend']
+      columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(l)
       st.write(df)
      # st.write(df['Rend_Portafolio'])
