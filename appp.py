@@ -429,7 +429,7 @@ def comparar_stats(v1, v2, v3,x, etiquetas=None):
     indices = range(len(v1)) if etiquetas is None else etiquetas
     data = pd.DataFrame({
         "Índice": indices,
-        "Vector 1": v1,
+        "sexo": v1,
         "Vector 2": v2,
         "Vector 3": v3
     })
@@ -450,13 +450,13 @@ def comparar_stats(v1, v2, v3,x, etiquetas=None):
 
     # Personalizar el diseño
     fig.update_layout(
-        title_font=dict(size=22, family='Arial', color='darkblue'),
+        title_font=dict(size=22, family='Arial', color='white'),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified",
         bargap=0.2
     )
-
+    fig.update_traces(marker_color=["#1E90FF", "#32CD32", "#FF6347"])
     # Mostrar la gráfica
     st.plotly_chart(fig, use_container_width=True)
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
