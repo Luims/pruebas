@@ -712,18 +712,18 @@ elif selection == "Portafolios óptimos":
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
-          st.header(f'{round(mv[0],3)*100}%')
+          st.header(f'{round(mv[0]*100,3)}%')
           st.subheader('CETETRC.MX')
-          st.header(f'{round(mv[1],3)*100}%')
+          st.header(f'{round(mv[1]*100,3)}%')
           
         with colll:
           st.subheader('EZA')
-          st.header(f'{round(mv[3],3)*100}%')
+          st.header(f'{round(mv[3]*100,3)}%')
           st.subheader('IAU')
-          st.header(f'{round(mv[4],3)*100}%')
+          st.header(f'{round(mv[4]*100,3)}%')
         with collll:
           st.subheader('SPY')
-          st.header(f'{round(mv[2],3)*100}%')
+          st.header(f'{round(mv[2]*100,3)}%')
           
         grafica_portafolio(df_hasta_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         
@@ -744,20 +744,20 @@ elif selection == "Portafolios óptimos":
             with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
               st.subheader('IEF')
-              st.header(f'{round(pesos_optimos[0],3)*100}%')
+              st.header(f'{round(pesos_optimos[0]*100,3)}%')
               st.subheader('CETETRC.MX')
-              st.header(f'{round(pesos_optimos[1],3)*100}%')
+              st.header(f'{round(pesos_optimos[1]*100,3)}%')
               
             with colll:
               st.subheader('EZA')
-              st.header(f'{round(pesos_optimos[3],3)*100}%')
+              st.header(f'{round(pesos_optimos[3]*100,3)}%')
               st.subheader('IAU')
-              st.header(f'{round(pesos_optimos[4],3)*100}%')     
+              st.header(f'{round(pesos_optimos[4]*100,3)}%')     
               #st.write(pesos_optimos)
             
             with collll:
               st.subheader('SPY')
-              st.header(f'{round(pesos_optimos[2],3)*100}%')
+              st.header(f'{round(pesos_optimos[2]*100,3)}%')
 
             grafica_portafolio(df_hasta_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         else:
@@ -771,19 +771,19 @@ elif selection == "Portafolios óptimos":
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
-          st.header(f'{round(l[0],3)*100}%')
+          st.header(f'{round(l[0]*100,3)}%')
           st.subheader('CETETRC.MX')
-          st.header(f'{round(l[1],3)*100}%')
+          st.header(f'{round(l[1]*100,3)}%')
           
         with colll:
           st.subheader('EZA')
-          st.header(f'{round(l[3],3)*100}%')
+          st.header(f'{round(l[3]*100,3)}%')
           st.subheader('IAU')
-          st.header(f'{round(l[4],3)*100}%')     
+          st.header(f'{round(l[4]*100,3)}%')     
         #st.write(l)
         with collll:
           st.subheader('SPY')
-          st.header(f'{round(l[2],3)*100}%')
+          st.header(f'{round(l[2]*100,3)}%')
 
         grafica_portafolio(df_hasta_2020,l,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
   
