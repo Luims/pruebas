@@ -454,6 +454,7 @@ def comparar_stats(v1, v2, v3,x, etiquetas=None):
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified"
+        bargap=0.2
     )
 
     # Mostrar la gráfica
@@ -880,6 +881,23 @@ elif selection == "Backtesting":
         comparar_stats(ll[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
                        ,['p','s&p','ew'],['Rendimiento'])
+        comparar_stats(ll[3],estadisticas(df_desde_2020['^GSPC_rend'])[3],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
+                       ,['p','s&p','ew'],['Sharp ratio'])
+      with col2:
+        comparar_stats(ll[1],estadisticas(df_desde_2020['^GSPC_rend'])[1],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[1]
+                       ,['p','s&p','ew'],['Volatilidad'])
+        comparar_stats(ll[4],estadisticas(df_desde_2020['^GSPC_rend'])[4],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[4]
+                       ,['p','s&p','ew'],['Sharp ratio'])
+      with col3:
+        comparar_stats(ll[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
+                       ,['p','s&p','ew'],['Sharp ratio'])
+        comparar_stats(ll[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
+                       ,['p','s&p','ew'],['Sharp ratio'])
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
