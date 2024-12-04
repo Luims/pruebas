@@ -911,22 +911,24 @@ elif selection == "Backtesting":
       l = lagrange(mu1, matriz_Cov1, 0.10)
       ll= portafolio_estadistica(df_desde_2020,l,['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])
       #st.write(f'{f}')
-      subcol1, subcol2 = st.columns(2)
+      subcol1, subcol2,subcol3 = st.columns(3)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(ll[0]*100,4)} %')
         st.text('     Sharp ratio')
         st.subheader(f'     {round(ll[2],4)}')
-        st.text('     Sesgo')
-        st.subheader(f'     {round(ll[4],4)}')
       with subcol2:
         st.text('     Volatilidad')
         st.subheader(f'     {round(ll[1]*100,4)}%')
         st.text('     Sortino')
         st.subheader(f'     {round(ll[3],4)}')
+      with subcol3:
+        st.text('     Sesgo')
+        st.subheader(f'     {round(ll[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(ll[5],4)}')
+      
       st.text('f')
       
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
