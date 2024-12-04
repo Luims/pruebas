@@ -425,19 +425,31 @@ elif selection == "Estadística de Activos":
         title="Rendimientos de la Acción",
         labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
         template="plotly_white")
-# Personalizar el gráfico
         fig.update_layout(
         title_font=dict(size=20, family='Arial', color='white'),
         xaxis=dict(showgrid=False),
         yaxis=dict(showgrid=True, gridcolor='lightgray'),
         hovermode="x unified")
-
         st.plotly_chart(fig)
-
-        
-    # Columna derecha: Estadísticas en tabla
+    
       with col2:
         st.write("### Datos del Activo Seleccionado")
+        subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['IEF_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(e[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(e[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(e[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(e[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(e[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(e[5],4)}')
         st.text(estadisticas(df['IEF_rend']))
 
       simbolo = 'IEF'
@@ -486,6 +498,89 @@ elif selection == "Estadística de Activos":
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
+
+    if activo_seleccionado == "Activo 3":
+        with col1:
+          st.write("### Gráfica de Métricas")
+          fig = px.line(
+          df,
+          x='Date',
+          y='SPY_rend',
+          title="Rendimientos de la Acción",
+          labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
+          template="plotly_white")
+# Personalizar el gráfico
+          fig.update_layout(
+          title_font=dict(size=20, family='Arial', color='white'),
+          xaxis=dict(showgrid=False),
+          yaxis=dict(showgrid=True, gridcolor='lightgray'),
+          hovermode="x unified")
+          st.plotly_chart(fig)
+    # Columna derecha: Estadísticas en tabla
+        with col2:
+          st.write("### Datos del Activo Seleccionado")
+          subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['SPY_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(e[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(e[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(e[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(e[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(e[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(e[5],4)}')
+            
+        simbolo = 'SPY'
+        start_date = '2010-01-01'
+        end_date = datetime.now()
+        drawdown(simbolo, start_date,end_date)
+    if activo_seleccionado == "Activo 4":
+        with col1:
+          st.write("### Gráfica de Métricas")
+          fig = px.line(
+          df,
+          x='Date',
+          y='IAU_rend',
+          title="Rendimientos de la Acción",
+          labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
+          template="plotly_white")
+# Personalizar el gráfico
+          fig.update_layout(
+          title_font=dict(size=20, family='Arial', color='white'),
+          xaxis=dict(showgrid=False),
+          yaxis=dict(showgrid=True, gridcolor='lightgray'),
+          hovermode="x unified")
+          st.plotly_chart(fig)
+    # Columna derecha: Estadísticas en tabla
+        with col2:
+          st.write("### Datos del Activo Seleccionado")
+          subcol1, subcol2 = st.columns(2)
+          with subcol1: 
+            e=estadisticas(df['IAU_rend'])
+            st.text('     Rendimiento')
+            st.subheader(f'     {round(e[0]*100,4)} %')
+            st.text('     Sharp ratio')
+            st.subheader(f'     {round(e[2],4)}')
+            st.text('     Sesgo')
+            st.subheader(f'     {round(e[4],4)}')
+          with subcol2:
+            st.text('     Volatilidad')
+            st.subheader(f'     {round(e[1]*100,4)}%')
+            st.text('     Sortino')
+            st.subheader(f'     {round(e[3],4)}')
+            st.text('     Curtosis')
+            st.subheader(f'     {round(e[5],4)}')
+            
+        simbolo = 'IAU'
+        start_date = '2010-01-01'
+        end_date = datetime.now()
+        drawdown(simbolo, start_date,end_date)  
 # Portafolio 1
 elif selection == "Portafolios óptimos":
     st.title("Portafolios óptimos")
