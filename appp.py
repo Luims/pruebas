@@ -791,20 +791,23 @@ elif selection == "Backtesting":
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
       mv = minima_varianza(matriz_Cov1)
       f= portafolio_estadistica(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
-      subcol1, subcol2 = st.columns(2)
+      subcol1, subcol2,subcol3 = st.columns(2)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(f[0]*100,4)} %')
         st.text('     Sharp ratio')
         st.subheader(f'     {round(f[2],4)}')
-        st.text('     Sesgo')
-        st.subheader(f'     {round(f[4],4)}')
+        
       with subcol2:
         st.text('     Volatilidad')
         st.subheader(f'     {round(f[1]*100,4)}%')
         st.text('     Sortino')
         st.subheader(f'     {round(f[3],4)}')
+        
+      with subcol3:
+        st.text('     Sesgo')
+        st.subheader(f'     {round(f[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
       st.write(f'{f}')
@@ -855,22 +858,25 @@ elif selection == "Backtesting":
       
       r= portafolio_estadistica(df_desde_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
       #st.write(f'{f}')
-      subcol1, subcol2 = st.columns(2)
+      subcol1, subcol2, subcol3 = st.columns(3)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(r[0]*100,4)} %')
         st.text('     Sharp ratio')
         st.subheader(f'     {round(r[2],4)}')
-        st.text('     Sesgo')
-        st.subheader(f'     {round(r[4],4)}')
+        
       with subcol2:
         st.text('     Volatilidad')
         st.subheader(f'     {round(r[1]*100,4)}%')
         st.text('     Sortino')
         st.subheader(f'     {round(r[3],4)}')
+        
+      with subcol3:
         st.text('     Curtosis')
         st.subheader(f'     {round(r[5],4)}')
+        st.text('     Sesgo')
+        st.subheader(f'     {round(r[4],4)}')
       st.text('f')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
