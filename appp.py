@@ -879,7 +879,7 @@ elif selection == "Backtesting":
       with col1:
         comparar_stats(ll[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
-                       ,['p','s&p','ew'],['Rendimiento','Volatilidad','Sharp ratio', 'Sortino', 'Sesgo', 'Curtosis'])
+                       ,['p','s&p','ew'],['Rendimiento'])
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
