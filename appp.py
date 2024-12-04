@@ -708,20 +708,23 @@ elif selection == "Portafolios óptimos":
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
         mv = minima_varianza(matriz_Cov1)
-        coll,colll = st.columns(2)
+        coll,colll ,collll= st.columns(3)
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
           st.text(f'{round(mv[0],3)}')
           st.subheader('CETETRC.MX')
           st.text(f'{round(mv[1],3)}')
-          st.subheader('SPY')
-          st.text(f'{round(mv[2],3)}')
+          
         with colll:
           st.subheader('EZA')
           st.text(f'{round(mv[3],3)}')
           st.subheader('IAU')
           st.text(f'{round(mv[4],3)}')
+        with collll:
+          st.subheader('SPY')
+          st.text(f'{round(mv[2],3)}')
+          
         grafica_portafolio(df_hasta_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         
     
@@ -737,21 +740,25 @@ elif selection == "Portafolios óptimos":
         pesos_optimos = opt_sharpe['x']
         if opt_sharpe.success:
             #st.write(list(zip(['IEF', 'CETETRC.MX', 'SPY', 'EZA', 'IAU'], round(opt_sharpe['x']*100, 2))))
-            coll,colll = st.columns(2)
+            coll,colll,collll = st.columns(3)
             with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
               st.subheader('IEF')
               st.text(f'{round(pesos_optimos[0],3)}')
               st.subheader('CETETRC.MX')
               st.text(f'{round(pesos_optimos[1],3)}')
-              st.subheader('SPY')
-              st.text(f'{round(pesos_optimos[2],3)}')
+              
             with colll:
               st.subheader('EZA')
               st.text(f'{round(pesos_optimos[3],3)}')
               st.subheader('IAU')
               st.text(f'{round(pesos_optimos[4],3)}')     
               #st.write(pesos_optimos)
+            
+            with collll:
+              st.subheader('SPY')
+              st.text(f'{round(pesos_optimos[2],3)}')
+
             grafica_portafolio(df_hasta_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         else:
             st.write("Error en la optimización")
@@ -760,21 +767,23 @@ elif selection == "Portafolios óptimos":
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
         st.text('ses')
         l = lagrange(mu1, matriz_Cov1, 0.10)
-        coll,colll = st.columns(2)
+        coll,colll,collll = st.columns(3)
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
           st.subheader('IEF')
           st.text(f'{round(l[0],3)}')
           st.subheader('CETETRC.MX')
           st.text(f'{round(l[1],3)}')
-          st.subheader('SPY')
-          st.text(f'{round(l[2],3)}')
+          
         with colll:
           st.subheader('EZA')
           st.text(f'{round(l[3],3)}')
           st.subheader('IAU')
           st.text(f'{round(l[4],3)}')     
         #st.write(l)
+        with collll:
+          st.subheader('SPY')
+          st.text(f'{round(l[2],3)}')
 
         grafica_portafolio(df_hasta_2020,l,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
   
