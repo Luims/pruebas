@@ -41,8 +41,8 @@ df['Date'] = pd.to_datetime(df['Date'])
 df.set_index(df['Date'], inplace = True) 
 
 # Dividir el DataFrame
-df_hasta_2020 = df[df["Fecha"] < "2020-01-01"]  # Hasta el final de 2020
-df_desde_2020 = df[df["Fecha"] >= "2020-01-01"]  # Desde el inicio de 2020
+df_hasta_2020 = df[df["Date"] < "2020-01-01"]  # Hasta el final de 2020
+df_desde_2020 = df[df["Date"] >= "2020-01-01"]  # Desde el inicio de 2020
 
 rf= 0.1
 mu = np.array([np.mean(df['IEF_rend']),np.mean(df['CETETRC.MX_rend']), np.mean(df['SPY_rend']), np.mean(df['EZA_rend']),np.mean(df['IAU_rend'])])
