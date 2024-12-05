@@ -826,24 +826,24 @@ elif selection == "Backtesting":
       with col1:
         comparar_stats(f[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Rendimiento',['Rendimiento'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Rendimiento',['Rendimiento'])
         comparar_stats(f[3],estadisticas(df_desde_2020['^GSPC_rend'])[3],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Sortino',['Sortino'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Sortino',['Sortino'])
       with col2:
         comparar_stats(f[1],estadisticas(df_desde_2020['^GSPC_rend'])[1],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[1]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Volatilidad',['Volatilidad'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Volatilidad',['Volatilidad'])
         comparar_stats(f[4],estadisticas(df_desde_2020['^GSPC_rend'])[4],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[4]
-                       ,['p','s&p','ew'],'Portafolio \n mínima \n volatilidad','Sesgo',['Sesgo'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Sesgo',['Sesgo'])
       with col3:
         comparar_stats(f[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Sharp ratio',['Sharp ratio'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Sharp ratio',['Sharp ratio'])
         comparar_stats(f[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Curtosis',['Curtosis'])
+                       ,['p','s&p','ew'],'Portafolio min vol','Curtosis',['Curtosis'])
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
@@ -893,24 +893,24 @@ elif selection == "Backtesting":
       with col1:
         comparar_stats(r[0],estadisticas(df_desde_2020['^GSPC_rend'])[0],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[0]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Rendimiento',['Rendimiento'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Rendimiento',['Rendimiento'])
         comparar_stats(r[3],estadisticas(df_desde_2020['^GSPC_rend'])[3],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Sortino',['Sortino'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Sortino',['Sortino'])
       with col2:
         comparar_stats(r[1],estadisticas(df_desde_2020['^GSPC_rend'])[1],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[1]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Volatilidad',['Volatilidad'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Volatilidad',['Volatilidad'])
         comparar_stats(r[4],estadisticas(df_desde_2020['^GSPC_rend'])[4],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[4]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Sesgo',['Sesgo'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Sesgo',['Sesgo'])
       with col3:
         comparar_stats(r[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Sharp ratio',['Sharp ratio'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Sharp ratio',['Sharp ratio'])
         comparar_stats(r[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
-                       ,['p','s&p','ew'],'Portafolio máx sharp','Curtosis',['Curtosis'])
+                       ,['p','s&p','ew'],'Portafolio sharp','Curtosis',['Curtosis'])
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
