@@ -597,10 +597,11 @@ elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
     activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
-    var1, cvar1 = calcular_var_cvar(df['IEF'])
+    
 
-    col1, col2, col13 = st.columns([3,1])
+    col1, col2, col3 = st.columns([3,1])
     if activo_seleccionado == "Activo 1":
+      var1, cvar1 = calcular_var_cvar(df['IEF'])
       with col1:
         st.write("### Gráfica de Métricas")
         fig = px.line(
@@ -639,7 +640,7 @@ elif selection == "Estadística de Activos":
           
         #st.text(estadisticas(df['IEF_rend']))
       
-       with col13:
+       with col3:
           st.text('     VaR')
           st.subheader(f"{var1:.2%}")
           st.text('     CVaR')
