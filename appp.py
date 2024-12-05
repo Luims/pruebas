@@ -88,8 +88,9 @@ def estadisticas(emisora):
 def VaR(returns, confidence=0.95):
     VaR = returns.quantile(1 - confidence)
     return VaR
-  def CVaR(returns):
-    var = Var(returns)
+  
+def CVaR(returns):
+    var = VaR(returns)
     CVaR = returns[returns <= var].mean()
     return CVaR
 
