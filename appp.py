@@ -819,6 +819,13 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
+      col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+        with col2:
+          st.text('VAR')
+          st.subheader('1234')
+        with col4:
+          st.text('CVAR')
+          st.subheader('1234')
       st.write(f'{f}')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
@@ -844,6 +851,8 @@ elif selection == "Backtesting":
         comparar_stats(f[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
                        ,['p','s&p','ew'],'Portafolio min vol','Curtosis',['Curtosis'])
+      
+          
      # st.write(df['Rend_Portafolio'])
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
@@ -886,6 +895,14 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(r[5],4)}')
         st.text('     Sesgo')
         st.subheader(f'     {round(r[4],4)}')
+
+      col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+        with col2:
+          st.text('VAR')
+          st.subheader('1234')
+        with col4:
+          st.text('CVAR')
+          st.subheader('1234')
       st.text('f')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
@@ -943,7 +960,14 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(ll[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(ll[5],4)}')
-      
+
+      col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+        with col2:
+          st.text('VAR')
+          st.subheader('1234')
+        with col4:
+          st.text('CVAR')
+          st.subheader('1234')
       st.text('f')
       
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
