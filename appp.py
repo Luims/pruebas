@@ -634,7 +634,7 @@ elif selection == "Estadística de Activos":
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
           st.text('     VaR')
-          st.subheader(f'     {round(e[6],4)}')
+          st.subheader(f'     {round(e[6]*100,4)}%')
           
         with subcol2:
           st.text('     Volatilidad')
@@ -644,7 +644,7 @@ elif selection == "Estadística de Activos":
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
           st.text('     CVaR')
-          st.subheader(f'     {round(e[7],4)}')
+          st.subheader(f'     {round(e[7]*100,4)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
 
