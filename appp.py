@@ -893,15 +893,15 @@ elif selection == "Backtesting":
       
           
      # st.write(df['Rend_Portafolio'])
-      simbolo = 'Rend_Portafolio'
-      start_date = '2020-01-01'
-      end_date = datetime.now()
-      drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
-      
-      simbolo = df['Rend_Portafolio'] 
-      start_date = '2020-01-01'
-      end_date = datetime.now()
-      drawdown2(simbolo, start_date,end_date)
+      #simbolo = 'Rend_Portafolio'
+      #start_date = '2020-01-01'
+      #end_date = datetime.now()
+      #drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
+      drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
+      #simbolo = df['Rend_Portafolio'] 
+      #start_date = '2020-01-01'
+      #end_date = datetime.now()
+      #drawdown2(simbolo, start_date,end_date)
         
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
@@ -962,15 +962,16 @@ elif selection == "Backtesting":
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
                        ,['p','s&p','ew'],'Portafolio sharp','Curtosis',['Curtosis'])
      # st.write(df['Rend_Portafolio'])
-      simbolo = 'Rend_Portafolio'
-      start_date = '2020-01-01'
-      end_date = datetime.now()
-      drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
-      simbolo = df['Rend_Portafolio'] 
-      start_date = '2020-01-01'
-      end_date = datetime.now()
+      #simbolo = 'Rend_Portafolio'
+      #start_date = '2020-01-01'
+      #nd_date = datetime.now()
       
-      drawdown2(simbolo, start_date,end_date)
+      #drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
+      #simbolo = df['Rend_Portafolio'] 
+      #start_date = '2020-01-01'
+      #end_date = datetime.now()
+      
+      drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
