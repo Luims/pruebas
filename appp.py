@@ -38,6 +38,7 @@ df.reset_index(drop=True,inplace=True)
 
 # Convertir la columna 'fecha' al tipo datetime si no lo está
 df['Date'] = pd.to_datetime(df['Date'])
+df.set_index(df['Date'], inplace = True) 
 
 # Dividir el DataFrame
 df_hasta_2020 = df.loc[:'2020-12-31']  # Hasta el final de 2020
