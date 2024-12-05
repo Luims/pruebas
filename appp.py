@@ -81,14 +81,17 @@ def sortino(returns, risk_free_rate=0.02, target_return=0):
 #estadisticas
 def estadisticas(emisora):
     # Cuerpo de la función
-    resultado = np.array([np.mean(emisora), np.std(emisora),sharpe_ratio(emisora), sortino(emisora),skew(emisora), kurtosis(emisora) ])  # Una operación simple
+    resultado = np.array([np.mean(emisora), np.std(emisora),sharpe_ratio(emisora), sortino(emisora),skew(emisora), kurtosis(emisora),VaR(emisora), CVaR(emisora) ])  # Una operación simple
     return resultado
 
 #VaR & CVaR
-def calcular_var_cvar(returns, confidence=0.95):
+def VaR(returns, confidence=0.95):
     VaR = returns.quantile(1 - confidence)
-    CVaR = returns[returns <= VaR].mean()
-    return VaR, CVaR
+    return VaR
+  def CVaR(returns):
+    var = Var(returns)
+    CVaR = returns[returns <= var].mean()
+    return CVaR
 
 def crear_histograma_distribucion(returns, var_95, cvar_95, title):
     # Crear el histograma base
@@ -599,7 +602,7 @@ elif selection == "Estadística de Activos":
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     
 
-    col1, col2, col3 = st.columns([3,1])
+    col1, col2 = st.columns([2,1])
     if activo_seleccionado == "Activo 1":
       var1, cvar1 = calcular_var_cvar(df['IEF'])
       with col1:
@@ -629,6 +632,8 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[2],4)}')
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
+          st.text('     VaR')
+          st.subheader(f'     {round(e[6],4)}')
           
         with subcol2:
           st.text('     Volatilidad')
@@ -637,14 +642,11 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[3],4)}')
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
+          st.text('     CVaR')
+          st.subheader(f'     {round(e[7],4)}')
           
         #st.text(estadisticas(df['IEF_rend']))
-      
-       with col3:
-          st.text('     VaR')
-          st.subheader(f"{var1:.2%}")
-          st.text('     CVaR')
-          st.subheader(f"{cvar1:.2%}")
+
          
       simbolo = 'IEF'
       start_date = '2010-01-01'
