@@ -297,13 +297,19 @@ def drawdown(simbolo, start_date,end_date):
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
 #SOLUCIONAR PROBLEMA CON OTRO -----------------------------------------------------------------------------------------------------------------------------------
-def drawdown2(simbolo,data):
-    datos=data
-# Obtener datos
-    if isinstance(datos, pd.DataFrame):
-        precios = datos[simbolo]
+def drawdown2(simbolo=None, start_date=None, end_date=None, dataframe=None):
+    """
+    Realiza el análisis de drawdown.
+    Si se proporciona un DataFrame, se usa directamente; de lo contrario, se descargan datos.
+    """
+    # Verificar si se proporciona un DataFrame o descargar datos
+    if dataframe is not None:
+        precios = dataframe
     else:
-        precios = datos
+        if not simbolo:
+            raise ValueError("Debe proporcionar un símbolo si no se pasa un DataFrame.")
+        precios = yf.download(simbolo, start=start_date, end=end_date)['Close'].ffill().dropna()
+
 
 # Graficar
     fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown - {simbolo}')
@@ -982,7 +988,7 @@ elif selection == "Backtesting":
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
-      drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
+      drawdown2(df_desde_2020[['Date','Rend_Portafolio']])
       
 # Black-Litterman
 elif selection == "Black-Litterman":
