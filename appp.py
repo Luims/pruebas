@@ -819,7 +819,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
-      col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
+      col1, col2, col3, col4, col5 = st.columns([1, 3, 1, 3, 1])
       with col2:
         st.text('VAR')
         st.subheader('1234')
