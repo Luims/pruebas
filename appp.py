@@ -647,13 +647,8 @@ elif selection == "Estadística de Activos":
           
         #st.text(estadisticas(df['IEF_rend']))
 
-       fig_hist_asset = crear_histograma_distribucion(
-                df['IEF'],
-                e[6],
-                e[7],
-                f'Distribución de Retornos - {'IEF'}'
-            )
-            st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+        fig_hist_asset = crear_histograma_distribucion(df['IEF'],  e[6], e[7],  f'Distribución de Retornos - {'IEF'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       
       simbolo = 'IEF'
       start_date = '2010-01-01'
