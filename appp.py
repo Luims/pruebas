@@ -221,7 +221,7 @@ def calcular_drawdown(precios):
     Retorna los valores en decimales (no en porcentaje)
     """
     high_water_mark = precios.expanding().max()
-    drawdown = (precios-high_water_mark) / high_water_mark
+    drawdown = (precios - high_water_mark) / high_water_mark
     return drawdown, high_water_mark
 
 def graficar_drawdown_financiero(precios, titulo="Análisis de Drawdown"):
@@ -258,7 +258,7 @@ def graficar_drawdown_financiero(precios, titulo="Análisis de Drawdown"):
     # Subplot 2: Drawdown
     fig.add_trace(
         go.Scatter(
-            x=precios.index,
+            x=drawdown.index,
             y=drawdown.values,
             name='Drawdown',
             line=dict(color='red'),
