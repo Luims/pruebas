@@ -993,7 +993,7 @@ elif selection == "Backtesting":
       st.write(df_desde_2020)
       st.write(df_desde_2020[['Date','Rend_Portafolio']])
       #df_desde_2020.set_index("Date", inplace=True)
-      drawdown2(df_desde_2020[['Date','Rend_Portafolio']])
+      drawdown2(df_desde_2020[['Rend_Portafolio']])
       
 # Black-Litterman
 elif selection == "Black-Litterman":
