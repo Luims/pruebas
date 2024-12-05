@@ -151,7 +151,6 @@ def crear_histograma_distribucion(returns, var_95, cvar_95, title):
     
     return fig
 
-
 #black cock
 def bl(prior, cov,t,view,q):
     vp = np.sqrt(np.transpose(prior) @ cov @ prior)
@@ -605,7 +604,7 @@ elif selection == "Estadística de Activos":
 
     col1, col2 = st.columns([2,1])
     if activo_seleccionado == "Activo 1":
-      #var1, cvar1 = calcular_var_cvar(df['IEF'])
+      
       with col1:
         st.write("### Gráfica de Métricas")
         fig = px.line(
@@ -628,31 +627,40 @@ elif selection == "Estadística de Activos":
         with subcol1: 
           e=estadisticas(df['IEF_rend'])
           st.text('     Rendimiento')
-          st.subheader(f'     {round(e[0]*100,4)} %')
+          st.subheader(f'     {round(e[0]*100,2)} %')
           st.text('     Sharp ratio')
           st.subheader(f'     {round(e[2],4)}')
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
           st.text('     VaR')
-          st.subheader(f'     {round(e[6]*100,4)}%')
+          st.subheader(f'     {round(e[6]*100,2)}%')
           
         with subcol2:
           st.text('     Volatilidad')
-          st.subheader(f'     {round(e[1]*100,4)}%')
+          st.subheader(f'     {round(e[1]*100,2)}%')
           st.text('     Sortino')
           st.subheader(f'     {round(e[3],4)}')
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
           st.text('     CVaR')
-          st.subheader(f'     {round(e[7]*100,4)}%')
+          st.subheader(f'     {round(e[7]*100,2)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
 
-         
+       fig_hist_asset = crear_histograma_distribucion(
+                df['IEF'],
+                e[6],
+                e[7],
+                f'Distribución de Retornos - {'IEF'}'
+            )
+            st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+      
       simbolo = 'IEF'
       start_date = '2010-01-01'
       end_date = datetime.now()
       drawdown(simbolo, start_date,end_date)
+
+
 
     if activo_seleccionado == "Activo 2":
         with col1:
