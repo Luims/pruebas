@@ -605,7 +605,7 @@ elif selection == "Estadística de Activos":
 
     col1, col2 = st.columns([2,1])
     if activo_seleccionado == "Activo 1":
-      var1, cvar1 = calcular_var_cvar(df['IEF'])
+      #var1, cvar1 = calcular_var_cvar(df['IEF'])
       with col1:
         st.write("### Gráfica de Métricas")
         fig = px.line(
