@@ -29,7 +29,7 @@ st.set_page_config(page_title="Aplicación de Portafolios", layout="wide")
 for emisora in emisoras:
   df[emisora + '_rend'] = np.log(df[emisora]/df[emisora].shift(252))
 df.dropna(inplace =True)
-df.reset_index(inplace = True, drop = True)
+#df.reset_index(inplace = True, drop = True)
 #df.set_index("Date", inplace=True)
 for i in df.columns[1:7]:
     df[i+'_Anual_rend']=np.log(df[i]/df[i].shift(1))*252
