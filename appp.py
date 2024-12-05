@@ -983,3 +983,11 @@ elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
     
     st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
+    st.title("Selección de Activos")
+    st.write("views:")
+    st.text_input("Activo 1:")
+    st.text_input("Activo 2:")
+    st.text_input("Activo 3:")
+    st.text_input("Activo 4:")
+    st.text_input("Activo 5:")
+      
