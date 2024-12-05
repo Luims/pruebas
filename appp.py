@@ -836,7 +836,7 @@ elif selection == "Backtesting":
                        ,['p','s&p','ew'],'Portafolio mínima volatilidad','Volatilidad',['Volatilidad'])
         comparar_stats(f[4],estadisticas(df_desde_2020['^GSPC_rend'])[4],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[4]
-                       ,['p','s&p','ew'],'Portafolio mínima volatilidad','Sesgo',['Sesgo'])
+                       ,['p','s&p','ew'],'Portafolio \nmínima \nvolatilidad','Sesgo',['Sesgo'])
       with col3:
         comparar_stats(f[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
