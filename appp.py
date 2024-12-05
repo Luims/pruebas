@@ -930,6 +930,7 @@ elif selection == "Backtesting":
       simbolo = df['Rend_Portafolio'] 
       start_date = '2020-01-01'
       end_date = datetime.now()
+      
       drawdown2(simbolo, start_date,end_date)
         
 
@@ -989,6 +990,7 @@ elif selection == "Backtesting":
       start_date = '2020-01-01'
       end_date = datetime.now()
       st.write(df_desde_2020[['Date','Rend_Portafolio']])
+      df_desde_2020.set_index("Date", inplace=True)
       drawdown2(df_desde_2020[['Date','Rend_Portafolio']])
       
 # Black-Litterman
