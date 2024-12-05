@@ -84,6 +84,70 @@ def estadisticas(emisora):
     resultado = np.array([np.mean(emisora), np.std(emisora),sharpe_ratio(emisora), sortino(emisora),skew(emisora), kurtosis(emisora) ])  # Una operación simple
     return resultado
 
+#VaR & CVaR
+def calcular_var_cvar(returns, confidence=0.95):
+    VaR = returns.quantile(1 - confidence)
+    CVaR = returns[returns <= VaR].mean()
+    return VaR, CVaR
+
+def crear_histograma_distribucion(returns, var_95, cvar_95, title):
+    # Crear el histograma base
+    fig = go.Figure()
+    
+    # Calcular los bins para el histograma
+    counts, bins = np.histogram(returns, bins=50)
+    
+    # Separar los bins en dos grupos: antes y después del VaR
+    mask_before_var = bins[:-1] <= var_95
+    
+    # Añadir histograma para valores antes del VaR (rojo)
+    fig.add_trace(go.Bar(
+        x=bins[:-1][mask_before_var],
+        y=counts[mask_before_var],
+        width=np.diff(bins)[mask_before_var],
+        name='Retornos < VaR',
+        marker_color='rgba(255, 65, 54, 0.6)'
+    ))
+    
+    # Añadir histograma para valores después del VaR (azul)
+    fig.add_trace(go.Bar(
+        x=bins[:-1][~mask_before_var],
+        y=counts[~mask_before_var],
+        width=np.diff(bins)[~mask_before_var],
+        name='Retornos > VaR',
+        marker_color='rgba(31, 119, 180, 0.6)'
+    ))
+    
+    # Añadir líneas verticales para VaR y CVaR
+    fig.add_trace(go.Scatter(
+        x=[var_95, var_95],
+        y=[0, max(counts)],
+        mode='lines',
+        name='VaR 95%',
+        line=dict(color='green', width=2, dash='dash')
+    ))
+    
+    fig.add_trace(go.Scatter(
+        x=[cvar_95, cvar_95],
+        y=[0, max(counts)],
+        mode='lines',
+        name='CVaR 95%',
+        line=dict(color='purple', width=2, dash='dot')
+    ))
+    
+    # Actualizar el diseño
+    fig.update_layout(
+        title=title,
+        xaxis_title='Retornos',
+        yaxis_title='Frecuencia',
+        showlegend=True,
+        barmode='overlay',
+        bargap=0
+    )
+    
+    return fig
+
+
 #black cock
 def bl(prior, cov,t,view,q):
     vp = np.sqrt(np.transpose(prior) @ cov @ prior)
@@ -533,6 +597,8 @@ elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
     activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
+    var1, cvar1 = calcular_var_cvar(df['IEF'])
+
     col1, col2 = st.columns([2,1])
     if activo_seleccionado == "Activo 1":
       with col1:
@@ -562,6 +628,8 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[2],4)}')
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
+          st.text('     VaR')
+          st.subheader(f"{var1:.2%}")
         with subcol2:
           st.text('     Volatilidad')
           st.subheader(f'     {round(e[1]*100,4)}%')
@@ -569,8 +637,10 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[3],4)}')
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
+           st.text('     CVaR')
+          st.subheader(f"{cvar1:.2%}")
         #st.text(estadisticas(df['IEF_rend']))
-
+     
       simbolo = 'IEF'
       start_date = '2010-01-01'
       end_date = datetime.now()
