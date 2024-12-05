@@ -820,10 +820,10 @@ elif selection == "Backtesting":
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
       col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
-        with col2:
-          st.text('VAR')
-          st.subheader('1234')
-        with col4:
+      with col2:
+        st.text('VAR')
+        st.subheader('1234')
+      with col4:
           st.text('CVAR')
           st.subheader('1234')
       st.write(f'{f}')
@@ -897,12 +897,12 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(r[4],4)}')
 
       col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
-        with col2:
-          st.text('VAR')
-          st.subheader('1234')
-        with col4:
-          st.text('CVAR')
-          st.subheader('1234')
+      with col2:
+        st.text('VAR')
+        st.subheader('1234')
+      with col4:
+        st.text('CVAR')
+        st.subheader('1234')
       st.text('f')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
@@ -962,12 +962,12 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(ll[5],4)}')
 
       col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 2, 1])
-        with col2:
-          st.text('VAR')
-          st.subheader('1234')
-        with col4:
-          st.text('CVAR')
-          st.subheader('1234')
+      with col2:
+        st.text('VAR')
+        st.subheader('1234')
+      with col4:
+        st.text('CVAR')
+        st.subheader('1234')
       st.text('f')
       
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
