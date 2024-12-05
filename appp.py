@@ -599,7 +599,7 @@ elif selection == "Estadística de Activos":
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     var1, cvar1 = calcular_var_cvar(df['IEF'])
 
-    col1, col2 = st.columns([2,1])
+    col1, col2, col13 = st.columns([3,1])
     if activo_seleccionado == "Activo 1":
       with col1:
         st.write("### Gráfica de Métricas")
@@ -628,8 +628,7 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[2],4)}')
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
-          st.text('     VaR')
-          st.subheader(f"{var1:.2%}")
+          
         with subcol2:
           st.text('     Volatilidad')
           st.subheader(f'     {round(e[1]*100,4)}%')
@@ -637,10 +636,15 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[3],4)}')
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
-           st.text('     CVaR')
-          st.subheader(f"{cvar1:.2%}")
+          
         #st.text(estadisticas(df['IEF_rend']))
-     
+      
+       with col13:
+          st.text('     VaR')
+          st.subheader(f"{var1:.2%}")
+          st.text('     CVaR')
+          st.subheader(f"{cvar1:.2%}")
+         
       simbolo = 'IEF'
       start_date = '2010-01-01'
       end_date = datetime.now()
