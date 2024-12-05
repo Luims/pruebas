@@ -468,6 +468,44 @@ def comparar_stats(v1, v2, v3, x, portafolio, ttl, etiquetas=None):
 
     # Mostrar la gráfica
     st.plotly_chart(fig, use_container_width=True)
+
+def drawdown3(dataframe):
+    # Verificar si el DataFrame está vacío
+    if dataframe.empty:
+        st.error("El DataFrame proporcionado está vacío.")
+        return
+
+    # Verificar si las columnas requeridas están presentes
+    columnas_requeridas = ['Date', 'Rend_Portafolio']
+    for columna in columnas_requeridas:
+        if columna not in dataframe.columns:
+            st.error(f"Falta la columna requerida: {columna}")
+            return
+
+    # Asegurarse de que la columna 'Date' sea un índice de tipo datetime
+    dataframe['Date'] = pd.to_datetime(dataframe['Date'])  # Convertir la columna a datetime si no lo es
+    dataframe.set_index('Date', inplace=True)
+
+    precios = dataframe['Rend_Portafolio']  # Usar la columna de precios
+    fig = graficar_drawdown_financiero(precios, f'Análisis de Drawdown')
+
+    st.plotly_chart(fig)
+
+    # Obtener información detallada del drawdown
+    info_dd = obtener_max_drawdown_info(precios)
+
+    # Imprimir resultados
+    st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+    st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+    st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+    st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+
+    if info_dd['fecha_recuperacion'] is not None:
+        st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
+        st.text(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
+        st.text(f"Duración total: {info_dd['duracion_total']} días")
+    else:
+        st.text("El activo aún no se ha recuperado del máximo drawdown.")
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -993,7 +1031,7 @@ elif selection == "Backtesting":
       st.write(df_desde_2020)
       st.write(df_desde_2020[['Date','Rend_Portafolio']])
       #df_desde_2020.set_index("Date", inplace=True)
-      drawdown2(df_desde_2020[['Date','Rend_Portafolio']])
+      drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
       
 # Black-Litterman
 elif selection == "Black-Litterman":
