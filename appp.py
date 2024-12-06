@@ -1262,8 +1262,8 @@ elif selection == "Black-Litterman":
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
     #Vector p
     P = np.array([
-    [0, 1, 0, -1, 0],   # View 2: CETETRC ISHRS  View 4: EWW
-    [0, 0, 1, 0, -1],  # View 3: SPY      View 5: IAU
+    [1, -1, 0, 0, 0],   # View 2: CETETRC ISHRS  View 4: EWW
+    [0, 0, 1, -1, 0],  # View 3: SPY      View 5: IAU
     ])
 
     # Vector Q
