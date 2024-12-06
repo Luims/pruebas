@@ -892,31 +892,34 @@ elif selection == "Estadística de Activos":
         drawdown(simbolo, start_date,end_date)  
 # Portafolios^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 elif selection == "Portafolios óptimos":
-    st.title("Portafolios óptimos")
+    st.markdown('<div style="color:violet; font-size:40px; font-weight:bold;">Portafolios Óptimos </div>', unsafe_allow_html=True)
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
-    portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
-    st.write(f"Mostrando información para: {portafolio_seleccionado}")
-    st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
-    
+    portafolio_seleccionado = st.selectbox("Portafolios optimizados", portafolios)
+    st.markdown('<div style="color:lightgreen; font-size:32px; font-weight:bold;">Información del Portafolio </div>', unsafe_allow_html=True)
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
         mv = minima_varianza(matriz_Cov1)
         coll,colll ,collll= st.columns(3)
+        col4,col5 = st.columns(2)
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
-          st.subheader('IEF')
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
           st.header(f'{round(mv[0]*100,3)}%')
-          st.subheader('CETETRC.MX')
-          st.header(f'{round(mv[1]*100,3)}%')
+          
           
         with colll:
-          st.subheader('EZA')
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
           st.header(f'{round(mv[3]*100,3)}%')
-          st.subheader('IAU')
-          st.header(f'{round(mv[4]*100,3)}%')
+          
         with collll:
-          st.subheader('SPY')
+          st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
           st.header(f'{round(mv[2]*100,3)}%')
+        with col4:
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">CETETRC.MX </div>', unsafe_allow_html=True)
+          st.header(f'{round(mv[1]*100,3)}%')
+        with col5:
+          st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">IAU </div>', unsafe_allow_html=True)
+          st.header(f'{round(mv[4]*100,3)}%')
           
         grafica_portafolio(df_hasta_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         
