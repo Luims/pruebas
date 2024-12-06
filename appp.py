@@ -1274,6 +1274,28 @@ elif selection == "Black-Litterman":
     mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
     
     bb= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
+    coll,colll ,collll= st.columns(3)
+    col4,col5 = st.columns(2)
+    with coll:
+          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+        st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
+        st.header(f'{round(bb[0]*100,3)}%')
+          
+          
+    with colll:
+      st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
+      st.header(f'{round(bb[3]*100,3)}%')
+          
+    with collll:
+      st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
+      st.header(f'{round(bb[2]*100,3)}%')
+    with col4:
+      st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">CETETRC.MX </div>', unsafe_allow_html=True)
+      st.header(f'{round(bb[1]*100,3)}%')
+    with col5:
+      st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">IAU </div>', unsafe_allow_html=True)
+      st.header(f'{round(bb[4]*100,3)}%')
+          
     subcol1, subcol2,subcol3,subcol4 = st.columns(4)
     with subcol1: 
         #e=estadisticas(df['CETETRC.MX_rend'])
