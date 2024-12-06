@@ -1268,6 +1268,7 @@ elif selection == "Black-Litterman":
       st.subheader("CETETRC")
       st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
           'un (caso a favor y uno en contra).')
+      with col2:
       st.subheader("SPY")
       st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
           'parte del mercado, además de que la bajada de tasas hace de este un '
@@ -1279,28 +1280,28 @@ elif selection == "Black-Litterman":
           'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
           'grado de consistencia como el S&P500, además de su demanda para la parte '
           'de electrónicos o como refugio o incluso para darle valor a una moneda.')
-    with col2:
+    st.subheader('Rendimientos esperados')
       # Sección para los bonos del Tesoro de EE. UU. vs CETETRC
-      st.header("IEF vs CETETRC (Q1 = 0.02)")
-      st.markdown("""
-      Los bonos del Tesoro de EE. UU. (IEF) enfrentan presiones por un posible aumento de tasas de interés debido a las políticas fiscales propuestas por Trump.
-      Por otro lado, CETETRC, representando deuda mexicana, mantiene un rendimiento moderado debido a la estabilidad relativa en tasas locales.
-      Este diferencial justifica un rendimiento esperado ligeramente positivo pero conservador.
-      """)
-  
-  # Sección para SPY vs EZA
-      st.header("SPY vs EZA (Q2 = 0.07)")
-      st.markdown("""
-      El SPY (S&P 500) sigue mostrando un fuerte crecimiento respaldado por un entorno favorable en EE. UU., con un rendimiento de más del 28% acumulado en el año.
-      En contraste, EZA (mercados emergentes) enfrenta incertidumbre debido a tensiones comerciales y dependencia de exportaciones hacia EE. UU., afectadas por posibles aranceles adicionales.
-      """)
-  
-  # Sección para IAU (oro)
-      st.header("IAU (Oro) (Q3 = 0.03)")
-      st.markdown("""
-      El oro continúa siendo una opción estable en contextos de alta volatilidad global, pero su rendimiento está limitado por el optimismo en los mercados accionarios.
-      Aunque la demanda sigue sólida, su atractivo disminuye en un entorno de crecimiento económico positivo en EE. UU.
-      """)
+    st.header("IEF vs CETETRC (Q1 = 0.02)")
+    st.markdown("""
+    Los bonos del Tesoro de EE. UU. (IEF) enfrentan presiones por un posible aumento de tasas de interés debido a las políticas fiscales propuestas por Trump.
+    Por otro lado, CETETRC, representando deuda mexicana, mantiene un rendimiento moderado debido a la estabilidad relativa en tasas locales.
+    Este diferencial justifica un rendimiento esperado ligeramente positivo pero conservador.
+    """)
+
+# Sección para SPY vs EZA
+    st.header("SPY vs EZA (Q2 = 0.07)")
+    st.markdown("""
+    El SPY (S&P 500) sigue mostrando un fuerte crecimiento respaldado por un entorno favorable en EE. UU., con un rendimiento de más del 28% acumulado en el año.
+    En contraste, EZA (mercados emergentes) enfrenta incertidumbre debido a tensiones comerciales y dependencia de exportaciones hacia EE. UU., afectadas por posibles aranceles adicionales.
+    """)
+
+# Sección para IAU (oro)
+    st.header("IAU (Oro) (Q3 = 0.03)")
+    st.markdown("""
+    El oro continúa siendo una opción estable en contextos de alta volatilidad global, pero su rendimiento está limitado por el optimismo en los mercados accionarios.
+    Aunque la demanda sigue sólida, su atractivo disminuye en un entorno de crecimiento económico positivo en EE. UU.
+    """)
 
     #Vector p
     
@@ -1312,7 +1313,13 @@ elif selection == "Black-Litterman":
 
     # Vector Q
     Q = np.array([0.05, 0.07,0.03])
-    
+    col1,col2=st.columns(2)
+    with col1:
+      st.subheader(Matriz P)
+      st.write(P)
+    with col2:
+      st.subheader(Matriz P)
+      st.write(Q)
     mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
     
     bb= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
