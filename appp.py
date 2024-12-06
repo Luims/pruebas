@@ -567,10 +567,10 @@ def drawdown3(dataframe):
     info_dd = obtener_max_drawdown_info(precios)
 
     # Imprimir resultados
-    st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
-    st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
-    st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
-    st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+    #st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+    #st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+    #st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+    #st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
 
     with st.expander(f"\nAnálisis de Drawdown"):
       st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
