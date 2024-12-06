@@ -588,7 +588,7 @@ def drawdown3(dataframe):
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
 #ARIMA cortesia de series de tiempo 
-def ARIMA(data, column_name, forecast_days=252):
+def arm(data, column_name, forecast_days=252):
     
     returns = data[column_name].dropna()
 
