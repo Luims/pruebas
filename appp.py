@@ -1297,7 +1297,7 @@ elif selection == "Black-Litterman":
     emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU','^GSPC']
 
     for emisora in emisoras:
-      st.write(ARIMA(DF,emisora) )
+      st.write(ARIMA(df,emisora) )
     
     #Vector p
     
