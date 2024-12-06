@@ -978,8 +978,11 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[6],4)}%')
         st.text('     CVaR')
         st.subheader(f'     {round(f[7],4)}%')
-        
-      st.write(f'{f}')
+  
+      fig_hist_asset = crear_histograma_distribucion(f,  f[6], f[7],  f'Distribución de Retornos - {'PMV'}'  )
+      st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+          
+      #st.write(f'{f}')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
       col1,col2,col3 = st.columns(3)
