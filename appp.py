@@ -579,13 +579,13 @@ def drawdown3(dataframe):
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
-pages = [ "Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
+pages = [ "PerActivos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
 selection = st.sidebar.radio( pages)
 
 # Selección de Activos
-elif selection == "Activos":
-    st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
-    #st.title("Selección de Activos")
+elif selection == "PerActivos":
+    #st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
+    st.title("Selección de Activos")
     st.write("Ingresa información sobre los activos:")
     with st.expander('IEF - iShares 7-10 Year Treasury Bond ETF')
         st.write('pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios.')
