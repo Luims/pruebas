@@ -698,7 +698,7 @@ elif selection == "Estadística de Activos":
 
     if activo_seleccionado == 'CETETRC':
         with col1:
-          st.write("### Gráfica de Métricas")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
           fig = px.line(
           df,
           x='Date',
@@ -715,26 +715,26 @@ elif selection == "Estadística de Activos":
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
         with col2:
-          st.write("### Datos del Activo Seleccionado")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
             e=estadisticas(df['CETETRC.MX_rend'])
-            st.text('     Rendimiento')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[0]*100,4)} %')
-            st.text('     Sharp ratio')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[2],4)}')
-            st.text('     Sesgo')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[4],4)}')
-            st.text(' VaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[6],2)}%')
           with subcol2:
-            st.text('     Volatilidad')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[1]*100,4)}%')
-            st.text('     Sortino')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[3],4)}')
-            st.text('     Curtosis')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[5],4)}')
-            st.text(' CVaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[7],2)}%')
 
         fig_hist_asset = crear_histograma_distribucion(df['CETETRC.MX_rend'],  VaR(df['CETETRC.MX_rend']), CVaR(df['CETETRC.MX_rend']),  f'Distribución de Retornos - {'CETTRC'}'  )
@@ -747,7 +747,7 @@ elif selection == "Estadística de Activos":
 
     if activo_seleccionado == "SPY":
         with col1:
-          st.write("### Gráfica de Métricas")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
           fig = px.line(
           df,
           x='Date',
@@ -764,26 +764,26 @@ elif selection == "Estadística de Activos":
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
         with col2:
-          st.write("### Datos del Activo Seleccionado")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
             e=estadisticas(df['SPY_rend'])
-            st.text('     Rendimiento')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[0]*100,4)} %')
-            st.text('     Sharp ratio')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[2],4)}')
-            st.text('     Sesgo')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[4],4)}')
-            st.text('     VaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
-            st.text('     Volatilidad')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[1]*100,4)}%')
-            st.text('     Sortino')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[3],4)}')
-            st.text('     Curtosis')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[5],4)}')
-            st.text('     CVaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[7],4)}%')
 
         fig_hist_asset = crear_histograma_distribucion(df['SPY_rend'],  VaR(df['SPY_rend']), CVaR(df['SPY_rend']),  f'Distribución de Retornos - {'SPY'}'  )
@@ -796,7 +796,7 @@ elif selection == "Estadística de Activos":
 
     if activo_seleccionado == "EZA":
         with col1:
-          st.write("### Gráfica de Métricas")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
           fig = px.line(
           df,
           x='Date',
@@ -813,26 +813,26 @@ elif selection == "Estadística de Activos":
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
         with col2:
-          st.write("### Datos del Activo Seleccionado")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
             e=estadisticas(df['EZA_rend'])
-            st.text('     Rendimiento')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[0]*100,4)} %')
-            st.text('     Sharp ratio')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[2],4)}')
-            st.text('     Sesgo')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[4],4)}')
-            st.text('     VaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
-            st.text('     Volatilidad')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[1]*100,4)}%')
-            st.text('     Sortino')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[3],4)}')
-            st.text('     Curtosis')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[5],4)}')
-            st.text('     CVaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[7],4)}%')
 
         fig_hist_asset = crear_histograma_distribucion(df['EZA_rend'],  VaR(df['EZA_rend']), CVaR(df['EZA_rend']),  f'Distribución de Retornos - {'EZA'}'  )
@@ -844,7 +844,7 @@ elif selection == "Estadística de Activos":
         drawdown(simbolo, start_date,end_date)      
     if activo_seleccionado == "IAU":
         with col1:
-          st.write("### Gráfica de Métricas")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
           fig = px.line(
           df,
           x='Date',
@@ -861,26 +861,26 @@ elif selection == "Estadística de Activos":
           st.plotly_chart(fig)
     # Columna derecha: Estadísticas en tabla
         with col2:
-          st.write("### Datos del Activo Seleccionado")
+          st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
           with subcol1: 
             e=estadisticas(df['IAU_rend'])
-            st.text('     Rendimiento')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[0]*100,4)} %')
-            st.text('     Sharp ratio')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[2],4)}')
-            st.text('     Sesgo')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[4],4)}')
-            st.text('     VaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
-            st.text('     Volatilidad')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[1]*100,4)}%')
-            st.text('     Sortino')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[3],4)}')
-            st.text('     Curtosis')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[5],4)}')
-            st.write('     CVaR')
+            st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
             st.subheader(f'     {round(e[7],4)}%')
             
         fig_hist_asset = crear_histograma_distribucion(df['IAU_rend'],  VaR(df['IAU_rend']), CVaR(df['IAU_rend']),  f'Distribución de Retornos - {'IAU'}'  )
