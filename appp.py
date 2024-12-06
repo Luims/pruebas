@@ -1269,17 +1269,17 @@ elif selection == "Black-Litterman":
       st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
           'un (caso a favor y uno en contra).')
       with col2:
-      st.subheader("SPY")
-      st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
-          'parte del mercado, además de que la bajada de tasas hace de este un '
-          'instrumento más atractivo.')
-      st.subheader("EZA")
-      st.text('Alta volatilidad política y económica.')
-      st.subheader("IAU")
-      st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
-          'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
-          'grado de consistencia como el S&P500, además de su demanda para la parte '
-          'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+        st.subheader("SPY")
+        st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
+            'parte del mercado, además de que la bajada de tasas hace de este un '
+            'instrumento más atractivo.')
+        st.subheader("EZA")
+        st.text('Alta volatilidad política y económica.')
+        st.subheader("IAU")
+        st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
+            'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
+            'grado de consistencia como el S&P500, además de su demanda para la parte '
+            'de electrónicos o como refugio o incluso para darle valor a una moneda.')
     st.subheader('Rendimientos esperados')
       # Sección para los bonos del Tesoro de EE. UU. vs CETETRC
     st.header("IEF vs CETETRC (Q1 = 0.02)")
