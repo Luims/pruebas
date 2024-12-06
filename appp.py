@@ -583,7 +583,7 @@ pages = [ "PerActivos", "Estadística de Activos", "Portafolios óptimos", "Back
 selection = st.sidebar.radio( pages)
 
 # Selección de Activos
-elif selection == "PerActivos":
+elif  selection == "PerActivos":
     #st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
     st.title("Selección de Activos")
     st.write("Ingresa información sobre los activos:")
