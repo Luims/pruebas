@@ -587,24 +587,7 @@ def drawdown3(dataframe):
       else:
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
-#ARIMA cortesia de series de tiempo 
-def arm(data, column_name, forecast_days=252):
-    
-    returns = data[column_name].dropna()
 
-    model = ARIMA(returns, order=(1, 1, 1))  
-    model_fit = model.fit()
-
-    forecast = model_fit.forecast(steps=forecast_days)
-  
-    forecast_index = pd.date_range(start=returns.index[-1], periods=forecast_days + 1, freq='B')[1:]
-    forecast_df = pd.DataFrame({
-        'Date': forecast_index,
-        'Predicted_Return': forecast
-    })
-    forecast_df.set_index('Date', inplace=True)
-
-    return forecast_df
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -1276,30 +1259,49 @@ elif selection == "Black-Litterman":
    #st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
    # st.title("Selección de Activos")
     st.subheader("VIEWS:")
-    st.subheader("IEF")
-    st.text('La inflación a la baja y el crecimiento en Estados Unidos son dos factores '
-        'negativos para los bonos gringos porque la baja de tasas vuelve este activo '
-        'menos atractivo.')
-    st.subheader("CETETRC")
-    st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
-        'un (caso a favor y uno en contra).')
-    st.subheader("SPY")
-    st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
-        'parte del mercado, además de que la bajada de tasas hace de este un '
-        'instrumento más atractivo.')
-    st.subheader("EZA")
-    st.text('Alta volatilidad política y económica.')
-    st.subheader("IAU")
-    st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
-        'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
-        'grado de consistencia como el SnP500, además de su demanda para la parte '
-        'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+    col1, col2 = st.columns(2)
+    with col1:
+      st.subheader("IEF")
+      st.text('La inflación a la baja y el crecimiento en Estados Unidos son dos factores '
+          'negativos para los bonos gringos porque la baja de tasas vuelve este activo '
+          'menos atractivo.')
+      st.subheader("CETETRC")
+      st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
+          'un (caso a favor y uno en contra).')
+      st.subheader("SPY")
+      st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
+          'parte del mercado, además de que la bajada de tasas hace de este un '
+          'instrumento más atractivo.')
+      st.subheader("EZA")
+      st.text('Alta volatilidad política y económica.')
+      st.subheader("IAU")
+      st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
+          'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
+          'grado de consistencia como el S&P500, además de su demanda para la parte '
+          'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+    with col2:
+      # Sección para los bonos del Tesoro de EE. UU. vs CETETRC
+      st.header("IEF vs CETETRC (Q1 = 0.02)")
+      st.markdown("""
+      Los bonos del Tesoro de EE. UU. (IEF) enfrentan presiones por un posible aumento de tasas de interés debido a las políticas fiscales propuestas por Trump.
+      Por otro lado, CETETRC, representando deuda mexicana, mantiene un rendimiento moderado debido a la estabilidad relativa en tasas locales.
+      Este diferencial justifica un rendimiento esperado ligeramente positivo pero conservador.
+      """)
+  
+  # Sección para SPY vs EZA
+      st.header("SPY vs EZA (Q2 = 0.07)")
+      st.markdown("""
+      El SPY (S&P 500) sigue mostrando un fuerte crecimiento respaldado por un entorno favorable en EE. UU., con un rendimiento de más del 28% acumulado en el año.
+      En contraste, EZA (mercados emergentes) enfrenta incertidumbre debido a tensiones comerciales y dependencia de exportaciones hacia EE. UU., afectadas por posibles aranceles adicionales.
+      """)
+  
+  # Sección para IAU (oro)
+      st.header("IAU (Oro) (Q3 = 0.03)")
+      st.markdown("""
+      El oro continúa siendo una opción estable en contextos de alta volatilidad global, pero su rendimiento está limitado por el optimismo en los mercados accionarios.
+      Aunque la demanda sigue sólida, su atractivo disminuye en un entorno de crecimiento económico positivo en EE. UU.
+      """)
 
-    emisoras = ['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend']
-
-    for emisora in emisoras:
-      st.write(ARIMA(df,emisora) )
-    
     #Vector p
     
     P = np.array([
