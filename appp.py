@@ -1017,7 +1017,7 @@ elif selection == "Backtesting":
       with subcol2:
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[1]*100,4)}%')
-        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[3],4)}')
         
       with subcol3:
@@ -1098,7 +1098,7 @@ elif selection == "Backtesting":
       with subcol2:
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[1]*100,4)}%')
-        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[3],4)}')
         
       with subcol3:
@@ -1170,7 +1170,7 @@ elif selection == "Backtesting":
       with subcol2:
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[1]*100,4)}%')
-        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[3],4)}')
       with subcol3:
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
