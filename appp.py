@@ -1057,6 +1057,9 @@ elif selection == "Backtesting":
         comparar_stats(f[3],estadisticas(df_desde_2020['^GSPC_rend'])[3],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
                        ,['p','s&p','ew'],'Portafolio min vol','Sortino',['Sortino'])
+        comparar_stats(f[6],estadisticas(df_desde_2020['^GSPC_rend'])[6],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[6]
+                       ,['p','s&p','ew'],'Portafolio min vol','VaR',['VaR'])
       with col2:
         comparar_stats(f[1],estadisticas(df_desde_2020['^GSPC_rend'])[1],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[1]
@@ -1064,6 +1067,9 @@ elif selection == "Backtesting":
         comparar_stats(f[4],estadisticas(df_desde_2020['^GSPC_rend'])[4],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[4]
                        ,['p','s&p','ew'],'Portafolio min vol','Sesgo',['Sesgo'])
+        comparar_stats(f[7],estadisticas(df_desde_2020['^GSPC_rend'])[7],
+                       portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[7]
+                       ,['p','s&p','ew'],'Portafolio min vol','CVaR',['CVaR'])
       with col3:
         comparar_stats(f[2],estadisticas(df_desde_2020['^GSPC_rend'])[2],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[3]
