@@ -639,9 +639,9 @@ elif selection == "Estadística de Activos":
     activo_seleccionado = st.selectbox("Activos:", activos)
     
 
-    col1, col2 = st.columns([2,1])
+    
     if activo_seleccionado == 'IEF':
-      
+      col1, col2 = st.columns([2,1])
       with col1:
         st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
         fig = px.line(
@@ -673,7 +673,6 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[6],2)}%')
           
         with subcol2:
-          st.text(' Volatilidad')
           st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[1]*100,2)}%')
           st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
@@ -682,15 +681,18 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[5],4)}')
           st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[7],2)}%')
-          
-        #st.text(estadisticas(df['IEF_rend']))
-      fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
-      st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+
+      col1, col2 = st.columns(2)
+      with col1:
+        simbolo = 'IEF'
+        start_date = '2010-01-01'
+        end_date = datetime.now()
+        drawdown(simbolo, start_date,end_date)
+      with col2:
+        fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       
-      simbolo = 'IEF'
-      start_date = '2010-01-01'
-      end_date = datetime.now()
-      drawdown(simbolo, start_date,end_date)
+      
 
 
 
