@@ -584,11 +584,14 @@ selection = st.sidebar.radio('Barra de navegación', pages)
 
 # Selección de Activos
 if  selection == "Activos":
-    #st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
+    st.markdown('<div style="color:red; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
     st.title("Selección de Activos")
     st.write("Ingresa información sobre los activos:")
     with st.expander('IEF - iShares 7-10 Year Treasury Bond ETF'):
-       st.write('pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios.')
+       st.write('Pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios.  Su exposicióm es en bonos del Tesoro de EE. UU. con vencimientos entre 7 y 10 años.')
+       st.write('Al ser un fondo que invierte exclusivamente en bonos del Tesoro, los principales emisores son el gobierno de los Estados Unidos. Proporciona exposición a deuda soberana considerada de bajo riesgo' )
+    
+        
     st.text_input("Activo 2:")
     st.text_input("Activo 3:")
     st.text_input("Activo 4:")
