@@ -1006,9 +1006,7 @@ elif selection == "Portafolios óptimos":
 elif selection == "Backtesting":
     st.markdown('<div style="color:violet; font-size:40px; font-weight:bold;">Backtesting Óptimos </div>', unsafe_allow_html=True)
     portafolios = ["Portafolio con mínima volatilidad", "Portafolio máximo sharpe ratio", "Portafolio mínima volatilidad con objetivo de rendimiento de 10%"]
-    portafolio_seleccionado = st.selectbox("Selecciona un portafolio:", portafolios)
-    st.write(f"Mostrando información para: {portafolio_seleccionado}")
-    st.write("Aquí se mostrará información detallada del portafolio seleccionado.")
+    
     
     
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
