@@ -358,11 +358,11 @@ def drawdown(simbolo, start_date,end_date):
       st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
     
 
-    if info_dd['fecha_recuperacion'] is not None:
+      if info_dd['fecha_recuperacion'] is not None:
         st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
         st.text(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
         st.text(f"Duración total: {info_dd['duracion_total']} días")
-    else:
+      else:
         st.text("El activo aún no se ha recuperado del máximo drawdown")
 
 #SOLUCIONAR PROBLEMA CON OTRO -----------------------------------------------------------------------------------------------------------------------------------
@@ -683,13 +683,13 @@ elif selection == "Estadística de Activos":
           st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[7],2)}%')
 
-        fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
-        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+      fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
+      st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
         
-        simbolo = 'IEF'
-        start_date = '2010-01-01'
-        end_date = datetime.now()
-        drawdown(simbolo, start_date,end_date)
+      simbolo = 'IEF'
+      start_date = '2010-01-01'
+      end_date = datetime.now()
+      drawdown(simbolo, start_date,end_date)
         
       
       
