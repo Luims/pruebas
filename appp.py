@@ -701,11 +701,6 @@ elif selection == "Estadística de Activos":
       start_date = '2010-01-01'
       end_date = datetime.now()
       drawdown(simbolo, start_date,end_date)
-        
-      
-      
-
-
 
     if activo_seleccionado == 'CETETRC':
         with col1:
@@ -717,14 +712,14 @@ elif selection == "Estadística de Activos":
           title="Rendimientos de la Acción",
           labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
           template="plotly_white")
-# Personalizar el gráfico
+
           fig.update_layout(
           title_font=dict(size=20, family='Arial', color='white'),
           xaxis=dict(showgrid=False),
           yaxis=dict(showgrid=True, gridcolor='lightgray'),
           hovermode="x unified")
           st.plotly_chart(fig)
-    # Columna derecha: Estadísticas en tabla
+    
         with col2:
           st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
@@ -766,14 +761,14 @@ elif selection == "Estadística de Activos":
           title="Rendimientos de la Acción",
           labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
           template="plotly_white")
-# Personalizar el gráfico
+
           fig.update_layout(
           title_font=dict(size=20, family='Arial', color='white'),
           xaxis=dict(showgrid=False),
           yaxis=dict(showgrid=True, gridcolor='lightgray'),
           hovermode="x unified")
           st.plotly_chart(fig)
-    # Columna derecha: Estadísticas en tabla
+   
         with col2:
           st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
@@ -815,14 +810,14 @@ elif selection == "Estadística de Activos":
           title="Rendimientos de la Acción",
           labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
           template="plotly_white")
-# Personalizar el gráfico
+
           fig.update_layout(
           title_font=dict(size=20, family='Arial', color='white'),
           xaxis=dict(showgrid=False),
           yaxis=dict(showgrid=True, gridcolor='lightgray'),
           hovermode="x unified")
           st.plotly_chart(fig)
-    # Columna derecha: Estadísticas en tabla
+    
         with col2:
           st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
@@ -863,14 +858,14 @@ elif selection == "Estadística de Activos":
           title="Rendimientos de la Acción",
           labels={'fecha': "Fecha", 'rendimientos': "Rendimiento"},
           template="plotly_white")
-# Personalizar el gráfico
+
           fig.update_layout(
           title_font=dict(size=20, family='Arial', color='white'),
           xaxis=dict(showgrid=False),
           yaxis=dict(showgrid=True, gridcolor='lightgray'),
           hovermode="x unified")
           st.plotly_chart(fig)
-    # Columna derecha: Estadísticas en tabla
+    
         with col2:
           st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
           subcol1, subcol2 = st.columns(2)
@@ -946,11 +941,11 @@ elif selection == "Portafolios óptimos":
         opt_sharpe = sco.minimize(min_sharpe_ratio, initial_wts, method='SLSQP', bounds=bnds, constraints=cons)
         pesos_optimos = opt_sharpe['x']
         if opt_sharpe.success:
-            #st.write(list(zip(['IEF', 'CETETRC.MX', 'SPY', 'EZA', 'IAU'], round(opt_sharpe['x']*100, 2))))
+           
             coll,colll,collll = st.columns(3)
             col4,col5 = st.columns(2)
             with coll:
-          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+          
               st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[0]*100,3)}%')
               
@@ -958,9 +953,7 @@ elif selection == "Portafolios óptimos":
             with colll:
               st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[3]*100,3)}%')
-              
-              #st.write(pesos_optimos)
-            
+             
             with collll:
               st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[2]*100,3)}%')
@@ -977,12 +970,12 @@ elif selection == "Portafolios óptimos":
         
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
-        #st.text('ses')
+       
         l = lagrange(mu1, matriz_Cov1, 0.10)
         coll,colll,collll = st.columns(3)
         col4,col5 = st.columns(2)
         with coll:
-          #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
+          
           st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
           st.header(f'{round(l[0]*100,3)}%')
           
@@ -991,7 +984,7 @@ elif selection == "Portafolios óptimos":
           st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
           st.header(f'{round(l[3]*100,3)}%')
               
-        #st.write(l)
+        
         with collll:
           st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
           st.header(f'{round(l[2]*100,3)}%')
@@ -1029,7 +1022,7 @@ elif selection == "Backtesting":
       f= portafolio_estadistica(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
       subcol1, subcol2,subcol3,subcol4 = st.columns(4)
       with subcol1: 
-        #e=estadisticas(df['CETETRC.MX_rend'])
+        
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[0]*100,4)} %')
         st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
@@ -1053,7 +1046,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[7],4)}%')
   
         
-      #st.write(f'{f}')
+    
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
       col1,col2,col3 = st.columns(3)
@@ -1080,28 +1073,21 @@ elif selection == "Backtesting":
                        ,['p','s&p','ew'],'Portafolio min vol','Curtosis',['Curtosis'])
       
           
-     # st.write(df['Rend_Portafolio'])
-      #simbolo = 'Rend_Portafolio'
-      #start_date = '2020-01-01'
-      #end_date = datetime.now()
-      #drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
+     
       col1, col2 = st.columns(2)
       with col1:
         fig_hist_asset = crear_histograma_distribucion(portafolio_estadistica2(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend']),  f[6], f[7],  f'Distribución de Retornos - {'PMV'}'  )
         st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       with col2:
         drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
-      #simbolo = df['Rend_Portafolio'] 
-      #start_date = '2020-01-01'
-      #end_date = datetime.now()
-      #drawdown2(simbolo, start_date,end_date)
+     
       st.subheader('Rendimiento del portafolio')
-      #st.write(df_desde_2020)
+      
       st.write(df_desde_2020[['Rend_Portafolio']])
 
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
-      #columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
+      
         
       bnds = tuple((0, 1) for x in range(5))
       cons = {'type': 'eq', 'fun': lambda x: sum(x) - 1}
@@ -1162,15 +1148,7 @@ elif selection == "Backtesting":
         comparar_stats(r[5],estadisticas(df_desde_2020['^GSPC_rend'])[5],
                        portafolio_estadistica(df_desde_2020,[0.2,0.2,0.2,0.2,0.2],['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend'])[5]
                        ,['p','s&p','ew'],'Portafolio sharp','Curtosis',['Curtosis'])
-     # st.write(df['Rend_Portafolio'])
-      #simbolo = 'Rend_Portafolio'
-      #start_date = '2020-01-01'
-      #nd_date = datetime.now()
-      
-      #drawdown2(simbolo,df_desde_2020[['Date','Rend_Portafolio']])
-      #simbolo = df['Rend_Portafolio'] 
-      #start_date = '2020-01-01'
-      #end_date = datetime.now()
+     
       col1,col2 = st.columns(2)
       with col1:
         fig_hist_asset = crear_histograma_distribucion(df['Rend_Portafolio'],  r[6], r[7],  f'Distribución de Retornos - {'PMV'}'  )
@@ -1256,47 +1234,10 @@ elif selection == "Backtesting":
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
-   #st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
-   # st.title("Selección de Activos")
     st.subheader("VIEWS:")
-    col1, col2 = st.columns(2)
-    with col1:
-      st.subheader("1. IEF (iShares 7-10 Year Treasury Bond ETF)")
-      st.write("""
-      **Expectativa de Rendimiento:** Disminución
+    
+    #st.subheader('Rendimientos esperados')
       
-      **Razón:** El ETF IEF, que invierte en bonos del Tesoro de EE. UU. a 7-10 años, está fuertemente influenciado por las tasas de interés. A medida que la Reserva Federal de EE. UU. podría seguir aumentando las tasas para controlar la inflación, esto afectará negativamente el rendimiento de los bonos, ya que los precios de los bonos bajan cuando las tasas suben. Si las tasas continúan aumentando, el rendimiento de IEF podría disminuir.
-      """)
-      
-      st.subheader("2. CETETRC (Deuda Mexicana)")
-      st.write("""
-      **Expectativa de Rendimiento:** Estabilidad moderada o leve aumento
-      
-      **Razón:** CETETRC se beneficia de la estabilidad económica en México, donde las tasas locales de interés siguen siendo atractivas. Aunque los riesgos globales persisten, la deuda mexicana tiene un rendimiento moderado debido a la sólida gestión fiscal y la estabilidad relativa del peso. Se espera que su rendimiento se mantenga relativamente estable, con un ligero aumento dependiendo de la situación global.
-      """)
-      
-      st.subheader("3. EZA (iShares MSCI South Africa ETF)")
-      st.write("""
-      **Expectativa de Rendimiento:** Disminución o estabilidad a la baja
-      
-      **Razón:** EZA enfrenta dificultades debido a la incertidumbre política y económica en Sudáfrica. Su dependencia de las exportaciones y la exposición a las tensiones comerciales globales (especialmente con EE. UU. y China) sigue siendo una carga. A menos que haya una mejora significativa en la situación económica y política de Sudáfrica, el rendimiento de EZA podría seguir siendo bajo o mantenerse estable con un sesgo negativo.
-      """)
-    with col2:
-      st.subheader("4. SPY (S&P 500 ETF)")
-      st.write("""
-      **Expectativa de Rendimiento:** Aumento
-      
-      **Razón:** El S&P 500 sigue mostrando un sólido rendimiento gracias al crecimiento continuo de las grandes empresas tecnológicas y una expansión económica en EE. UU. A pesar de las presiones de tasas más altas, la diversidad de los sectores dentro del S&P 500 y el buen desempeño general de las empresas apuntan a un aumento moderado en el rendimiento de este ETF.
-      """)
-      
-      st.subheader("5. IAU (iShares Gold Trust)")
-      st.write("""
-      **Expectativa de Rendimiento:** Estabilidad o leve aumento
-      
-      **Razón:** El oro sigue siendo un activo refugio en tiempos de incertidumbre. Sin embargo, en un entorno de crecimiento económico, su atractivo se ve limitado. Si se presentan momentos de alta volatilidad o tensiones geopolíticas, IAU podría experimentar un leve repunte. No obstante, en un entorno económico positivo, el oro probablemente mantendrá un rendimiento estable con un ligero aumento, pero sin grandes sorpresas.
-      """)
-    st.subheader('Rendimientos esperados')
-      # Sección para los bonos del Tesoro de EE. UU. vs CETETRC
     st.header("IEF vs CETETRC (Q1 = 0.02)")
     st.markdown("""
     Los bonos del Tesoro de EE. UU. (IEF) enfrentan presiones por un posible aumento de tasas de interés debido a las políticas fiscales propuestas por Trump.
@@ -1304,14 +1245,14 @@ elif selection == "Black-Litterman":
     Este diferencial justifica un rendimiento esperado ligeramente positivo pero conservador.
     """)
 
-# Sección para SPY vs EZA
+
     st.header("SPY vs EZA (Q2 = 0.07)")
     st.markdown("""
     El SPY (S&P 500) sigue mostrando un fuerte crecimiento respaldado por un entorno favorable en EE. UU., con un rendimiento de más del 28% acumulado en el año.
     En contraste, EZA (mercados emergentes) enfrenta incertidumbre debido a tensiones comerciales y dependencia de exportaciones hacia EE. UU., afectadas por posibles aranceles adicionales.
     """)
 
-# Sección para IAU (oro)
+
     st.header("IAU (Oro) (Q3 = 0.03)")
     st.markdown("""
     El oro continúa siendo una opción estable en contextos de alta volatilidad global, pero su rendimiento está limitado por el optimismo en los mercados accionarios.
