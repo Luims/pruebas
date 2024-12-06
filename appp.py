@@ -1264,9 +1264,10 @@ elif selection == "Black-Litterman":
     P = np.array([
     [1, -1, 0, 0, 0],   # View 2: CETETRC ISHRS  View 4: EWW
     [0, 0, 1, -1, 0],  # View 3: SPY      View 5: IAU
+    [0, 0, 0, 0, 1],
     ])
 
     # Vector Q
-    Q = np.array([0.05, 0.10])
+    Q = np.array([0.05, 0.07,0.03])
     bl
     st.write(bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q))
