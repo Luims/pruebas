@@ -608,20 +608,23 @@ if  selection == "Activos":
        st.markdown('- Su exposición es al precio del oro, utilizado como cobertura contra inflación o diversificación en carteras de inversión.')
        st.markdown('- No invierte en empresas, sino directamente en oro físico almacenado en bóvedas.' )
   
-  table = ''''
-  | Asset | Índice  | Moneda | Países | Duración | Beta | Riesgos | Costo - Expense Ratio | Rendimiento |
-  | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-  | IEF | ICE U.S. Treasury 7-10 Year Bond Index | USD | Exclusivamente en Estados Unidos | 8 años - Sensibilidad intermendia | Cercana a 0 frente a acciones | Tasa Interés Moderado| 0.15% |  Moderado |
-  ''''
-  
-   
-  st.markdown(table)
+  table = ({'Asset': ['IEF','CETETRC','SPY', 'EZA','IAU' ],
+            'Índice': ['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index' , ' MSCI South Africa 25/50 Index',' Precio al contado del orO'] 
+            'Moneda' : ['USD', 'MXN', 'USD', 'USD', 'USD' ],
+            'Países': ['Estados Unidos', 'México', 'Estados Unidos', ' Sudáfrica', 'Respaldado por oro almacenado globalmente'],
+            'Duración': ,
+            'Beta':,
+            'Riesgos':,
+            'Costo - Expense Ratio':,
+            'Rendimiento':
+           })
+  st.table(table)
 
 # Estadística de Activos
 
 elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
-    activos = ['IEF','CETETRC','SPY', 'EZA','IAU',]
+    activos = ['IEF','CETETRC','SPY', 'EZA','IAU']
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     
 
