@@ -647,7 +647,7 @@ elif selection == "Estadística de Activos":
           st.subheader(f'     {round(e[7],2)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
-    fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  e[6], e[7],  f'Distribución de Retornos - {'IEF'}'  )
+    fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend'), CVaR(df['IEF_rend'),  f'Distribución de Retornos - {'IEF'}'  )
     st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       
     simbolo = 'IEF'
