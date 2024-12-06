@@ -640,9 +640,9 @@ elif selection == "Estadística de Activos":
     activo_seleccionado = st.selectbox("Activos:", activos)
     
 
-    
+    col1, col2 = st.columns([2,1])
     if activo_seleccionado == 'IEF':
-      col1, col2 = st.columns([2,1])
+      
       with col1:
         st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
         fig = px.line(
