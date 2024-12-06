@@ -747,7 +747,7 @@ elif selection == "Estadística de Activos":
             st.text('     CVaR')
             st.subheader(f'     {round(e[7],4)}%')
 
-        fig_hist_asset = crear_histograma_distribucion(df['CETETRC.MX_rend'],  VaR(df['SPY_rend']), CVaR(df['SPY_rend']),  f'Distribución de Retornos - {'SPY'}'  )
+        fig_hist_asset = crear_histograma_distribucion(df['SPY_rend'],  VaR(df['SPY_rend']), CVaR(df['SPY_rend']),  f'Distribución de Retornos - {'SPY'}'  )
         st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       
         simbolo = 'SPY'
