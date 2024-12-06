@@ -16,6 +16,7 @@ from scipy.stats import chi2
 from numpy import *
 from numpy.linalg import multi_dot
 import scipy.optimize as sco
+from statsmodels.tsa.arima.model import ARIMA
 #Emisoras y fechas
 emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU','^GSPC']
 fi = '2010-01-01'
