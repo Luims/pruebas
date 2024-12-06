@@ -625,6 +625,11 @@ if  selection == "Activos":
            'Rendimiento Esperado':['Moderado','Bajo','Alineado con el desempeño del S&P 500','Volátil, ligado al desempeño de materias primas','Depende del precio del oro']}
     tab1 = pd.DataFrame(tab)
     st.table(tab1)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.heatmap(matriz_Corr, annot=True, fmt=".2f", cmap="coolwarm", cbar=True, ax=ax)
+    ax.set_title("Matriz de Correlación")
+    st.pyplot(fig)
   
 
 
