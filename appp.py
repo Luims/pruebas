@@ -607,13 +607,11 @@ if  selection == "Activos":
        st.markdown('- El IAU es un ETF que busca replicar el precio del oro, proporcionando una forma eficiente de invertir en este activo sin poseerlo físicamente.')
        st.markdown('- Su exposición es al precio del oro, utilizado como cobertura contra inflación o diversificación en carteras de inversión.')
        st.markdown('- No invierte en empresas, sino directamente en oro físico almacenado en bóvedas.' )
-  tab = ( ['IEF','CETETRC','SPY','EZA','IAU'],['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index',' MSCI South Africa 25/50 Index',' Precio al contado del oro'], ['USD','MXN','USD','USD','USD'] ,['Estados Unidos','México','Estados Unidos','Sudáfrica','Respaldado por oro almacenado globalmente'])
-  tab1 = pd.DataFrame({
-    "Asset": tab[0],
-    "Índice": tab[1],
-    "Moneda": tab[2],
-    "Países": tab[3]
-})
+  tab = {['IEF','CETETRC','SPY','EZA','IAU'],
+         ['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index',' MSCI South Africa 25/50 Index',' Precio al contado del oro'],
+         ['USD','MXN','USD','USD','USD'] ,
+         ['Estados Unidos','México','Estados Unidos','Sudáfrica','Respaldado por oro almacenado globalmente']}
+  tab1 = pd.DataFrame(tab)
  st.table(tab1)
   
 
