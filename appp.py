@@ -939,21 +939,25 @@ elif selection == "Portafolios óptimos":
             coll,colll,collll = st.columns(3)
             with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
-              st.subheader('IEF')
+              st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[0]*100,3)}%')
-              st.subheader('CETETRC.MX')
-              st.header(f'{round(pesos_optimos[1]*100,3)}%')
+              
               
             with colll:
-              st.subheader('EZA')
+              st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[3]*100,3)}%')
-              st.subheader('IAU')
-              st.header(f'{round(pesos_optimos[4]*100,3)}%')     
+              
               #st.write(pesos_optimos)
             
             with collll:
-              st.subheader('SPY')
+              st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
               st.header(f'{round(pesos_optimos[2]*100,3)}%')
+            with col4:
+              st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">CETETRC.MX </div>', unsafe_allow_html=True)
+              st.header(f'{round(pesos_optimos[1]*100,3)}%')
+            with col5:
+              st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IAU </div>', unsafe_allow_html=True)
+              st.header(f'{round(pesos_optimos[4]*100,3)}%')     
 
             grafica_portafolio(df_hasta_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
         else:
