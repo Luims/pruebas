@@ -579,11 +579,11 @@ def drawdown3(dataframe):
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
-pages = [ "PerActivos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
+pages = [ "Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
 selection = st.sidebar.radio('Barra de navegación', pages)
 
 # Selección de Activos
-elif  selection == "PerActivos":
+if  selection == "Activos":
     #st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
     st.title("Selección de Activos")
     st.write("Ingresa información sobre los activos:")
