@@ -610,7 +610,10 @@ if  selection == "Activos":
     tab = {'Asset':['IEF','CETETRC','SPY','EZA','IAU'],
            'Índice':['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index',' MSCI South Africa 25/50 Index',' Precio al contado del oro'],
            'Moneda':['USD','MXN','USD','USD','USD'] ,
-           'Países':['Estados Unidos','México','Estados Unidos','Sudáfrica','Respaldado por oro almacenado globalmente']}
+           'Países':['Estados Unidos','México','Estados Unidos','Sudáfrica','Respaldado por oro almacenado globalmente'],
+           'Duración':['7-10 años', '28, 91, 182 y 364 días','-','-','-']
+           'Beta':['Cercana a 0 frente a acciones','Cercana a 0 frente a acciones','Cercana a 1','Alta','Muy baja']
+          }
     tab1 = pd.DataFrame(tab)
     st.table(tab1)
   
