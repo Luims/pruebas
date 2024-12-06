@@ -1009,26 +1009,26 @@ elif selection == "Backtesting":
       subcol1, subcol2,subcol3,subcol4 = st.columns(4)
       with subcol1: 
         #e=estadisticas(df['CETETRC.MX_rend'])
-        st.text('     Rendimiento')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[0]*100,4)} %')
-        st.text('     Sharp ratio')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[2],4)}')
         
       with subcol2:
-        st.text('     Volatilidad')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[1]*100,4)}%')
-        st.text('     Sortino')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
         st.subheader(f'     {round(f[3],4)}')
         
       with subcol3:
-        st.text('     Sesgo')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[4],4)}')
-        st.text('     Curtosis')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[5],4)}')
       with subcol4:
-        st.text('     VaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[6],4)}%')
-        st.text('     CVaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(f[7],4)}%')
   
         
@@ -1090,26 +1090,26 @@ elif selection == "Backtesting":
       subcol1, subcol2, subcol3,subcol4 = st.columns(4)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
-        st.text('     Rendimiento')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[0]*100,4)} %')
-        st.text('     Sharp ratio')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[2],4)}')
         
       with subcol2:
-        st.text('     Volatilidad')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[1]*100,4)}%')
-        st.text('     Sortino')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
         st.subheader(f'     {round(r[3],4)}')
         
       with subcol3:
-        st.text('     Curtosis')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[5],4)}')
-        st.text('     Sesgo')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[4],4)}')
       with subcol4:
-        st.text('     VaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[6],4)}%')
-        st.text('     CVaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(r[7],4)}%')
 
       
@@ -1163,24 +1163,24 @@ elif selection == "Backtesting":
       subcol1, subcol2,subcol3,subcol4 = st.columns(4)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
-        st.text('     Rendimiento')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[0]*100,4)} %')
-        st.text('     Sharp ratio')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[2],4)}')
       with subcol2:
-        st.text('     Volatilidad')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[1]*100,4)}%')
-        st.text('     Sortino')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True))
         st.subheader(f'     {round(ll[3],4)}')
       with subcol3:
-        st.text('     Sesgo')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[4],4)}')
-        st.text('     Curtosis')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[5],4)}')
       with subcol4:
-        st.text('     VaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[6],4)}%')
-        st.text('     CVaR')
+        st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
         st.subheader(f'     {round(ll[7],4)}%')
 
       
