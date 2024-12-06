@@ -1261,26 +1261,40 @@ elif selection == "Black-Litterman":
     st.subheader("VIEWS:")
     col1, col2 = st.columns(2)
     with col1:
-      st.subheader("IEF")
-      st.text('La inflación a la baja y el crecimiento en Estados Unidos son dos factores '
-          'negativos para los bonos gringos porque la baja de tasas vuelve este activo '
-          'menos atractivo.')
-      st.subheader("CETETRC")
-      st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
-          'un (caso a favor y uno en contra).')
-      st.subheader("EZA")
-      st.text('Alta volatilidad política y económica.')
-    with col2:
-      st.subheader("SPY")
-      st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
-          'parte del mercado, además de que la bajada de tasas hace de este un '
-          'instrumento más atractivo.')
+      st.subheader("1. IEF (iShares 7-10 Year Treasury Bond ETF)")
+      st.write("""
+      **Expectativa de Rendimiento:** Disminución
       
-      st.subheader("IAU")
-      st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
-          'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
-          'grado de consistencia como el S&P500, además de su demanda para la parte '
-          'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+      **Razón:** El ETF IEF, que invierte en bonos del Tesoro de EE. UU. a 7-10 años, está fuertemente influenciado por las tasas de interés. A medida que la Reserva Federal de EE. UU. podría seguir aumentando las tasas para controlar la inflación, esto afectará negativamente el rendimiento de los bonos, ya que los precios de los bonos bajan cuando las tasas suben. Si las tasas continúan aumentando, el rendimiento de IEF podría disminuir.
+      """)
+      
+      st.subheader("2. CETETRC (Deuda Mexicana)")
+      st.write("""
+      **Expectativa de Rendimiento:** Estabilidad moderada o leve aumento
+      
+      **Razón:** CETETRC se beneficia de la estabilidad económica en México, donde las tasas locales de interés siguen siendo atractivas. Aunque los riesgos globales persisten, la deuda mexicana tiene un rendimiento moderado debido a la sólida gestión fiscal y la estabilidad relativa del peso. Se espera que su rendimiento se mantenga relativamente estable, con un ligero aumento dependiendo de la situación global.
+      """)
+      
+      st.subheader("3. EZA (iShares MSCI South Africa ETF)")
+      st.write("""
+      **Expectativa de Rendimiento:** Disminución o estabilidad a la baja
+      
+      **Razón:** EZA enfrenta dificultades debido a la incertidumbre política y económica en Sudáfrica. Su dependencia de las exportaciones y la exposición a las tensiones comerciales globales (especialmente con EE. UU. y China) sigue siendo una carga. A menos que haya una mejora significativa en la situación económica y política de Sudáfrica, el rendimiento de EZA podría seguir siendo bajo o mantenerse estable con un sesgo negativo.
+      """)
+    with col2:
+      st.subheader("4. SPY (S&P 500 ETF)")
+      st.write("""
+      **Expectativa de Rendimiento:** Aumento
+      
+      **Razón:** El S&P 500 sigue mostrando un sólido rendimiento gracias al crecimiento continuo de las grandes empresas tecnológicas y una expansión económica en EE. UU. A pesar de las presiones de tasas más altas, la diversidad de los sectores dentro del S&P 500 y el buen desempeño general de las empresas apuntan a un aumento moderado en el rendimiento de este ETF.
+      """)
+      
+      st.subheader("5. IAU (iShares Gold Trust)")
+      st.write("""
+      **Expectativa de Rendimiento:** Estabilidad o leve aumento
+      
+      **Razón:** El oro sigue siendo un activo refugio en tiempos de incertidumbre. Sin embargo, en un entorno de crecimiento económico, su atractivo se ve limitado. Si se presentan momentos de alta volatilidad o tensiones geopolíticas, IAU podría experimentar un leve repunte. No obstante, en un entorno económico positivo, el oro probablemente mantendrá un rendimiento estable con un ligero aumento, pero sin grandes sorpresas.
+      """)
     st.subheader('Rendimientos esperados')
       # Sección para los bonos del Tesoro de EE. UU. vs CETETRC
     st.header("IEF vs CETETRC (Q1 = 0.02)")
