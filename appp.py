@@ -599,7 +599,7 @@ elif selection == "Selección de Activos":
 
 elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
-    activos = ['IEF','CETETRC', 'EZA','IAU','^GSPC']
+    activos = ['IEF','CETETRC','SPY', 'EZA','IAU',]
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     
 
@@ -706,7 +706,7 @@ elif selection == "Estadística de Activos":
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
 
-    if activo_seleccionado == "Activo 3":
+    if activo_seleccionado == "SPY":
         with col1:
           st.write("### Gráfica de Métricas")
           fig = px.line(
@@ -735,6 +735,8 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[2],4)}')
             st.text('     Sesgo')
             st.subheader(f'     {round(e[4],4)}')
+            st.text('     VaR')
+            st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
             st.text('     Volatilidad')
             st.subheader(f'     {round(e[1]*100,4)}%')
@@ -742,13 +744,18 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[3],4)}')
             st.text('     Curtosis')
             st.subheader(f'     {round(e[5],4)}')
-            
+            st.text('     CVaR')
+            st.subheader(f'     {round(e[7],4)}%')
+
+        fig_hist_asset = crear_histograma_distribucion(df['CETETRC.MX_rend'],  VaR(df['SPY_rend']), CVaR(df['SPY_rend']),  f'Distribución de Retornos - {'SPY'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+      
         simbolo = 'SPY'
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
 
-    if activo_seleccionado == "Activo 4":
+    if activo_seleccionado == "EZA":
         with col1:
           st.write("### Gráfica de Métricas")
           fig = px.line(
@@ -777,6 +784,8 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[2],4)}')
             st.text('     Sesgo')
             st.subheader(f'     {round(e[4],4)}')
+            st.text('     VaR')
+            st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
             st.text('     Volatilidad')
             st.subheader(f'     {round(e[1]*100,4)}%')
@@ -784,12 +793,17 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[3],4)}')
             st.text('     Curtosis')
             st.subheader(f'     {round(e[5],4)}')
-            
+            st.text('     CVaR')
+            st.subheader(f'     {round(e[7],4)}%')
+
+        fig_hist_asset = crear_histograma_distribucion(df['EZA_rend'],  VaR(df['EZA_rend']), CVaR(df['EZA_rend']),  f'Distribución de Retornos - {'EZA'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+      
         simbolo = 'EZA'
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)      
-    if activo_seleccionado == "Activo 5":
+    if activo_seleccionado == "IAU":
         with col1:
           st.write("### Gráfica de Métricas")
           fig = px.line(
@@ -818,6 +832,8 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[2],4)}')
             st.text('     Sesgo')
             st.subheader(f'     {round(e[4],4)}')
+            st.text('     VaR')
+            st.subheader(f'     {round(e[6],4)}%')
           with subcol2:
             st.text('     Volatilidad')
             st.subheader(f'     {round(e[1]*100,4)}%')
@@ -825,7 +841,12 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[3],4)}')
             st.text('     Curtosis')
             st.subheader(f'     {round(e[5],4)}')
+            st.write('     CVaR')
+            st.subheader(f'     {round(e[7],4)}%')
             
+        fig_hist_asset = crear_histograma_distribucion(df['IAU_rend'],  VaR(df['IAU_rend']), CVaR(df['IAU_rend']),  f'Distribución de Retornos - {'IAU'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")    
+        
         simbolo = 'IAU'
         start_date = '2010-01-01'
         end_date = datetime.now()
