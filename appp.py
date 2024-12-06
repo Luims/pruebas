@@ -1132,7 +1132,7 @@ elif selection == "Backtesting":
         st.text('     VaR')
         st.subheader(f'     {round(ll[6],4)}%')
         st.text('     CVaR')
-        st.subheader(f'     {round(ll[/],4)}%')
+        st.subheader(f'     {round(ll[7],4)}%')
 
       
       #st.text('f')
@@ -1172,7 +1172,7 @@ elif selection == "Backtesting":
       #df_desde_2020.set_index("Date", inplace=True)
       col1,col2 = st.columns(2)
       with col1:
-        fig_hist_asset = crear_histograma_distribucion(portafolio_estadistica2(df_desde_2020,l,['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']),  r[6], r[7],  f'Distribución de Retornos - {'PMV'}'  )
+        fig_hist_asset = crear_histograma_distribucion(portafolio_estadistica2(df_desde_2020,l,['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']),  ll[6], ll[7],  f'Distribución de Retornos - {'PMV'}'  )
         st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       with col2:
         drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
