@@ -436,7 +436,7 @@ def grafica_portafolio(df,w,columnas_rendimientos):
 
 # Personalizar el diseño
     fig.update_layout(
-    title_font=dict(size=22, family='Arial', color='darkblue'),
+    title_font=dict(size=22, family='Arial', color='skyblue'),
     xaxis_title="Fecha",
     yaxis_title="Rendimiento del Portafolio",
     xaxis=dict(showgrid=True, gridcolor='lightgray'),
@@ -627,23 +627,23 @@ elif selection == "Estadística de Activos":
         subcol1, subcol2 = st.columns(2)
         with subcol1: 
           e=estadisticas(df['IEF_rend'])
-          st.text('## Rendimiento')
+          st.text(' Rendimiento')
           st.subheader(f'     {round(e[0]*100,2)} %')
-          st.text('## Sharp ratio')
+          st.text(' Sharp ratio')
           st.subheader(f'     {round(e[2],4)}')
-          st.text('## Sesgo')
+          st.text(' Sesgo')
           st.subheader(f'     {round(e[4],4)}')
-          st.text('## VaR')
+          st.text(' VaR')
           st.subheader(f'     {round(e[6],2)}%')
           
         with subcol2:
-          st.text('## Volatilidad')
+          st.text(' Volatilidad')
           st.subheader(f'     {round(e[1]*100,2)}%')
-          st.text('## Sortino')
+          st.text(' Sortino')
           st.subheader(f'     {round(e[3],4)}')
-          st.text('## Curtosis')
+          st.text(' Curtosis')
           st.subheader(f'     {round(e[5],4)}')
-          st.text('## CVaR')
+          st.text(' CVaR')
           st.subheader(f'     {round(e[7],2)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
@@ -657,7 +657,7 @@ elif selection == "Estadística de Activos":
 
 
 
-    if activo_seleccionado == "Activo 2":
+    if activo_seleccionado == 'CETETRC':
         with col1:
           st.write("### Gráfica de Métricas")
           fig = px.line(
@@ -686,6 +686,8 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[2],4)}')
             st.text('     Sesgo')
             st.subheader(f'     {round(e[4],4)}')
+            st.text(' VaR')
+            st.subheader(f'     {round(e[6],2)}%')
           with subcol2:
             st.text('     Volatilidad')
             st.subheader(f'     {round(e[1]*100,4)}%')
@@ -693,7 +695,12 @@ elif selection == "Estadística de Activos":
             st.subheader(f'     {round(e[3],4)}')
             st.text('     Curtosis')
             st.subheader(f'     {round(e[5],4)}')
-            
+            st.text(' CVaR')
+            st.subheader(f'     {round(e[7],2)}%')
+
+         fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  e[6], e[7],  f'Distribución de Retornos - {'IEF'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+      
         simbolo = 'CETETRC.MX'
         start_date = '2010-01-01'
         end_date = datetime.now()
