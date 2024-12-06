@@ -611,9 +611,11 @@ if  selection == "Activos":
            'Índice':['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index',' MSCI South Africa 25/50 Index',' Precio al contado del oro'],
            'Moneda':['USD','MXN','USD','USD','USD'] ,
            'Países':['Estados Unidos','México','Estados Unidos','Sudáfrica','Respaldado por oro almacenado globalmente'],
-           'Duración':['7-10 años', '28, 91, 182 y 364 días','-','-','-']
-           'Beta':['Cercana a 0 frente a acciones','Cercana a 0 frente a acciones','Cercana a 1','Alta','Muy baja']
-          }
+           'Duración':['7-10 años', '28, 91, 182 y 364 días','-','-','-'],
+           'Beta':['Cercana a 0 frente a acciones','Cercana a 0 frente a acciones','Cercana a 1','Alta','Muy baja'],
+           'Riesgo':['Tasa de interés Moderado', 'Tasa de interés Bajo y Credito Muy Bajo', 'Volatilidad Moderada','Tipo de Cambio Elevado','Alta sensibilidad al mercado de materias primas y las tasas deinterés reales'],
+           'Costos-Expense ratio':['0.15%', ' 0.25%', '0.0945%',' 0.59%','0.25%'],
+           'Rendimiento Esperado':['Moderado','Bajo','Alineado con el desempeño del S&P 500','Volátil, ligado al desempeño de materias primas','Depende del precio del oro']}
     tab1 = pd.DataFrame(tab)
     st.table(tab1)
   
