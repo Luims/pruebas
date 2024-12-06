@@ -7,4 +7,4 @@ seaborn
 matplotlib
 scipy
 statsmodels
-statsmodels.tsa.arima.model
+
