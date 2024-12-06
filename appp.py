@@ -608,10 +608,11 @@ if  selection == "Activos":
        st.markdown('- Su exposición es al precio del oro, utilizado como cobertura contra inflación o diversificación en carteras de inversión.')
        st.markdown('- No invierte en empresas, sino directamente en oro físico almacenado en bóvedas.' )
   
-  table1 = {'Asset':['IEF','CETETRC','SPY', 'EZA','IAU' ],
+  table1 = {"Asset":['IEF','CETETRC','SPY', 'EZA','IAU' ],
             'Índice':['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index' , ' MSCI South Africa 25/50 Index',' Precio al contado del oro'], 
             'Moneda':['USD', 'MXN', 'USD', 'USD', 'USD' ],
-            'Países':['Estados Unidos', 'México', 'Estados Unidos', ' Sudáfrica', 'Respaldado por oro almacenado globalmente']}
+            'Países':['Estados Unidos', 'México', 'Estados Unidos', ' Sudáfrica', 'Respaldado por oro almacenado globalmente']
+           }
            
 
   table11 = pd.DataFrame(table1)
