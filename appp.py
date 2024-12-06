@@ -584,21 +584,21 @@ selection = st.sidebar.radio('Barra de navegación', pages)
 
 # Selección de Activos
 if  selection == "Activos":
-    st.markdown('<div style="color:yellow; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
+    st.markdown('<div style="color:violet; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
     st.title("Selección de Activos")
     st.write("Ingresa información sobre los activos:")
     with st.expander('IEF - iShares 7-10 Year Treasury Bond ETF'):
-       st.write('Pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios. ')
-       st.write('Su exposición es principalmente en Cetes, que son instrumentos de deuda a corto plazo emitidos por el gobierno mexicano. Es ideal para quienes buscan un refugio seguro en moneda local con alta liquidez.')
-       st.write('Al ser un fondo que invierte exclusivamente en bonos del Tesoro, los principales emisores son el gobierno de los Estados Unidos. Proporciona exposición a deuda soberana considerada de bajo riesgo' )
+       st.markdown('- Pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios. ')
+       st.markdown('- Su exposición es principalmente en Cetes, que son instrumentos de deuda a corto plazo emitidos por el gobierno mexicano. Es ideal para quienes buscan un refugio seguro en moneda local con alta liquidez.')
+       st.markdown('- Al ser un fondo que invierte exclusivamente en bonos del Tesoro, los principales emisores son el gobierno de los Estados Unidos. Proporciona exposición a deuda soberana considerada de bajo riesgo' )
     with st.expander('CETETRC ISHRS'):
-       st.write('Es gestionado por BlackRock México, se centra en valores gubernamentales mexicanos, específicamente en los Cetes (Certificados de la Tesorería). ')
-       st.write('Su exposición es en bonos del Tesoro de EE. UU. con vencimientos entre 7 y 10 años.')
-       st.write('El Gobierno de México es el contribuyente, a través de sus emisiones de Cetes.' )  
+       st.markdown('- Es gestionado por BlackRock México, se centra en valores gubernamentales mexicanos, específicamente en los Cetes (Certificados de la Tesorería). ')
+       st.markdown('- Su exposición es en bonos del Tesoro de EE. UU. con vencimientos entre 7 y 10 años.')
+       st.markdown('- El Gobierno de México es el contribuyente, a través de sus emisiones de Cetes.' )  
     with st.expander('SPY - SPDR S&P 500 ETF Trust'):
-       st.write('El SPY es uno de los ETFs más conocidos y comercializados del mundo. Proporciona exposición al índice S&P 500, que representa las 500 empresas más grandes de EE. UU. por capitalización de mercado')
-       st.write('Está diversificada en acciones de gran capitalización de EE. UU., abarcando sectores como tecnología, finanzas, salud, consumo, entre otros')
-       st.write('Las empresas con mayor ponderación en el índice son Apple, Microsoft, Amazon, NVIDIA y Alphabet, representando un porcentaje significativo del rendimiento total.' )
+       st.markdown('- El SPY es uno de los ETFs más conocidos y comercializados del mundo. Proporciona exposición al índice S&P 500, que representa las 500 empresas más grandes de EE. UU. por capitalización de mercado')
+       st.markdown('- Está diversificada en acciones de gran capitalización de EE. UU., abarcando sectores como tecnología, finanzas, salud, consumo, entre otros')
+       st.markdown('- Las empresas con mayor ponderación en el índice son Apple, Microsoft, Amazon, NVIDIA y Alphabet, representando un porcentaje significativo del rendimiento total.' )
     
     
 
