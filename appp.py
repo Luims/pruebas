@@ -351,11 +351,12 @@ def drawdown(simbolo, start_date,end_date):
     info_dd = obtener_max_drawdown_info(precios)
 
 # Imprimir resultados
-    st.write(f"\nAnálisis de Drawdown para {simbolo}:")
-    st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
-    st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
-    st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
-    st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+    with st.expander(f"\nAnálisis de Drawdown para {simbolo}:"):
+      st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+      st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+      st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+      st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+    
 
     if info_dd['fecha_recuperacion'] is not None:
         st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
@@ -682,15 +683,14 @@ elif selection == "Estadística de Activos":
           st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[7],2)}%')
 
-      col1, col2 = st.columns(2)
-      with col1:
+        fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
+        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+        
         simbolo = 'IEF'
         start_date = '2010-01-01'
         end_date = datetime.now()
         drawdown(simbolo, start_date,end_date)
-      with col2:
-        fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  VaR(df['IEF_rend']), CVaR(df['IEF_rend']),  f'Distribución de Retornos - {'IEF'}'  )
-        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+        
       
       
 
