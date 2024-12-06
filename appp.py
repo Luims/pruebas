@@ -1273,29 +1273,29 @@ elif selection == "Black-Litterman":
     
     mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
     
-    f= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
+    bb= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
     subcol1, subcol2,subcol3,subcol4 = st.columns(4)
     with subcol1: 
         #e=estadisticas(df['CETETRC.MX_rend'])
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[0]*100,4)} %')
+      st.subheader(f'     {round(bb[0]*100,4)} %')
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[2],4)}')
+      st.subheader(f'     {round(bb[2],4)}')
         
     with subcol2:
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[1]*100,4)}%')
+      st.subheader(f'     {round(bb[1]*100,4)}%')
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[3],4)}')
+      st.subheader(f'     {round(bb[3],4)}')
         
     with subcol3:
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[4],4)}')
+      st.subheader(f'     {round(bb[4],4)}')
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[5],4)}')
+      st.subheader(f'     {round(bb[5],4)}')
     with subcol4:
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[6],4)}%')
+      st.subheader(f'     {round(bb[6],4)}%')
       st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
-      st.subheader(f'     {round(f[7],4)}%')
+      st.subheader(f'     {round(bb[7],4)}%')
   
