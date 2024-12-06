@@ -584,7 +584,8 @@ selection = st.sidebar.radio("Selecciona una página:", pages)
 
 # Portada
 if selection == "Inicio":
-    st.title("Bienvenido a la Aplicación de Portafolios")
+    st.markdown('<div style="color:pink; font-size:48px; font-weight:bold;">MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
+    #st.title("Bienvenido a la Aplicación de Portafolios")
     st.write("Esta aplicación te ayudará a gestionar y analizar activos financieros.")
     st.markdown('<div style="color:purple; font-size:24px; font-weight:bold;">Texto púrpura y en negrita</div>', unsafe_allow_html=True)
     st.image("https://via.placeholder.com/800x400", caption="Imagen representativa")
