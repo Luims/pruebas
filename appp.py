@@ -596,14 +596,15 @@ elif selection == "Selección de Activos":
     st.text_input("Activo 5:")
 
 # Estadística de Activos
+
 elif selection == "Estadística de Activos":
     st.title("Estadística de Activos")
-    activos = ["Activo 1", "Activo 2", "Activo 3", "Activo 4", "Activo 5"]
+    activos = ['IEF','CETETRC', 'EZA','IAU','^GSPC']
     activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
     
 
     col1, col2 = st.columns([2,1])
-    if activo_seleccionado == "Activo 1":
+    if activo_seleccionado == 'IEF':
       
       with col1:
         st.write("### Gráfica de Métricas")
@@ -626,23 +627,23 @@ elif selection == "Estadística de Activos":
         subcol1, subcol2 = st.columns(2)
         with subcol1: 
           e=estadisticas(df['IEF_rend'])
-          st.text('##     Rendimiento')
+          st.text('     Rendimiento')
           st.subheader(f'     {round(e[0]*100,2)} %')
-          st.text('##     Sharp ratio')
+          st.text('     Sharp ratio')
           st.subheader(f'     {round(e[2],4)}')
-          st.text('##     Sesgo')
+          st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
-          st.text('##          VaR')
+          st.text('            VaR')
           st.subheader(f'     {round(e[6],2)}%')
           
         with subcol2:
-          st.text('##     Volatilidad')
+          st.text('      Volatilidad')
           st.subheader(f'     {round(e[1]*100,2)}%')
-          st.text('##     Sortino')
+          st.text('       Sortino')
           st.subheader(f'     {round(e[3],4)}')
-          st.text('##     Curtosis')
+          st.text('       Curtosis')
           st.subheader(f'     {round(e[5],4)}')
-          st.text('##         CVaR')
+          st.text('             CVaR')
           st.subheader(f'     {round(e[7],2)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
