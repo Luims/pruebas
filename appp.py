@@ -634,7 +634,7 @@ if  selection == "Activos":
 
 
 elif selection == "Estadística de Activos":
-    st.markdown('<div style="color:violet; font-size:30px; font-weight:bold;">"Estadística de Activos" </div>', unsafe_allow_html=True)
+    st.markdown('<div style="color:violet; font-size:48px; font-weight:bold;">Estadística de Activos </div>', unsafe_allow_html=True)
     activos = ['IEF','CETETRC','SPY', 'EZA','IAU']
     activo_seleccionado = st.selectbox("Activos:", activos)
     
@@ -643,7 +643,7 @@ elif selection == "Estadística de Activos":
     if activo_seleccionado == 'IEF':
       
       with col1:
-        st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">"Gráfica de Métricas" </div>', unsafe_allow_html=True)
+        st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Gráfica de Métricas </div>', unsafe_allow_html=True)
         fig = px.line(
         df,
         x='Date',
@@ -659,11 +659,11 @@ elif selection == "Estadística de Activos":
         st.plotly_chart(fig)
     
       with col2:
-        st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">"Datos" </div>', unsafe_allow_html=True)
+        st.markdown('<div style="color:skyblue; font-size:30px; font-weight:bold;">Datos </div>', unsafe_allow_html=True)
         subcol1, subcol2 = st.columns(2)
         with subcol1: 
           e=estadisticas(df['IEF_rend'])
-          st.markdown('<div style="color:skyblue; font-size:18px; font-weight:bold;">"Rendimiento" </div>', unsafe_allow_html=True)
+          st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[0]*100,2)} %')
           st.text(' Sharp ratio')
           st.subheader(f'     {round(e[2],4)}')
