@@ -1260,5 +1260,16 @@ elif selection == "Black-Litterman":
         'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
         'grado de consistencia como el SnP500, además de su demanda para la parte '
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+    #Vector p
+    P = np.array([
+    [1, 0, 0, 0, 0],  # View 1: IEF
+    [0, 1, 0, 0, 0],  # View 2: CETETRC ISHRS
+    [0, 0, 1, 0, 0],  # View 3: SPY
+    [0, 0, 0, 1, 0],  # View 4: EWW
+    [0, 0, 0, 0, 1]   # View 5: IAU
+    ])
 
-      
+    # Vector Q
+    Q = np.array([-0.05, -0.05, 0.10, 0.05, 0.05])
+    bl
+    st.write(bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q))
