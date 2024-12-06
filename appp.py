@@ -1261,17 +1261,41 @@ elif selection == "Black-Litterman":
         'grado de consistencia como el SnP500, además de su demanda para la parte '
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
     #Vector p
+    
     P = np.array([
-      [1, 0, 0, 0, 0, 0],  # Vista positiva sobre SPY
-      [0, 0, 1, 0, 0, 0],  # Vista negativa sobre IEF
-      [0, 0, 0, 1, 0, 0],  # Vista negativa sobre EZA
+      [1, -1, 0, 0, 0],   # View 2: CETETRC ISHRS  View 4: EWW
+      [0, 0, 1, -1, 0],  # View 3: SPY      View 5: IAU
+      [0, 0, 0, 0, 1],
     ])
 
-# Matriz Q: Valores asociados a las vistas
-    Q = np.array([
-      [0.05],  # Retorno esperado positivo para SPY
-      [-0.02], # Retorno esperado negativo para IEF
-      [-0.05], # Retorno esperado negativo para EZA
-    ])
-    bl
-    st.write(bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q))
+    # Vector Q
+    Q = np.array([0.05, 0.07,0.03])
+    
+    mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
+    
+    f= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
+    subcol1, subcol2,subcol3,subcol4 = st.columns(4)
+    with subcol1: 
+        #e=estadisticas(df['CETETRC.MX_rend'])
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Rendimiento </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[0]*100,4)} %')
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sharp Ratio </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[2],4)}')
+        
+    with subcol2:
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Volatilidad </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[1]*100,4)}%')
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sortino </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[3],4)}')
+        
+    with subcol3:
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Sesgo </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[4],4)}')
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Curtosis </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[5],4)}')
+    with subcol4:
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">VaR </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[6],4)}%')
+      st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">CVaR </div>', unsafe_allow_html=True)
+      st.subheader(f'     {round(f[7],4)}%')
+  
