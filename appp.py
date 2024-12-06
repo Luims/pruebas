@@ -1082,7 +1082,10 @@ elif selection == "Backtesting":
       #start_date = '2020-01-01'
       #end_date = datetime.now()
       #drawdown2(simbolo, start_date,end_date)
-        
+      st.subheader('Rendimiento del portafolio')
+      #st.write(df_desde_2020)
+      st.write(df_desde_2020[['Rend_Portafolio']])
+
     
     elif portafolio_seleccionado == "Portafolio máximo sharpe ratio":
       #columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
@@ -1161,8 +1164,10 @@ elif selection == "Backtesting":
         st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       with col2:
         drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
-      
-        
+      st.subheader('Rendimiento del portafolio')
+      #st.write(df_desde_2020)
+      st.write(df_desde_2020[['Rend_Portafolio']])
+
 
     elif portafolio_seleccionado == "Portafolio mínima volatilidad con objetivo de rendimiento de 10%":
       l = lagrange(mu1, matriz_Cov1, 0.10)
@@ -1224,8 +1229,7 @@ elif selection == "Backtesting":
       simbolo = 'Rend_Portafolio'
       start_date = '2020-01-01'
       end_date = datetime.now()
-      st.write(df_desde_2020)
-      st.write(df_desde_2020[['Date','Rend_Portafolio']])
+      
       #df_desde_2020.set_index("Date", inplace=True)
       col1,col2 = st.columns(2)
       with col1:
@@ -1233,7 +1237,9 @@ elif selection == "Backtesting":
         st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       with col2:
         drawdown3(df_desde_2020[['Date','Rend_Portafolio']])
-      
+      st.subheader('Rendimiento del portafolio')
+      #st.write(df_desde_2020)
+      st.write(df_desde_2020[['Rend_Portafolio']])
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
@@ -1274,6 +1280,7 @@ elif selection == "Black-Litterman":
     mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
     
     bb= portafolio_estadistica(df,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
+    st.subheader('Pesos del portafolio Black-Litterman')
     coll,colll ,collll= st.columns(3)
     col4,col5 = st.columns(2)
     with coll:
@@ -1295,7 +1302,8 @@ elif selection == "Black-Litterman":
     with col5:
       st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">IAU </div>', unsafe_allow_html=True)
       st.header(f'{round(bb[4]*100,3)}%')
-          
+
+    st.subheader('Estadisticas portafolio Black-Litterman')
     subcol1, subcol2,subcol3,subcol4 = st.columns(4)
     with subcol1: 
         #e=estadisticas(df['CETETRC.MX_rend'])
