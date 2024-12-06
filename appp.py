@@ -937,6 +937,7 @@ elif selection == "Portafolios óptimos":
         if opt_sharpe.success:
             #st.write(list(zip(['IEF', 'CETETRC.MX', 'SPY', 'EZA', 'IAU'], round(opt_sharpe['x']*100, 2))))
             coll,colll,collll = st.columns(3)
+            col4,col5 = st.columns(2)
             with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
               st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
@@ -968,22 +969,27 @@ elif selection == "Portafolios óptimos":
         #st.text('ses')
         l = lagrange(mu1, matriz_Cov1, 0.10)
         coll,colll,collll = st.columns(3)
+        col4,col5 = st.columns(2)
         with coll:
           #['IEF','CETETRC.MX', 'SPY', 'EZA','IAU']
-          st.subheader('IEF')
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IEF </div>', unsafe_allow_html=True)
           st.header(f'{round(l[0]*100,3)}%')
-          st.subheader('CETETRC.MX')
-          st.header(f'{round(l[1]*100,3)}%')
+          
           
         with colll:
-          st.subheader('EZA')
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">EZA </div>', unsafe_allow_html=True)
           st.header(f'{round(l[3]*100,3)}%')
-          st.subheader('IAU')
-          st.header(f'{round(l[4]*100,3)}%')     
+              
         #st.write(l)
         with collll:
-          st.subheader('SPY')
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">SPY </div>', unsafe_allow_html=True)
           st.header(f'{round(l[2]*100,3)}%')
+        with col4:
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">CETETRC.MX </div>', unsafe_allow_html=True)
+          st.header(f'{round(l[1]*100,3)}%')
+        with col5:
+          st.markdown('<div style="color:skyblue; font-size:28px; font-weight:bold;">IAU </div>', unsafe_allow_html=True)
+          st.header(f'{round(l[4]*100,3)}%') 
 
         grafica_portafolio(df_hasta_2020,l,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
   
