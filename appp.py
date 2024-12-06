@@ -1134,7 +1134,7 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(r[7],4)}%')
 
       
-      st.text('f')
+      
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(pesos_optimos)
       col1,col2,col3 = st.columns(3)
