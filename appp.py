@@ -1237,13 +1237,28 @@ elif selection == "Backtesting":
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
-    
-    st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
-    st.title("Selección de Activos")
+    st.subheader('Contexto macroeconomico')
+    st.text('xdxxddd')
+  #  st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
+   # st.title("Selección de Activos")
     st.write("views:")
-    st.text_input("Activo 1:")
-    st.text_input("Activo 2:")
-    st.text_input("Activo 3:")
-    st.text_input("Activo 4:")
-    st.text_input("Activo 5:")
+    st.subheader("IEF")
+    st.text('La inflación a la baja y el crecimiento en Estados Unidos son dos factores '
+        'negativos para los bonos gringos porque la baja de tasas vuelve este activo '
+        'menos atractivo.')
+    st.subheader("CETETRC")
+    st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
+        'un (caso a favor y uno en contra).')
+    st.subheader("SPY")
+    st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
+        'parte del mercado, además de que la bajada de tasas hace de este un '
+        'instrumento más atractivo.')
+    st.subheader("EZA")
+    st.text('Alta volatilidad política y económica.')
+    st.subheader("IAU")
+    st.text('Tenemos inflación baja y crecimiento alto (al menos en Estados Unidos) (uno '
+        'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
+        'grado de consistencia como el SnP500, además de su demanda para la parte '
+        'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+
       
