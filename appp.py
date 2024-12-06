@@ -608,11 +608,11 @@ if  selection == "Activos":
        st.markdown('- Su exposición es al precio del oro, utilizado como cobertura contra inflación o diversificación en carteras de inversión.')
        st.markdown('- No invierte en empresas, sino directamente en oro físico almacenado en bóvedas.' )
 
-  table = ''' 
-   | Asset | Índice  | Moneda | Países | Duración | Beta | Riesgos | Costo - Expense Ratio | Rendimiento |
+  table = ''' | Asset | Índice  | Moneda | Países | Duración | Beta | Riesgos | Costo - Expense Ratio | Rendimiento |
    | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
    | IEF | ICE U.S. Treasury 7-10 Year Bond Index | USD | Exclusivamente en Estados Unidos | 8 años - Sensibilidad intermendia | Cercana a 0 frente a acciones | Tasa Interés Moderado| 0.15% |  Moderado |
    '''
+  
    
   st.markdown(table)
 
