@@ -1262,12 +1262,16 @@ elif selection == "Black-Litterman":
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
     #Vector p
     P = np.array([
-    [1, -1, 0, 0, 0],   # View 2: CETETRC ISHRS  View 4: EWW
-    [0, 0, 1, -1, 0],  # View 3: SPY      View 5: IAU
-    [0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0],  # Vista positiva sobre SPY
+      [0, 0, 1, 0, 0, 0],  # Vista negativa sobre IEF
+      [0, 0, 0, 1, 0, 0],  # Vista negativa sobre EZA
     ])
 
-    # Vector Q
-    Q = np.array([0.05, 0.07,0.03])
+# Matriz Q: Valores asociados a las vistas
+    Q = np.array([
+      [0.05],  # Retorno esperado positivo para SPY
+      [-0.02], # Retorno esperado negativo para IEF
+      [-0.05], # Retorno esperado negativo para EZA
+    ])
     bl
     st.write(bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q))
