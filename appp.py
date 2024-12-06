@@ -585,6 +585,25 @@ def drawdown3(dataframe):
         st.text(f"Duración total: {info_dd['duracion_total']} días")
       else:
         st.text("El activo aún no se ha recuperado del máximo drawdown")
+
+#ARIMA cortesia de series de tiempo 
+def ARIMA(data, column_name, forecast_days=252):
+    
+    returns = data[column_name].dropna()
+
+    model = ARIMA(returns, order=(1, 1, 1))  
+    model_fit = model.fit()
+
+    forecast = model_fit.forecast(steps=forecast_days)
+  
+    forecast_index = pd.date_range(start=returns.index[-1], periods=forecast_days + 1, freq='B')[1:]
+    forecast_df = pd.DataFrame({
+        'Date': forecast_index,
+        'Predicted_Return': forecast
+    })
+    forecast_df.set_index('Date', inplace=True)
+
+    return forecast_df
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
@@ -1274,6 +1293,12 @@ elif selection == "Black-Litterman":
         'en contra y uno a favor respectivamente), pero el oro ha demostrado un cierto '
         'grado de consistencia como el SnP500, además de su demanda para la parte '
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
+
+    emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU','^GSPC']
+
+    for emisora in emisoras:
+      st.write(ARIMA(DF,emisora) )
+    
     #Vector p
     
     P = np.array([
