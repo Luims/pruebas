@@ -698,8 +698,8 @@ elif selection == "Estadística de Activos":
             st.text(' CVaR')
             st.subheader(f'     {round(e[7],2)}%')
 
-         fig_hist_asset = crear_histograma_distribucion(df['CETETRC.MX_rend'],  e[6], e[7],  f'Distribución de Retornos - {'CETETRC_rend'}'  )
-        st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
+        #fig_hist_asset = crear_histograma_distribucion(df['CETETRC.MX_rend'],  e[6], e[7],  f'Distribución de Retornos - {'CETETRC_rend'}'  )
+        #st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
       
         simbolo = 'CETETRC.MX'
         start_date = '2010-01-01'
