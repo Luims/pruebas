@@ -451,6 +451,9 @@ def portafolio_estadistica(df,w,columnas_rendimientos):
     df['Rend_Portafolio'] = df[columnas_rendimientos].dot(w)
     s = estadisticas(df['Rend_Portafolio'])
     return s
+def portafolio_estadistica2(df,w,columnas_rendimientos):
+    df['Rend_Portafolio'] = df[columnas_rendimientos].dot(w)
+    return df['Rend_Portafolio']
 def portfolio_stats(weights):
         columnas_rendimientos = ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
         weights = np.array(weights)[:, np.newaxis]
@@ -979,7 +982,7 @@ elif selection == "Backtesting":
         st.text('     CVaR')
         st.subheader(f'     {round(f[7],4)}%')
   
-      fig_hist_asset = crear_histograma_distribucion(f,  f[6], f[7],  f'Distribución de Retornos - {'PMV'}'  )
+      fig_hist_asset = crear_histograma_distribucion(portafolio_estadistica2(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend']),  f[6], f[7],  f'Distribución de Retornos - {'PMV'}'  )
       st.plotly_chart(fig_hist_asset, use_container_width=True, key="hist_asset")
           
       #st.write(f'{f}')
