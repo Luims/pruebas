@@ -1241,11 +1241,9 @@ elif selection == "Backtesting":
 # Black-Litterman
 elif selection == "Black-Litterman":
     st.title("Modelo Black-Litterman")
-    st.subheader('Contexto macroeconomico')
-    st.text('xdxxddd')
-  #  st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
+   #st.write("Información sobre el modelo Black-Litterman será presentada aquí.")
    # st.title("Selección de Activos")
-    st.write("views:")
+    st.subheader("VIEWS:")
     st.subheader("IEF")
     st.text('La inflación a la baja y el crecimiento en Estados Unidos son dos factores '
         'negativos para los bonos gringos porque la baja de tasas vuelve este activo '
@@ -1267,8 +1265,8 @@ elif selection == "Black-Litterman":
     #Vector p
     
     P = np.array([
-      [1, -1, 0, 0, 0],   # View 2: CETETRC ISHRS  View 4: EWW
-      [0, 0, 1, -1, 0],  # View 3: SPY      View 5: IAU
+      [1, -1, 0, 0, 0],   
+      [0, 0, 1, -1, 0], 
       [0, 0, 0, 0, 1],
     ])
 
