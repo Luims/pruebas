@@ -580,7 +580,7 @@ def drawdown3(dataframe):
 # Barra de navegación
 st.sidebar.title("Navegación")
 pages = [ "PerActivos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
-selection = st.sidebar.radio( pages)
+selection = st.sidebar.radio('Barra de navegación', pages)
 
 # Selección de Activos
 elif  selection == "PerActivos":
