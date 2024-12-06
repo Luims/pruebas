@@ -1315,10 +1315,10 @@ elif selection == "Black-Litterman":
     Q = np.array([0.05, 0.07,0.03])
     col1,col2=st.columns(2)
     with col1:
-      st.subheader(Matriz P)
+      st.subheader('Matriz P')
       st.write(P)
     with col2:
-      st.subheader(Matriz P)
+      st.subheader('Matriz Q')
       st.write(Q)
     mv= bl([0.2,0.2,0.2,0.2,0.2], matriz_Cov,df.shape[0],P,Q)
     
