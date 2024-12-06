@@ -1095,7 +1095,7 @@ elif selection == "Backtesting":
       pesos_optimos = opt_sharpe['x']
       
       r= portafolio_estadistica(df_desde_2020,pesos_optimos,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
-      #st.write(f'{f}')
+      
       subcol1, subcol2, subcol3,subcol4 = st.columns(4)
       with subcol1: 
         e=estadisticas(df['CETETRC.MX_rend'])
