@@ -633,7 +633,7 @@ elif selection == "Estadística de Activos":
           st.text('     Sesgo')
           st.subheader(f'     {round(e[4],4)}')
           st.text('     VaR')
-          st.subheader(f'     {round(e[6]*100,2)}%')
+          st.subheader(f'     {round(e[6],2)}%')
           
         with subcol2:
           st.text('     Volatilidad')
@@ -643,7 +643,7 @@ elif selection == "Estadística de Activos":
           st.text('     Curtosis')
           st.subheader(f'     {round(e[5],4)}')
           st.text('     CVaR')
-          st.subheader(f'     {round(e[7]*100,2)}%')
+          st.subheader(f'     {round(e[7],2)}%')
           
         #st.text(estadisticas(df['IEF_rend']))
     fig_hist_asset = crear_histograma_distribucion(df['IEF_rend'],  e[6], e[7],  f'Distribución de Retornos - {'IEF'}'  )
