@@ -1294,7 +1294,7 @@ elif selection == "Black-Litterman":
         'grado de consistencia como el SnP500, además de su demanda para la parte '
         'de electrónicos o como refugio o incluso para darle valor a una moneda.')
 
-    emisoras = ['IEF','CETETRC.MX', 'SPY', 'EZA','IAU','^GSPC']
+    emisoras = ['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend']
 
     for emisora in emisoras:
       st.write(ARIMA(df,emisora) )
