@@ -572,12 +572,19 @@ def drawdown3(dataframe):
     st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
     st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
 
-    if info_dd['fecha_recuperacion'] is not None:
+    with st.expander(f"\nAnálisis de Drawdown para {simbolo}:"):
+      st.text(f"Máximo Drawdown: {info_dd['max_drawdown']:.2f}%")
+      st.text(f"Fecha del pico: {info_dd['fecha_pico'].strftime('%Y-%m-%d')}")
+      st.text(f"Fecha del valle: {info_dd['fecha_valle'].strftime('%Y-%m-%d')}")
+      st.text(f"Duración de la caída: {info_dd['duracion_caida']} días")
+    
+
+      if info_dd['fecha_recuperacion'] is not None:
         st.text(f"Fecha de recuperación: {info_dd['fecha_recuperacion'].strftime('%Y-%m-%d')}")
         st.text(f"Duración de la recuperación: {info_dd['duracion_recuperacion']} días")
         st.text(f"Duración total: {info_dd['duracion_total']} días")
-    else:
-        st.text("El activo aún no se ha recuperado del máximo drawdown.")
+      else:
+        st.text("El activo aún no se ha recuperado del máximo drawdown")
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
