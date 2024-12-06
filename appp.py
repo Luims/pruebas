@@ -591,22 +591,29 @@ if  selection == "Activos":
        st.markdown('- Pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios. ')
        st.markdown('- Su exposición es en bonos del Tesoro de EE. UU. con vencimientos entre 7 y 10 años.')
        st.markdown('- Al ser un fondo que invierte exclusivamente en bonos del Tesoro, los principales emisores son el gobierno de los Estados Unidos. Proporciona exposición a deuda soberana considerada de bajo riesgo' )
+       st.markdown('- Estilo: Deuda soberana de grado de inversión. No busca retorno mediante crecimiento o valor, sino mediante la estabilidad y pagos regulares de intereses.')
     with st.expander('CETETRC ISHRS'):
        st.markdown('- Es gestionado por BlackRock México, se centra en valores gubernamentales mexicanos, específicamente en los Cetes (Certificados de la Tesorería). ')
        st.markdown('- Su exposición es principalmente en Cetes, que son instrumentos de deuda a corto plazo emitidos por el gobierno mexicano. Es ideal para quienes buscan un refugio seguro en moneda local con alta liquidez.')
        st.markdown('- El Gobierno de México es el contribuyente, a través de sus emisiones de Cetes.' )  
+       st.markdown('- Estilo: Renta fija soberana de corto plazo. Estrategia conservadora para preservar el capital con bajo riesgo.' ) 
     with st.expander('SPY - SPDR S&P 500 ETF Trust'):
        st.markdown('- El SPY es uno de los ETFs más conocidos y comercializados del mundo. Proporciona exposición al índice S&P 500, que representa las 500 empresas más grandes de EE. UU. por capitalización de mercado')
        st.markdown('- Está diversificada en acciones de gran capitalización de EE. UU., abarcando sectores como tecnología, finanzas, salud, consumo, entre otros')
        st.markdown('- Las empresas con mayor ponderación en el índice son Apple, Microsoft, Amazon, NVIDIA y Alphabet, representando un porcentaje significativo del rendimiento total.' )
+       st.markdown('- Estilo: Renta fija soberana de corto plazo. Estrategia conservadora para preservar el capital con bajo riesgo.' ) 
+       st.markdown('- Estilo: Growth y Value, ya que combina empresas de crecimiento como Tesla y empresas de valor como Berkshire Hathaway.' )    
     with st.expander('EZA - iShares MSCI South Africa ETF'):
        st.markdown('- Este ETF invierte en empresas líderes de Sudáfrica, proporcionando exposición al mercado accionario de este país.')
        st.markdown('- Su exposición es en empresas sudafricanas, principalmente en sectores como minería, finanzas y telecomunicaciones.')
        st.markdown('- Las pincipales empresas contribuyentes son Naspers, Anglo American, Sasol y Standard Bank Group.' )
+       st.markdown('- Estilo: Predomina Value, especialmente en minería y materias primas, aunque incluye empresas de tecnología con crecimiento destacado.' ) 
     with st.expander('IAU - iShares Gold Trust'):
        st.markdown('- El IAU es un ETF que busca replicar el precio del oro, proporcionando una forma eficiente de invertir en este activo sin poseerlo físicamente.')
        st.markdown('- Su exposición es al precio del oro, utilizado como cobertura contra inflación o diversificación en carteras de inversión.')
        st.markdown('- No invierte en empresas, sino directamente en oro físico almacenado en bóvedas.' )
+       st.markdown('- Estilo: Activo defensivo, utilizado como reserva de valor más que para crecimiento ingresos' )
+       
     tab = {'Asset':['IEF','CETETRC','SPY','EZA','IAU'],
            'Índice':['ICE U.S. Treasury 7-10 Year Bond Index','Índice de Bonos CETES','S&P 500 Index',' MSCI South Africa 25/50 Index',' Precio al contado del oro'],
            'Moneda':['USD','MXN','USD','USD','USD'] ,
