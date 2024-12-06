@@ -579,13 +579,14 @@ def drawdown3(dataframe):
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 # Barra de navegación
 st.sidebar.title("Navegación")
-pages = [ "Selección de Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
+pages = [ 'Inicio',"Selección de Activos", "Estadística de Activos", "Portafolios óptimos", "Backtesting", "Black-Litterman"]
 selection = st.sidebar.radio("Selecciona una página:", pages)
 
 # Portada
-if selection == "Portada":
+if selection == "Inicio":
     st.title("Bienvenido a la Aplicación de Portafolios")
     st.write("Esta aplicación te ayudará a gestionar y analizar activos financieros.")
+    st.markdown('<div style="color:purple; font-size:24px; font-weight:bold;">Texto púrpura y en negrita</div>', unsafe_allow_html=True)
     st.image("https://via.placeholder.com/800x400", caption="Imagen representativa")
 
 # Selección de Activos
