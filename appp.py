@@ -1269,7 +1269,7 @@ elif selection == "Black-Litterman":
       st.text('De este lado tenemos un reciente decrecimiento y tasas de interés a la baja, '
           'un (caso a favor y uno en contra).')
       st.subheader("EZA")
-        st.text('Alta volatilidad política y económica.')
+      st.text('Alta volatilidad política y económica.')
     with col2:
       st.subheader("SPY")
       st.text('Lo tiene todo para ganar, crecimiento, inflación a la baja y hasta optimismo de '
