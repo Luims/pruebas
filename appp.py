@@ -585,7 +585,7 @@ selection = st.sidebar.radio('Páginas', pages)
 # Selección de Activos
 if  selection == "Activos":
     st.markdown('<div style="color:violet; font-size:48px; font-weight:bold;">PROYECTO - MANEJO DE PORTAFOLIOS Y ASSET ALLOCATION </div>', unsafe_allow_html=True)
-    st.markdown('<div style="color:pink; font-size:24px; font-weight:bold;">Selección de Activos </div>', unsafe_allow_html=True)
+    st.markdown('<div style="color:pink; font-size:30px; font-weight:bold;">Selección de Activos </div>', unsafe_allow_html=True)
     st.write("Información sobre los activos:")
     with st.expander('IEF - iShares 7-10 Year Treasury Bond ETF'):
        st.markdown('- Pertenece a la familia iShares de BlackRock y se centra en bonos del Tesoro de los Estados Unidos con vencimientos intermedios. ')
@@ -634,16 +634,16 @@ if  selection == "Activos":
 
 
 elif selection == "Estadística de Activos":
-    st.title("Estadística de Activos")
+    st.markdown('<div style="color:violet; font-size:30px; font-weight:bold;">"Estadística de Activos" </div>', unsafe_allow_html=True)
     activos = ['IEF','CETETRC','SPY', 'EZA','IAU']
-    activo_seleccionado = st.selectbox("Selecciona un activo:", activos)
+    activo_seleccionado = st.selectbox("Activos:", activos)
     
 
     col1, col2 = st.columns([2,1])
     if activo_seleccionado == 'IEF':
       
       with col1:
-        st.write("### Gráfica de Métricas")
+        st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">"Gráfica de Métricas" </div>', unsafe_allow_html=True)
         fig = px.line(
         df,
         x='Date',
@@ -659,11 +659,11 @@ elif selection == "Estadística de Activos":
         st.plotly_chart(fig)
     
       with col2:
-        st.write("### Datos del Activo Seleccionado")
+        st.markdown('<div style="color:skyblue; font-size:24px; font-weight:bold;">"Datos" </div>', unsafe_allow_html=True)
         subcol1, subcol2 = st.columns(2)
         with subcol1: 
           e=estadisticas(df['IEF_rend'])
-          st.text(' Rendimiento')
+          st.markdown('<div style="color:skyblue; font-size:18px; font-weight:bold;">"Rendimiento" </div>', unsafe_allow_html=True)
           st.subheader(f'     {round(e[0]*100,2)} %')
           st.text(' Sharp ratio')
           st.subheader(f'     {round(e[2],4)}')
