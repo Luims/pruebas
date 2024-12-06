@@ -954,9 +954,9 @@ elif selection == "Backtesting":
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
       mv = minima_varianza(matriz_Cov1)
       f= portafolio_estadistica(df_desde_2020,mv,['IEF_rend','CETETRC.MX_rend', 'SPY_rend', 'EZA_rend','IAU_rend'])
-      subcol1, subcol2,subcol3 = st.columns(3)
+      subcol1, subcol2,subcol3,subcol4 = st.columns(4)
       with subcol1: 
-        e=estadisticas(df['CETETRC.MX_rend'])
+        #e=estadisticas(df['CETETRC.MX_rend'])
         st.text('     Rendimiento')
         st.subheader(f'     {round(f[0]*100,4)} %')
         st.text('     Sharp ratio')
@@ -973,7 +973,12 @@ elif selection == "Backtesting":
         st.subheader(f'     {round(f[4],4)}')
         st.text('     Curtosis')
         st.subheader(f'     {round(f[5],4)}')
-      
+      with subcol4:
+        st.text('     VaR')
+        st.subheader(f'     {round(f[6],4)}%')
+        st.text('     CVaR')
+        st.subheader(f'     {round(f[7],4)}%')
+        
       st.write(f'{f}')
       columnas_rendimientos =  ['IEF_rend','CETETRC.MX_rend','SPY_rend','EZA_rend','IAU_rend']
       df['Rend_Portafolio'] = df[columnas_rendimientos].dot(mv)
