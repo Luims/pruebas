@@ -1012,14 +1012,14 @@ elif selection == "Backtesting":
       st.subheader("Análisis y Selección del Mejor Portafolio")
       st.write("""
 
-      Tras el análisis de las métricas clave, el **Portafolio 3** es el mejor opción. A pesar de tener una mayor volatilidad y mayores riesgos (VaR y CVaR), el portafolio 3 ha demostrado ser el más eficiente en cuanto a rendimiento ajustado al riesgo.
+      Tras el análisis de las métricas clave, el **portafolio con maximo sharp ratio** es el mejor opción. A pesar de tener una mayor volatilidad y mayores riesgos (VaR y CVaR), el portafolio 3 ha demostrado ser el más eficiente en cuanto a rendimiento ajustado al riesgo.
 
       **Razones:**
-      - El **Rendimiento** del Portafolio 3 es el más alto con **10.34%**.
+      - El **Rendimiento** del Portafolio con maximo sharp ratio es el más alto con **10.34%**.
       - El **Sharpe Ratio** es el mejor con **12.5776**, lo que indica que ha generado el mayor rendimiento por unidad de riesgo.
       - El **Sortino Ratio** de **14.8054** es el más alto, lo que significa que ha limitado significativamente el riesgo a la baja.
   
-      Aunque su volatilidad es más alta, el excelente rendimiento y los ratios ajustados por riesgo hacen que el Portafolio 3 sea la mejor opción para maximizar los beneficios.
+      Aunque su volatilidad es más alta, el excelente rendimiento y los ratios ajustados por riesgo hacen que el Portafolio con maximo sharp ratio sea la mejor opción para maximizar los beneficios.
       """)
     if portafolio_seleccionado == "Portafolio con mínima volatilidad":
       mv = minima_varianza(matriz_Cov1)
