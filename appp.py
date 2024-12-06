@@ -151,7 +151,7 @@ def crear_histograma_distribucion(returns, var_95, cvar_95, title):
     
     return fig
 
-#black cock
+#black
 def bl(prior, cov,t,view,q):
     vp = np.sqrt(np.transpose(prior) @ cov @ prior)
     print('-------------------------vp---------------------------------')
